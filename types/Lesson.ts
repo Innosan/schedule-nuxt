@@ -6,4 +6,6 @@ export type Lesson = {
 	subject: Subject;
 	type: LessonType;
 	teachers: Teacher[];
+	room: string;
+	additionalGroups?: string;
 };
