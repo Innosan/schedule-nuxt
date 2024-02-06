@@ -22,3 +22,20 @@ const getNumberOfWeek = () => {
 export const isCurrentWeekEven = () => {
 	return getNumberOfWeek() % 2 === 0;
 };
+
+export const dayMapper = {
+	1: "Понедельник",
+	2: "Вторник",
+	3: "Среда",
+	4: "Четверг",
+	5: "Пятница",
+	6: "Суббота",
+	7: "Воскресенье",
+};
+
+export const timeMapper = {
+	0: { start: "9:30", end: "11:10" },
+	1: { start: "11:30", end: "13:10" },
+	2: { start: "14:00", end: "15:40" },
+	3: { start: "16:00", end: "17:40" },
+};

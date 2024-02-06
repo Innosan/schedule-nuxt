@@ -1,4 +1,5 @@
 import type { Subject } from "~/types/Subject";
+import type { Grade } from "~/types/Grade";
 
 export type Teacher = {
 	id: number;
@@ -9,6 +10,7 @@ export type Teacher = {
 
 	phoneNumber?: string;
 	email?: string;
+	grade: Grade;
 
 	image?: string;
 	subjects: Subject[];
