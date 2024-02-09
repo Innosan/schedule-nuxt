@@ -44,7 +44,7 @@ export const firstSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[4]],
 				room: "215",
-				additionalGroups: "4306, 1 факультет",
+				additionalGroups: "4306, 1 фак",
 			},
 			{
 				subject: subjects[1],
@@ -55,7 +55,7 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[6],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[9]],
 				room: "7-321",
 			},
 		],
@@ -72,7 +72,7 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[10]],
 				room: "306",
 			},
 			{
@@ -95,20 +95,20 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[10]],
 				room: "394",
 			},
 			{
 				subject: subjects[8],
 				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
+				teachers: [teachers[12]],
 				room: "СА",
 				additionalGroups: "4306",
 			},
 			{
 				subject: subjects[9],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[0], teachers[13]],
 				room: "7",
 			},
 		],
@@ -118,14 +118,14 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
+				teachers: [teachers[11]],
 				room: "211",
 				additionalGroups: "5 фак",
 			},
 			{
 				subject: subjects[8],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[12]],
 				room: "СА",
 			},
 			{},
@@ -178,7 +178,7 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[5],
 				type: lessonTypes.lecture,
-				teachers: [teachers[5]],
+				teachers: [teachers[5], teachers[3]],
 				room: "САПРиУ",
 				additionalGroups: "4306",
 			},
@@ -187,7 +187,7 @@ export const secondSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[4]],
 				room: "215",
-				additionalGroups: "4306, 1 факультет",
+				additionalGroups: "4306, 1 фак",
 			},
 			{
 				subject: subjects[1],
@@ -210,7 +210,7 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[10]],
 				room: "306",
 			},
 			{
@@ -222,7 +222,7 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[6],
 				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
+				teachers: [teachers[9]], // TODO: change this
 				room: "7-408",
 				additionalGroups: "4304, 4305, 4306",
 			},
@@ -239,20 +239,20 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[10]],
 				room: "394",
 			},
 			{
 				subject: subjects[8],
 				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
+				teachers: [teachers[12]],
 				room: "СА",
 				additionalGroups: "4306",
 			},
 			{
 				subject: subjects[9],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[0], teachers[13]],
 				room: "7",
 			},
 		],
@@ -262,14 +262,14 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[7],
 				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
+				teachers: [teachers[11]],
 				room: "211",
 				additionalGroups: "5 фак",
 			},
 			{
 				subject: subjects[8],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[12]],
 				room: "СА",
 			},
 			{

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Lesson } from "~/types/Lesson";
-import { getFullName } from "~/types/Teacher";
+import { getFullName, getShortName } from "~/types/Teacher";
 import { timeMapper } from "~/utils/dateFunctions";
 import LessonInfoField from "~/components/containers/LessonInfoField.vue";
 
@@ -46,7 +46,6 @@ const props = defineProps({
 					<div class="flex gap-4">
 						<LessonInfoField
 							icon="i-heroicons-clock"
-							tooltip="Время пары"
 							:value="
 								timeMapper[index].start +
 								' - ' +
@@ -54,7 +53,6 @@ const props = defineProps({
 							"
 						/>
 						<LessonInfoField
-							tooltip="Группы на паре"
 							v-if="lesson.additionalGroups !== undefined"
 							icon="i-heroicons-plus-solid"
 							:value="lesson.additionalGroups"
@@ -62,7 +60,6 @@ const props = defineProps({
 					</div>
 					<div>
 						<LessonInfoField
-							tooltip="Кабинет"
 							icon="i-heroicons-arrow-right-end-on-rectangle"
 							:value="lesson.room"
 						/>
@@ -71,28 +68,9 @@ const props = defineProps({
 			</div>
 		</template>
 		<div class="w-max flex gap-4">
-			<UPopover overlay>
-				<UButton
-					:label="getFullName(lesson.teachers[0])"
-					trailing-icon="i-heroicons-information-circle-solid"
-				/>
-
-				<template #panel>
-					<div class="p-4">
-						<p>Ffwewr</p>
-					</div>
-				</template>
-			</UPopover>
-			<a
-				v-if="lesson.subject.distantLink"
-				:href="lesson.subject.distantLink"
-				target="_blank"
-			>
-				Перейти в СДО
-			</a>
-			<ULink
-				v-if="lesson.subject.distantLink !== undefined"
-				@click="navigateTo(lesson.subject.distantLink)"
+			<TeacherCard
+				v-for="teacher in lesson.teachers"
+				:teacher="teacher"
 			/>
 		</div>
 	</UCard>

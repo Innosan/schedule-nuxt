@@ -19,3 +19,7 @@ export type Teacher = {
 export const getFullName = (teacher: Teacher) => {
 	return `${teacher.firstName} ${teacher.middleName} ${teacher.lastName}`;
 };
+
+export const getShortName = (teacher: Teacher) => {
+	return `${teacher.lastName} ${teacher.firstName[0]}. ${teacher.middleName[0]}.`;
+};
