@@ -3,7 +3,10 @@ import { firstSchedule, secondSchedule } from "~/utils/data";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
 
 const currentSchedule = isCurrentWeekEven() ? firstSchedule : secondSchedule;
-const currentDay = currentSchedule.days[getNumberOfDay()];
+const currentDay =
+	getNumberOfDay() >= 0 || getNumberOfDay() <= 4
+		? currentSchedule.days[getNumberOfDay()]
+		: null;
 const currentLesson = currentDay;
 </script>
 
@@ -24,23 +27,56 @@ const currentLesson = currentDay;
 				</div>
 			</template>
 			<template #item="{ item: tabItem }">
-				<div v-if="tabItem.key === 'day'" class="mt-4">
-					<DayCard
-						:day="currentDay"
-						:index="getNumberOfDay()"
-						:show-day="false"
-					/>
-				</div>
-				<div
-					v-else-if="tabItem.key === 'week'"
-					class="flex flex-col gap-8"
-				>
-					<DayCard
-						v-for="(day, index) in currentSchedule.days"
-						:key="index"
-						:day="day"
-						:index="index"
-					/>
+				<div>
+					<div v-if="tabItem.key === 'day'" class="mt-4">
+						<DayCard
+							v-if="currentDay"
+							:day="currentDay"
+							:key="getNumberOfDay()"
+							:index="getNumberOfDay()"
+							:show-day="false"
+						/>
+						<UCard
+							v-else
+							:ui="{
+								body: { padding: 'px-3 py-3 sm:p-3' },
+								header: { padding: 'px-3 py-3 sm:p-3' },
+								footer: { padding: 'px-3 py-3 sm:p-3' },
+							}"
+						>
+							<div class="flex gap-2 items-center">
+								<UIcon
+									name="i-heroicons-bell-snooze-solid"
+									class="w-7 h-7"
+								/>
+								<p class="font-black">Пар нет</p>
+							</div>
+						</UCard>
+					</div>
+					<div
+						v-else-if="tabItem.key === 'even-week'"
+						key="even-week"
+						class="flex flex-col gap-8"
+					>
+						<DayCard
+							v-for="(day, index) in firstSchedule.days"
+							:key="index"
+							:day="day"
+							:index="index"
+						/>
+					</div>
+					<div
+						v-else-if="tabItem.key === 'odd-week'"
+						key="odd-week"
+						class="flex flex-col gap-8"
+					>
+						<DayCard
+							v-for="(day, index) in secondSchedule.days"
+							:key="index"
+							:day="day"
+							:index="index"
+						/>
+					</div>
 				</div>
 			</template>
 		</UTabs>

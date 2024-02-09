@@ -19,7 +19,6 @@ export const subjects: Subject[] = [
 		id: 3,
 		title: "Безопасность жизнедеятельности",
 		shortName: "БЖД",
-		distantLink: "https://dist.technolog.edu.ru/course/view.php?id=590",
 	},
 	{
 		id: 4,
@@ -49,6 +48,5 @@ export const subjects: Subject[] = [
 		id: 9,
 		title: "Иностранный язык",
 		shortName: "Английский",
-		distantLink: "https://dist.technolog.edu.ru/course/view.php?id=590",
 	},
 ];

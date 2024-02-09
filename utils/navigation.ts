@@ -4,20 +4,14 @@ export const navigation: NavigationLink[] = [
 	{
 		id: 1,
 		to: "/",
-		label: "Home",
+		label: "Расписание",
 		icon: "i-heroicons-home-solid",
 	},
 	{
 		id: 2,
 		to: "/about",
-		label: "About",
+		label: "Ссылки",
 		icon: "i-heroicons-information-circle",
-	},
-	{
-		id: 3,
-		to: "/help",
-		label: "Help",
-		icon: "i-heroicons-user-group-solid",
 	},
 ];
 
