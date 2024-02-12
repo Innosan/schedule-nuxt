@@ -24,18 +24,31 @@ export const isCurrentWeekEven = () => {
 };
 
 export const dayMapper = {
-	1: "Понедельник",
-	2: "Вторник",
-	3: "Среда",
-	4: "Четверг",
-	5: "Пятница",
-	6: "Суббота",
-	7: "Воскресенье",
+	1: {
+		title: "Понедельник",
+		id: "monday",
+	},
+	2: {
+		title: "Вторник",
+		id: "tuesday",
+	},
+	3: {
+		title: "Среда",
+		id: "wednesday",
+	},
+	4: {
+		title: "Четверг",
+		id: "thursday",
+	},
+	5: {
+		title: "Пятница",
+		id: "friday",
+	},
 };
 
 export const timeMapper = {
-	0: { start: "9:30", end: "11:10" },
-	1: { start: "11:30", end: "13:10" },
-	2: { start: "14:00", end: "15:40" },
-	3: { start: "16:00", end: "17:40" },
+	0: { start: "9:30", end: "11:00" },
+	1: { start: "11:30", end: "13:00" },
+	2: { start: "14:00", end: "15:30" },
+	3: { start: "16:00", end: "17:30" },
 };

@@ -168,8 +168,7 @@ export const secondSchedule: Schedule = {
 				subject: subjects[3],
 				type: lessonTypes.practice,
 				teachers: [teachers[4]],
-				room: "301",
-				additionalGroups: "3 фак",
+				room: "210",
 			},
 		],
 
