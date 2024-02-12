@@ -124,8 +124,8 @@ const timeUntilCurrentLessonEnds = computed(() => {
 				</p>
 			</div>
 			<div v-else class="flex gap-2 items-center opacity-70">
-				<UIcon name="i-heroicons-bell-slash" class="w-6 h-6" />
-				<p class="font-bold text-xl">Пары нет</p>
+				<UIcon name="i-heroicons-bell-slash" class="w-5 h-5" />
+				<p class="font-bold text-md">Пары нет</p>
 			</div>
 		</div>
 

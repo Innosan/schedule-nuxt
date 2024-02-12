@@ -67,11 +67,18 @@ const props = defineProps({
 				</div>
 			</div>
 		</template>
-		<div class="w-max flex gap-4">
+		<div class="w-max flex gap-4 items-center">
 			<TeacherCard
 				v-for="teacher in lesson.teachers"
 				:teacher="teacher"
 			/>
+			<ULink
+				v-if="lesson.subject.distantLink !== undefined"
+				target="_blank"
+				:to="lesson.subject.distantLink"
+			>
+				Курс
+			</ULink>
 		</div>
 	</UCard>
 	<UCard

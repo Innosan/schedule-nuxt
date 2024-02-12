@@ -13,6 +13,12 @@ export const navigation: NavigationLink[] = [
 		label: "Ссылки",
 		icon: "i-heroicons-information-circle",
 	},
+	{
+		id: 3,
+		to: "/teachers",
+		label: "Преподаватели",
+		icon: "i-heroicons-academic-cap-solid",
+	},
 ];
 
 export const socials: NavigationLink[] = [
