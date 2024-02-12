@@ -19,9 +19,13 @@ const currentTime = ref(new Date());
 // 	});
 // };
 
-const interval = setInterval(() => {
-	currentTime.value = new Date();
-}, 1000);
+let interval;
+
+onBeforeMount(() => {
+	interval = setInterval(() => {
+		currentTime.value = new Date();
+	}, 1000);
+});
 
 onUnmounted(() => clearInterval(interval));
 

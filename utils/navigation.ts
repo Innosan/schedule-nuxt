@@ -5,7 +5,7 @@ export const navigation: NavigationLink[] = [
 		id: 1,
 		to: "/",
 		label: "Расписание",
-		icon: "i-heroicons-home-solid",
+		icon: "i-heroicons-calendar-days-solid",
 	},
 	{
 		id: 2,
