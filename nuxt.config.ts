@@ -2,16 +2,7 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 
-	modules: [
-		"@nuxt/ui",
-		"@formkit/auto-animate/nuxt",
-		"@pinia/nuxt",
-		"@vite-pwa/nuxt",
-	],
-
-	pwa: {
-		/* PWA options */
-	},
+	modules: ["@nuxt/ui", "@formkit/auto-animate/nuxt", "@pinia/nuxt"],
 
 	components: [
 		{
