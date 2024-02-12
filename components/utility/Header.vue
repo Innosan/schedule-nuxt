@@ -6,8 +6,8 @@ const transformedNavigation = navigation.map(({ id, ...rest }) => [rest]);
 
 <template>
 	<header class="flex justify-between items-center gap-4">
-		<div class="flex gap-6 items-center">
-			<h1 class="font-black text-xl text-primary">Schedule</h1>
+		<div class="flex gap-2 items-center">
+			<UIcon name="i-heroicons-fire-solid" class="w-6 h-6 opacity-70" />
 			<p class="text-sm font-bold opacity-70">
 				{{ isCurrentWeekEven() ? "Четная" : "Нечетная" }} неделя
 			</p>
