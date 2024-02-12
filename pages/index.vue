@@ -7,11 +7,116 @@ const currentDay =
 	getNumberOfDay() >= 0 || getNumberOfDay() <= 4
 		? currentSchedule.days[getNumberOfDay()]
 		: null;
-const currentLesson = currentDay;
+
+const currentTime = ref(new Date());
+
+// Create a function to format the time nicely
+// const formatTime = (date: Date) => {
+// 	return date.toLocaleTimeString("ru-RU", {
+// 		hour: "2-digit",
+// 		minute: "2-digit",
+// 	});
+// };
+
+const interval = setInterval(() => {
+	currentTime.value = new Date();
+}, 1000);
+
+onUnmounted(() => clearInterval(interval));
+
+const currentLessonIndex = computed(() => {
+	if (!currentDay) return null;
+
+	for (let i = 0; i < currentDay.length; i++) {
+		const lessonStart = new Date().setHours(
+			...timeMapper[i].start.split(":").map(Number),
+		);
+		const lessonEnd = new Date().setHours(
+			...timeMapper[i].end.split(":").map(Number),
+		);
+
+		if (currentTime.value >= lessonStart && currentTime.value < lessonEnd) {
+			return i;
+		}
+	}
+
+	return null;
+});
+
+const nextLessonIndex = computed(() => {
+	if (!currentDay || !currentLessonIndex.value) return null;
+
+	return currentLessonIndex.value + 1 < currentDay.length
+		? currentLessonIndex.value + 1
+		: null;
+});
+
+const nextLesson = computed(() => {
+	if (!nextLessonIndex.value) return null;
+
+	return {
+		name:
+			currentDay[nextLessonIndex.value]?.subject.shortName ||
+			`Lesson ${Number(nextLessonIndex.value) + 1}`,
+		...timeMapper[nextLessonIndex.value],
+	};
+});
+
+const timeUntilNextLesson = computed(() => {
+	if (!nextLesson.value) return null;
+
+	const lessonStart = new Date().setHours(
+		...nextLesson.value.start.split(":").map(Number),
+	);
+
+	const diff = lessonStart - currentTime.value.getTime();
+	const hours = Math.floor(diff / (1000 * 60 * 60));
+	const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+	return { hours, minutes };
+});
+
+const timeUntilCurrentLessonEnds = computed(() => {
+	if (currentLessonIndex.value === null) return null;
+
+	const lessonEnd = new Date().setHours(
+		...timeMapper[currentLessonIndex.value].end.split(":").map(Number),
+	);
+
+	const diff = lessonEnd - currentTime.value.getTime();
+	const hours = Math.floor(diff / (1000 * 60 * 60));
+	const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+	return { hours, minutes };
+});
 </script>
 
 <template>
 	<ClientOnly>
+		<UDivider />
+		<div class="flex gap-8 items-center">
+			<div v-if="timeUntilCurrentLessonEnds" class="flex gap-1 flex-col">
+				<p class="font-bold text-sm opacity-70">Конец пары</p>
+				<p class="font-black text-xl">
+					{{ timeUntilCurrentLessonEnds.hours }} :
+					{{ timeUntilCurrentLessonEnds.minutes }}
+				</p>
+			</div>
+			<div v-if="timeUntilNextLesson" class="flex gap-1 flex-col">
+				<p class="font-bold text-sm opacity-70">
+					{{ nextLesson.name }} через
+				</p>
+				<p class="font-black text-xl">
+					{{ timeUntilNextLesson.hours }} :
+					{{ timeUntilNextLesson.minutes }}
+				</p>
+			</div>
+			<div v-else>
+				<p>No lessons</p>
+			</div>
+		</div>
+		<UDivider />
+
 		<UTabs :items="scheduleTabs" class="mt-4">
 			<template
 				#default="{ item, index, selected }"
