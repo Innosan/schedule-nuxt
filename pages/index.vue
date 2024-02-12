@@ -94,6 +94,8 @@ const timeUntilCurrentLessonEnds = computed(() => {
 
 	return { hours, minutes };
 });
+
+const route = useRoute();
 </script>
 
 <template>
@@ -124,14 +126,22 @@ const timeUntilCurrentLessonEnds = computed(() => {
 				</p>
 			</div>
 			<div v-else class="flex gap-2 items-center opacity-70">
-				<UIcon name="i-heroicons-bell-slash" class="w-5 h-5" />
+				<UIcon
+					name="i-material-symbols-alarm-off-outline-rounded"
+					class="w-5 h-5"
+					dynamic
+				/>
 				<p class="font-bold text-md">Пары нет</p>
 			</div>
 		</div>
 
 		<UDivider />
 
-		<UTabs :items="scheduleTabs" class="mt-4">
+		<UTabs
+			:items="scheduleTabs"
+			@change="route.hash ? navigateTo('/') : null"
+			class="mt-4"
+		>
 			<template
 				#default="{ item, index, selected }"
 				:class="selected ? 'bg-primary-500' : ''"
@@ -177,26 +187,26 @@ const timeUntilCurrentLessonEnds = computed(() => {
 						key="even-week"
 						class="flex flex-col gap-8"
 					>
-						<WeekNavigation />
 						<DayCard
 							v-for="(day, index) in firstSchedule.days"
 							:key="index"
 							:day="day"
 							:index="index"
 						/>
+						<WeekNavigation />
 					</div>
 					<div
 						v-else-if="tabItem.key === 'odd-week'"
 						key="odd-week"
 						class="flex flex-col gap-8"
 					>
-						<WeekNavigation />
 						<DayCard
 							v-for="(day, index) in secondSchedule.days"
 							:key="index"
 							:day="day"
 							:index="index"
 						/>
+						<WeekNavigation />
 					</div>
 				</div>
 			</template>

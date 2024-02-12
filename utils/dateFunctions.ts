@@ -27,22 +27,32 @@ export const dayMapper = {
 	1: {
 		title: "Понедельник",
 		id: "monday",
+		shortName: "Пн",
+		icon: "i-fluent-emoji-high-contrast-teacup-without-handle",
 	},
 	2: {
 		title: "Вторник",
 		id: "tuesday",
+		shortName: "Вт",
+		icon: "i-fluent-emoji-high-contrast-skull-and-crossbones",
 	},
 	3: {
 		title: "Среда",
 		id: "wednesday",
+		shortName: "Ср",
+		icon: "i-fluent-emoji-high-contrast-frog",
 	},
 	4: {
 		title: "Четверг",
 		id: "thursday",
+		shortName: "Чт",
+		icon: "i-fluent-emoji-high-contrast-beer-mug",
 	},
 	5: {
 		title: "Пятница",
 		id: "friday",
+		shortName: "Пн",
+		icon: "i-fluent-emoji-high-contrast-clinking-beer-mugs",
 	},
 };
 

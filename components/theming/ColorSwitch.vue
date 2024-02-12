@@ -41,7 +41,7 @@ const colors = [
 
 <template>
 	<ClientOnly>
-		<UDropdown :items="colors" mode="hover">
+		<UDropdown :items="colors">
 			<UButton icon="i-heroicons-paint-brush-solid" />
 
 			<template #item="{ item }">
