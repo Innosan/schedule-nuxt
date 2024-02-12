@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { firstSchedule, secondSchedule } from "~/utils/data";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
+import WeekNavigation from "~/components/navigation/WeekNavigation.vue";
 
 const currentSchedule = isCurrentWeekEven() ? firstSchedule : secondSchedule;
 const currentDay =
@@ -98,23 +99,31 @@ const timeUntilCurrentLessonEnds = computed(() => {
 			<div v-if="timeUntilCurrentLessonEnds" class="flex gap-1 flex-col">
 				<p class="font-bold text-sm opacity-70">Конец пары</p>
 				<p class="font-black text-xl">
-					{{ timeUntilCurrentLessonEnds.hours }} :
-					{{ timeUntilCurrentLessonEnds.minutes }}
+					{{ timeUntilCurrentLessonEnds.hours }} ч.
+					{{ timeUntilCurrentLessonEnds.minutes }} мин.
 				</p>
+				<UProgress
+					:value="
+						60 * timeUntilCurrentLessonEnds.hours +
+						timeUntilCurrentLessonEnds.minutes
+					"
+					:max="90"
+				/>
 			</div>
 			<div v-if="timeUntilNextLesson" class="flex gap-1 flex-col">
 				<p class="font-bold text-sm opacity-70">
 					{{ nextLesson.name }} через
 				</p>
 				<p class="font-black text-xl">
-					{{ timeUntilNextLesson.hours }} :
-					{{ timeUntilNextLesson.minutes }}
+					{{ timeUntilNextLesson.hours }} ч.
+					{{ timeUntilNextLesson.minutes }} мин.
 				</p>
 			</div>
 			<div v-else>
 				<p>No lessons</p>
 			</div>
 		</div>
+
 		<UDivider />
 
 		<UTabs :items="scheduleTabs" class="mt-4">
@@ -163,6 +172,7 @@ const timeUntilCurrentLessonEnds = computed(() => {
 						key="even-week"
 						class="flex flex-col gap-8"
 					>
+						<WeekNavigation />
 						<DayCard
 							v-for="(day, index) in firstSchedule.days"
 							:key="index"
@@ -175,6 +185,7 @@ const timeUntilCurrentLessonEnds = computed(() => {
 						key="odd-week"
 						class="flex flex-col gap-8"
 					>
+						<WeekNavigation />
 						<DayCard
 							v-for="(day, index) in secondSchedule.days"
 							:key="index"

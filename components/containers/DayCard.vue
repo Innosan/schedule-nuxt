@@ -20,9 +20,9 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="flex gap-3 flex-col">
+	<div class="flex gap-3 flex-col" :id="dayMapper[index + 1].id">
 		<h2 v-if="showDay" class="font-black text-xl">
-			{{ dayMapper[index + 1] }}
+			{{ dayMapper[index + 1].title }}
 		</h2>
 		<div class="flex gap-2 flex-col">
 			<LessonCard
