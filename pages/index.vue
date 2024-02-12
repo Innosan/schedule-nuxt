@@ -19,9 +19,13 @@ const currentTime = ref(new Date());
 // 	});
 // };
 
-const interval = setInterval(() => {
-	currentTime.value = new Date();
-}, 1000);
+let interval;
+
+onBeforeMount(() => {
+	interval = setInterval(() => {
+		currentTime.value = new Date();
+	}, 1000);
+});
 
 onUnmounted(() => clearInterval(interval));
 
@@ -119,8 +123,9 @@ const timeUntilCurrentLessonEnds = computed(() => {
 					{{ timeUntilNextLesson.minutes }} мин.
 				</p>
 			</div>
-			<div v-else>
-				<p>No lessons</p>
+			<div v-else class="flex gap-2 items-center opacity-70">
+				<UIcon name="i-heroicons-bell-slash" class="w-5 h-5" />
+				<p class="font-bold text-md">Пары нет</p>
 			</div>
 		</div>
 

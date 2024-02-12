@@ -5,13 +5,19 @@ export const navigation: NavigationLink[] = [
 		id: 1,
 		to: "/",
 		label: "Расписание",
-		icon: "i-heroicons-home-solid",
+		icon: "i-heroicons-calendar-days-solid",
 	},
 	{
 		id: 2,
 		to: "/about",
 		label: "Ссылки",
 		icon: "i-heroicons-information-circle",
+	},
+	{
+		id: 3,
+		to: "/teachers",
+		label: "Преподаватели",
+		icon: "i-heroicons-academic-cap-solid",
 	},
 ];
 

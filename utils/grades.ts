@@ -2,19 +2,19 @@ import type { Grade } from "~/types/Grade";
 
 export const grades = {
 	highTeacher: <Grade>{
-		id: 0,
+		id: 1,
 		title: "Старший преподаватель",
 	},
 	professor: <Grade>{
-		id: 1,
+		id: 2,
 		title: "Профессор",
 	},
 	boss: <Grade>{
-		id: 2,
+		id: 3,
 		title: "ВРИО заведующего кафедрой",
 	},
 	assistantProfessor: <Grade>{
-		id: 3,
+		id: 4,
 		title: "Доцент",
 	},
 };

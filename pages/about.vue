@@ -22,7 +22,7 @@
 		</div>
 
 		<div class="flex gap-4 flex-col">
-			<p class="text-xl font-black">Рофлики</p>
+			<p class="text-xl font-black">Разное</p>
 
 			<a
 				href="https://drive.google.com/drive/u/0/folders/1tRwGq_TtKtJpvWDM1v5a7gU5kIZ81w3f"
@@ -31,6 +31,12 @@
 			>
 			<a href="https://vk.com/kreimer_games" target="_blank"
 				>Kreimer Games (подписываемся)</a
+			>
+			<a
+				class="underline"
+				href="https://github.com/Innosan/schedule-nuxt"
+				target="_blank"
+				>Обосрать код</a
 			>
 		</div>
 	</div>
