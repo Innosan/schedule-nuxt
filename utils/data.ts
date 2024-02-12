@@ -11,7 +11,7 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[0],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[16]],
 				room: "Аудитория физики №2 (за БФА)",
 			},
 			{
@@ -108,7 +108,7 @@ export const firstSchedule: Schedule = {
 			{
 				subject: subjects[9],
 				type: lessonTypes.practice,
-				teachers: [teachers[0], teachers[13]],
+				teachers: [teachers[14], teachers[13]],
 				room: "7",
 			},
 		],
@@ -147,7 +147,7 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[0],
 				type: lessonTypes.labWork,
-				teachers: [teachers[0]],
+				teachers: [teachers[15], teachers[16]],
 				room: "Аудитория кафедры",
 			},
 			{
@@ -251,7 +251,7 @@ export const secondSchedule: Schedule = {
 			{
 				subject: subjects[9],
 				type: lessonTypes.practice,
-				teachers: [teachers[0], teachers[13]],
+				teachers: [teachers[13], teachers[14]],
 				room: "7",
 			},
 		],

@@ -131,6 +131,31 @@ export const teachers: Teacher[] = [
 		image: "",
 		subjects: [subjects[9]],
 	},
-
-	// TODO: преподы по речи, физики (практика), истории, английскому
+	{
+		id: 14,
+		firstName: "Светлана",
+		lastName: "Миронова",
+		middleName: "Борисовна",
+		grade: grades.highTeacher,
+		image: "",
+		subjects: [subjects[9]],
+	},
+	{
+		id: 15,
+		firstName: "Светлана",
+		lastName: "Хотунцова",
+		middleName: "Владимировна",
+		grade: grades.assistantProfessor,
+		image: "",
+		subjects: [subjects[0]],
+	},
+	{
+		id: 16,
+		firstName: "Анатолий",
+		lastName: "Холодов",
+		middleName: "Андреевич",
+		grade: grades.assistantProfessor,
+		image: "",
+		subjects: [subjects[0]],
+	},
 ];

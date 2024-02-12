@@ -119,8 +119,9 @@ const timeUntilCurrentLessonEnds = computed(() => {
 					{{ timeUntilNextLesson.minutes }} мин.
 				</p>
 			</div>
-			<div v-else>
-				<p>No lessons</p>
+			<div v-else class="flex gap-2 items-center opacity-70">
+				<UIcon name="i-heroicons-bell-slash" class="w-6 h-6" />
+				<p class="font-bold text-xl">Пары нет</p>
 			</div>
 		</div>
 
