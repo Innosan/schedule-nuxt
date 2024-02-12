@@ -1,8 +1,4 @@
 <script setup lang="ts">
-const { $pwa } = useNuxtApp();
-
-const toast = useToast();
-
 import { firstSchedule, secondSchedule } from "~/utils/data";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
 import WeekNavigation from "~/components/navigation/WeekNavigation.vue";
@@ -29,10 +25,6 @@ onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
 	}, 1000);
-});
-
-onMounted(() => {
-	if ($pwa.offlineReady) toast.add({ title: "Hello world!" });
 });
 
 onUnmounted(() => clearInterval(interval));
