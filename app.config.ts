@@ -1,6 +1,6 @@
 export default defineAppConfig({
 	ui: {
-		primary: "violet",
+		primary: "green",
 		gray: "neutral",
 		notifications: {
 			// Show toasts at the top right of the screen

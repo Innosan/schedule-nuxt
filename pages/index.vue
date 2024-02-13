@@ -1,23 +1,16 @@
 <script setup lang="ts">
-import { firstSchedule, secondSchedule } from "~/utils/data";
+import { oddSchedule } from "~/utils/oddSchedule";
+import { evenSchedule } from "~/utils/evenSchedule";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
 import WeekNavigation from "~/components/navigation/WeekNavigation.vue";
 
-const currentSchedule = isCurrentWeekEven() ? firstSchedule : secondSchedule;
+const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 const currentDay =
 	getNumberOfDay() >= 0 || getNumberOfDay() <= 4
 		? currentSchedule.days[getNumberOfDay()]
 		: null;
 
 const currentTime = ref(new Date());
-
-// Create a function to format the time nicely
-// const formatTime = (date: Date) => {
-// 	return date.toLocaleTimeString("ru-RU", {
-// 		hour: "2-digit",
-// 		minute: "2-digit",
-// 	});
-// };
 
 let interval;
 
@@ -61,8 +54,9 @@ const nextLesson = computed(() => {
 
 	return {
 		name:
-			currentDay[nextLessonIndex.value]?.subject.shortName ||
-			`Lesson ${Number(nextLessonIndex.value) + 1}`,
+			currentDay[nextLessonIndex.value]?.subject.shortName ??
+			(currentDay[nextLessonIndex.value]?.subject.title ||
+				`Lesson ${Number(nextLessonIndex.value) + 1}`),
 		...timeMapper[nextLessonIndex.value],
 	};
 });
@@ -188,7 +182,7 @@ const route = useRoute();
 						class="flex flex-col gap-8"
 					>
 						<DayCard
-							v-for="(day, index) in firstSchedule.days"
+							v-for="(day, index) in evenSchedule.days"
 							:key="index"
 							:day="day"
 							:index="index"
@@ -201,7 +195,7 @@ const route = useRoute();
 						class="flex flex-col gap-8"
 					>
 						<DayCard
-							v-for="(day, index) in secondSchedule.days"
+							v-for="(day, index) in oddSchedule.days"
 							:key="index"
 							:day="day"
 							:index="index"

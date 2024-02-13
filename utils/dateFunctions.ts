@@ -51,7 +51,7 @@ export const dayMapper = {
 	5: {
 		title: "Пятница",
 		id: "friday",
-		shortName: "Пн",
+		shortName: "Пт",
 		icon: "i-fluent-emoji-high-contrast-clinking-beer-mugs",
 	},
 };

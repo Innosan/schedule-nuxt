@@ -16,7 +16,7 @@ const transformedNavigation = navigation.map(({ id, ...rest }) => [rest]);
 			</p>
 		</div>
 		<div class="flex gap-4 items-center">
-			<ColorSwitch />
+			<ThemeSwitch />
 			<BurgerNavigation :links="transformedNavigation" />
 		</div>
 	</header>

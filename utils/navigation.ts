@@ -13,6 +13,12 @@ export const navigation: NavigationLink[] = [
 		label: "Ссылки",
 		icon: "i-heroicons-information-circle",
 	},
+	{
+		id: 3,
+		to: "/subjects",
+		label: "Предметы",
+		icon: "i-heroicons-rectangle-stack",
+	},
 ];
 
 export const socials: NavigationLink[] = [
