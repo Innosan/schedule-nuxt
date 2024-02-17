@@ -26,7 +26,7 @@ export const evenSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[2]],
 				room: "301",
-				additionalGroups: "3 фак",
+				additionalGroups: "3 факультет",
 			},
 			{},
 		],
@@ -44,7 +44,7 @@ export const evenSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[4]],
 				room: "215",
-				additionalGroups: "4306, 1 фак",
+				additionalGroups: "4306, 1 факультет",
 			},
 			{
 				subject: subjects[1],
@@ -120,7 +120,7 @@ export const evenSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[11]],
 				room: "211",
-				additionalGroups: "5 фак",
+				additionalGroups: "5 факультет",
 			},
 			{
 				subject: subjects[8],

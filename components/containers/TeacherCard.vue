@@ -13,31 +13,41 @@ const isOpen = ref(false);
 </script>
 
 <template>
-	<UButton
-		@click="isOpen = true"
-		:label="getShortName(teacher)"
-		trailing-icon="i-heroicons-information-circle-solid"
-	/>
+	<UButton @click="isOpen = true" :label="getShortName(teacher)">
+		<template #leading v-if="teacher.image">
+			<UAvatar :src="teacher.image" size="xs" />
+		</template>
+	</UButton>
 
 	<UModal v-model="isOpen">
 		<UCard>
 			<template #header>
-				<div class="flex flex-col gap-2">
-					<div class="flex items-center justify-between">
-						<h3 class="font-bold">{{ getFullName(teacher) }}</h3>
-
-						<UButton
-							color="gray"
-							variant="ghost"
-							icon="i-heroicons-x-mark-20-solid"
-							class="-my-1"
-							@click="isOpen = false"
+				<div></div>
+				<div class="flex justify-between items-start gap-2">
+					<div class="flex gap-4">
+						<img
+							v-if="teacher.image"
+							:src="teacher.image"
+							alt=""
+							class="h-28 w-28 object-cover rounded-xl"
 						/>
+						<div class="flex flex-col gap-3">
+							<h3 class="font-bold">
+								{{ getFullName(teacher) }}
+							</h3>
+							<LessonInfoField
+								:value="teacher.grade.title"
+								icon="i-heroicons-academic-cap-solid"
+							/>
+						</div>
 					</div>
 
-					<LessonInfoField
-						:value="teacher.grade.title"
-						icon="i-heroicons-academic-cap-solid"
+					<UButton
+						color="gray"
+						variant="ghost"
+						icon="i-heroicons-x-mark-20-solid"
+						class="-my-1"
+						@click="isOpen = false"
 					/>
 				</div>
 			</template>

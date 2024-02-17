@@ -12,7 +12,7 @@ export const oddSchedule: Schedule = {
 				subject: subjects[0],
 				type: lessonTypes.labWork,
 				teachers: [teachers[14], teachers[15]],
-				room: "Аудитория кафедры",
+				room: "Аудитория кафедры (Менделеев)",
 			},
 			{
 				subject: subjects[1],
@@ -26,7 +26,7 @@ export const oddSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[2]],
 				room: "301",
-				additionalGroups: "3 фак",
+				additionalGroups: "3 факультет",
 			},
 			{
 				subject: subjects[3],
@@ -50,7 +50,7 @@ export const oddSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[4]],
 				room: "215",
-				additionalGroups: "4306, 1 фак",
+				additionalGroups: "4306, 1 факультет",
 			},
 			{
 				subject: subjects[1],
@@ -85,7 +85,7 @@ export const oddSchedule: Schedule = {
 			{
 				subject: subjects[6],
 				type: lessonTypes.lecture,
-				teachers: [teachers[9]], // TODO: change this
+				teachers: [teachers[9]],
 				room: "7-408",
 				additionalGroups: "4304, 4305, 4306",
 			},
@@ -127,7 +127,7 @@ export const oddSchedule: Schedule = {
 				type: lessonTypes.lecture,
 				teachers: [teachers[11]],
 				room: "211",
-				additionalGroups: "5 фак",
+				additionalGroups: "5 факультет",
 			},
 			{
 				subject: subjects[8],
