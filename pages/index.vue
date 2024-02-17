@@ -14,79 +14,102 @@ const currentTime = ref(new Date());
 
 let interval;
 
+function getCurrentAndNextLesson(currentTime: Date) {
+	const currentDay = getNumberOfDay();
+	if (currentDay < 0 || currentDay > 4) return {};
+	const lessons = currentSchedule.days[currentDay];
+	let currentLesson = null;
+	let nextLesson = null;
+	let timeUntilCurrentLessonEnds = null;
+	let timeUntilNextLesson = null;
+
+	for (let i = 0; i < Object.keys(timeMapper).length; i++) {
+		// Skip if the lesson is a gap
+		if (Object.keys(lessons[i]).length === 0) continue;
+
+		const lessonStart = new Date(currentTime);
+		lessonStart.setHours(parseInt(timeMapper[i].start.split(":")[0]));
+		lessonStart.setMinutes(parseInt(timeMapper[i].start.split(":")[1]));
+
+		const lessonEnd = new Date(currentTime);
+		lessonEnd.setHours(parseInt(timeMapper[i].end.split(":")[0]));
+		lessonEnd.setMinutes(parseInt(timeMapper[i].end.split(":")[1]));
+
+		if (currentTime >= lessonStart && currentTime <= lessonEnd) {
+			currentLesson = lessons[i];
+			nextLesson = lessons[i + 1] || null;
+			timeUntilCurrentLessonEnds = Math.floor(
+				(lessonEnd.getTime() - currentTime.getTime()) / 60000,
+			); // in minutes
+			if (nextLesson) {
+				const nextLessonStart = new Date(currentTime);
+				nextLessonStart.setHours(
+					parseInt(timeMapper[i + 1].start.split(":")[0]),
+				);
+				nextLessonStart.setMinutes(
+					parseInt(timeMapper[i + 1].start.split(":")[1]),
+				);
+				timeUntilNextLesson = Math.floor(
+					(nextLessonStart.getTime() - currentTime.getTime()) / 60000,
+				); // in minutes
+			}
+			break;
+		} else if (currentTime < lessonStart) {
+			nextLesson = lessons[i];
+			timeUntilNextLesson = Math.floor(
+				(lessonStart.getTime() - currentTime.getTime()) / 60000,
+			); // in minutes
+			break;
+		} else if (
+			i === Object.keys(timeMapper).length - 1 &&
+			currentTime > lessonEnd
+		) {
+			currentLesson = lessons[i];
+			nextLesson = null;
+			timeUntilCurrentLessonEnds = Math.floor(
+				(lessonEnd.getTime() - currentTime.getTime()) / 60000,
+			); // in minutes
+			break;
+		}
+	}
+
+	const dayEnd = currentTime.getHours() > 18 && currentTime.getMinutes() > 30;
+
+	return {
+		dayEnd,
+		currentLesson,
+		nextLesson,
+		timeUntilCurrentLessonEnds,
+		timeUntilNextLesson,
+	};
+}
+
 onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
+		currentTime.value.setHours(13);
+		currentTime.value.setMinutes(10);
 	}, 1000);
 });
 
 onUnmounted(() => clearInterval(interval));
 
-const currentLessonIndex = computed(() => {
-	if (!currentDay) return null;
-
-	for (let i = 0; i < currentDay.length; i++) {
-		const lessonStart = new Date().setHours(
-			...timeMapper[i].start.split(":").map(Number),
-		);
-		const lessonEnd = new Date().setHours(
-			...timeMapper[i].end.split(":").map(Number),
-		);
-
-		if (currentTime.value >= lessonStart && currentTime.value < lessonEnd) {
-			return i;
-		}
-	}
-
-	return null;
-});
-
-const nextLessonIndex = computed(() => {
-	if (!currentDay || !currentLessonIndex.value) return null;
-
-	return currentLessonIndex.value + 1 < currentDay.length
-		? currentLessonIndex.value + 1
-		: null;
-});
-
-const nextLesson = computed(() => {
-	if (!nextLessonIndex.value) return null;
+const timedLessons = computed(() => {
+	const {
+		dayEnd,
+		currentLesson,
+		nextLesson,
+		timeUntilCurrentLessonEnds,
+		timeUntilNextLesson,
+	} = getCurrentAndNextLesson(currentTime.value);
 
 	return {
-		name:
-			currentDay[nextLessonIndex.value]?.subject.shortName ??
-			(currentDay[nextLessonIndex.value]?.subject.title ||
-				`Lesson ${Number(nextLessonIndex.value) + 1}`),
-		...timeMapper[nextLessonIndex.value],
+		dayEnd,
+		currentLesson,
+		nextLesson,
+		timeUntilCurrentLessonEnds,
+		timeUntilNextLesson,
 	};
-});
-
-const timeUntilNextLesson = computed(() => {
-	if (!nextLesson.value) return null;
-
-	const lessonStart = new Date().setHours(
-		...nextLesson.value.start.split(":").map(Number),
-	);
-
-	const diff = lessonStart - currentTime.value.getTime();
-	const hours = Math.floor(diff / (1000 * 60 * 60));
-	const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-	return { hours, minutes };
-});
-
-const timeUntilCurrentLessonEnds = computed(() => {
-	if (currentLessonIndex.value === null) return null;
-
-	const lessonEnd = new Date().setHours(
-		...timeMapper[currentLessonIndex.value].end.split(":").map(Number),
-	);
-
-	const diff = lessonEnd - currentTime.value.getTime();
-	const hours = Math.floor(diff / (1000 * 60 * 60));
-	const minutes = Math.floor((diff / (1000 * 60)) % 60);
-
-	return { hours, minutes };
 });
 
 const route = useRoute();
@@ -95,28 +118,30 @@ const route = useRoute();
 <template>
 	<ClientOnly>
 		<UDivider />
-		<div class="flex gap-8 items-center">
-			<div v-if="timeUntilCurrentLessonEnds" class="flex gap-1 flex-col">
+		<div
+			v-if="!timedLessons.dayEnd || currentDay"
+			class="flex gap-8 items-center"
+		>
+			<div v-if="timedLessons.currentLesson" class="flex gap-1 flex-col">
 				<p class="font-bold text-sm opacity-70">Конец пары</p>
 				<p class="font-black text-xl">
-					{{ timeUntilCurrentLessonEnds.hours }} ч.
-					{{ timeUntilCurrentLessonEnds.minutes }} мин.
+					{{
+						Math.floor(timedLessons.timeUntilCurrentLessonEnds / 60)
+					}}
+					ч. {{ timedLessons.timeUntilCurrentLessonEnds % 60 }} мин.
 				</p>
-				<UProgress
-					:value="
-						60 * timeUntilCurrentLessonEnds.hours +
-						timeUntilCurrentLessonEnds.minutes
-					"
-					:max="90"
-				/>
 			</div>
-			<div v-if="timeUntilNextLesson" class="flex gap-1 flex-col">
+			<div v-if="timedLessons.nextLesson" class="flex gap-1 flex-col">
 				<p class="font-bold text-sm opacity-70">
-					{{ nextLesson.name }} через
+					{{
+						timedLessons.nextLesson.subject.shortName ??
+						timedLessons.nextLesson.subject.title
+					}}
+					через
 				</p>
 				<p class="font-black text-xl">
-					{{ timeUntilNextLesson.hours }} ч.
-					{{ timeUntilNextLesson.minutes }} мин.
+					{{ Math.floor(timedLessons.timeUntilNextLesson / 60) }}
+					ч. {{ timedLessons.timeUntilNextLesson % 60 }} мин.
 				</p>
 			</div>
 			<div v-else class="flex gap-2 items-center opacity-70">
@@ -127,6 +152,14 @@ const route = useRoute();
 				/>
 				<p class="font-bold text-md">Пары нет</p>
 			</div>
+		</div>
+		<div v-else class="flex gap-2 items-center opacity-70">
+			<UIcon
+				name="i-material-symbols-alarm-off-outline-rounded"
+				class="w-5 h-5"
+				dynamic
+			/>
+			<p class="font-bold text-md">Пары нет</p>
 		</div>
 
 		<UDivider />
