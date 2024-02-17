@@ -37,7 +37,7 @@ export const teachers: Teacher[] = [
 		middleName: "Константинович",
 		email: "LabsandEverything@gmail.com",
 		grade: grades.highTeacher,
-		image: "",
+		image: "https://technolog.edu.ru/public/upload/person/1/354_thumb.jpg",
 		subjects: [subjects[5]],
 	},
 	{
@@ -62,10 +62,10 @@ export const teachers: Teacher[] = [
 	{
 		id: 6,
 		firstName: "Андрей",
-		lastName: "Ga34ka",
+		lastName: "Gayков",
 		middleName: "Владимирович",
 		grade: grades.assistantProfessor,
-		image: "",
+		image: "https://vuzopedia.ru/storage/app/uploads/public/64d/4b0/60c/64d4b060c563a301751412.jpg",
 		subjects: [subjects[8]],
 	},
 	{
@@ -80,7 +80,7 @@ export const teachers: Teacher[] = [
 	{
 		id: 8,
 		firstName: "Кафедры",
-		lastName: "Преподы",
+		lastName: "Преподаватели",
 		middleName: "Физкультуры",
 		grade: grades.highTeacher,
 		image: "",
@@ -143,7 +143,7 @@ export const teachers: Teacher[] = [
 	{
 		id: 15,
 		firstName: "Анатолий",
-		lastName: "Холодов",
+		lastName: "Волков",
 		middleName: "Андреевич",
 		grade: grades.assistantProfessor,
 		image: "",

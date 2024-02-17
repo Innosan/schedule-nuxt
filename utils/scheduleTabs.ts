@@ -1,14 +1,14 @@
 export const scheduleTabs = [
 	{
 		key: "day",
-		label: "На сегодня",
+		label: "Сегодня",
 	},
 	{
 		key: "even-week",
-		label: "На чётную",
+		label: "Чётная",
 	},
 	{
 		key: "odd-week",
-		label: "На нечётную",
+		label: "Нечётная",
 	},
 ];
