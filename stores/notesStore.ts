@@ -1,4 +1,5 @@
 import type { Note } from "~/types/Note";
+import { storage } from "nitropack/runtime/virtual/storage";
 
 export const useNotesStore = defineStore(
 	"notes-store",
@@ -23,5 +24,12 @@ export const useNotesStore = defineStore(
 			updateNote,
 		};
 	},
-	{ persist: true },
+	{
+		persist: {
+			storage: persistedState.cookiesWithOptions({
+				sameSite: "strict",
+				maxAge: 31536000,
+			}),
+		},
+	},
 );
