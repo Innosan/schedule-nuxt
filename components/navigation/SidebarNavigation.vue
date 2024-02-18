@@ -6,7 +6,7 @@ const notesStore = useNotesStore();
 
 const isOpen = ref(false);
 
-const currentDay = dayMapper[getNumberOfDay()];
+const currentDay = dayMapper[getNumberOfDay() + 1];
 
 const navigation = computed(() => {
 	return [
