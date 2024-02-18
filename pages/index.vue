@@ -3,6 +3,7 @@ import { oddSchedule } from "~/utils/oddSchedule";
 import { evenSchedule } from "~/utils/evenSchedule";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
 import WeekNavigation from "~/components/navigation/WeekNavigation.vue";
+import type { Lesson } from "~/types/Lesson";
 
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 const currentDay =
@@ -130,6 +131,11 @@ const route = useRoute();
 					}}
 					ч. {{ timedLessons.timeUntilCurrentLessonEnds % 60 }} мин.
 				</p>
+				<UMeter
+					:value="timedLessons.timeUntilCurrentLessonEnds * -1"
+					:max="0"
+					indicator
+				/>
 			</div>
 			<div v-if="timedLessons.nextLesson" class="flex gap-1 flex-col">
 				<p class="font-bold text-sm opacity-70">

@@ -3,4 +3,5 @@ export type NavigationLink = {
 	to: string;
 	label: string;
 	icon: string;
+	badge?: number;
 };
