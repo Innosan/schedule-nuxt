@@ -36,7 +36,7 @@ export const unofficialLinks: NavigationLink[] = [
 	},
 	{
 		id: 2,
-		to: "https://dist.technolog.edu.ru/my/",
+		to: "https://vk.com/kreimer_games",
 		label: "Kreimer Games",
 		icon: "i-basil-vk-solid",
 	},

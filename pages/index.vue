@@ -88,9 +88,7 @@ function getCurrentAndNextLesson(currentTime: Date) {
 onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
-		currentTime.value.setHours(13);
-		currentTime.value.setMinutes(10);
-	}, 1000);
+	}, 60000);
 });
 
 onUnmounted(() => clearInterval(interval));
