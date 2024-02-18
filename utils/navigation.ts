@@ -1,37 +1,49 @@
 import type { NavigationLink } from "~/types/general";
 
-export const navigation: NavigationLink[] = [
+export const officialLinks: NavigationLink[] = [
 	{
 		id: 1,
-		to: "/",
+		to: "https://technolog.edu.ru/",
+		label: "ВУЗ",
+		icon: "i-heroicons-academic-cap",
+	},
+	{
+		id: 2,
+		to: "https://dist.technolog.edu.ru/my/",
+		label: "Moodle",
+		icon: "i-academicons-moodle",
+	},
+	{
+		id: 3,
+		to: "https://technolog.edu.ru/studentam/raspisanie_zanyatij_i_ekzamenov/",
 		label: "Расписание",
 		icon: "i-heroicons-calendar-days-solid",
 	},
 	{
-		id: 2,
-		to: "/about",
-		label: "Ссылки",
-		icon: "i-heroicons-information-circle",
-	},
-	{
-		id: 3,
-		to: "/subjects",
-		label: "Предметы",
-		icon: "i-heroicons-rectangle-stack",
+		id: 4,
+		to: "https://media.technolog.edu.ru/index.php?lang=ru",
+		label: "Личный кабинет",
+		icon: "i-heroicons-user-circle",
 	},
 ];
 
-export const socials: NavigationLink[] = [
+export const unofficialLinks: NavigationLink[] = [
 	{
 		id: 1,
-		to: "https://github.com",
-		label: "GitHub",
-		icon: "i-octicon-mark-github-16",
+		to: "https://drive.google.com/drive/u/0/folders/1tRwGq_TtKtJpvWDM1v5a7gU5kIZ81w3f",
+		label: "Общая папка",
+		icon: "i-entypo-social-google-drive",
 	},
 	{
 		id: 2,
-		to: "https://telegram.com",
-		label: "Telegram",
-		icon: "i-streamline-telegram-solid",
+		to: "https://dist.technolog.edu.ru/my/",
+		label: "Kreimer Games",
+		icon: "i-basil-vk-solid",
+	},
+	{
+		id: 3,
+		to: "https://github.com/Innosan/schedule-nuxt",
+		label: "GitHub",
+		icon: "i-ri-github-fill",
 	},
 ];

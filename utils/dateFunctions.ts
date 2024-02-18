@@ -25,34 +25,53 @@ export const isCurrentWeekEven = () => {
 
 export const dayMapper = {
 	1: {
+		number: 1,
 		title: "Понедельник",
 		id: "monday",
 		shortName: "Пн",
 		icon: "i-fluent-emoji-high-contrast-teacup-without-handle",
 	},
 	2: {
+		number: 2,
 		title: "Вторник",
 		id: "tuesday",
 		shortName: "Вт",
 		icon: "i-fluent-emoji-high-contrast-skull-and-crossbones",
 	},
 	3: {
+		number: 3,
 		title: "Среда",
 		id: "wednesday",
 		shortName: "Ср",
 		icon: "i-fluent-emoji-high-contrast-frog",
 	},
 	4: {
+		number: 4,
 		title: "Четверг",
 		id: "thursday",
 		shortName: "Чт",
 		icon: "i-fluent-emoji-high-contrast-beer-mug",
 	},
 	5: {
+		number: 5,
 		title: "Пятница",
 		id: "friday",
 		shortName: "Пт",
 		icon: "i-fluent-emoji-high-contrast-clinking-beer-mugs",
+	},
+	6: {
+		number: 6,
+		title: "Суббота",
+		id: "saturday",
+		shortName: "Сб",
+		icon: "i-fluent-emoji-high-contrast-party-popper",
+	},
+	7: {
+		number: 7,
+		title: "Воскресенье",
+		id: "sunday",
+		shortName: "Вс",
+		icon: "i-fluent-emoji-high-contrast-party-popper",
 	},
 };
 
