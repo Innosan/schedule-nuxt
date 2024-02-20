@@ -12,7 +12,6 @@ const currentDay =
 		: null;
 
 const currentTime = ref(new Date());
-
 let interval;
 
 function getCurrentAndNextLesson(currentTime: Date) {
@@ -74,7 +73,10 @@ function getCurrentAndNextLesson(currentTime: Date) {
 		}
 	}
 
-	const dayEnd = currentTime.getHours() > 18 && currentTime.getMinutes() > 30;
+	const dayEnd =
+		currentTime.getHours().toString() +
+			currentTime.getMinutes().toString() >=
+		"1730";
 
 	return {
 		dayEnd,
@@ -88,7 +90,7 @@ function getCurrentAndNextLesson(currentTime: Date) {
 onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
-	}, 60000);
+	}, 1000);
 });
 
 onUnmounted(() => clearInterval(interval));
@@ -118,7 +120,7 @@ const route = useRoute();
 	<ClientOnly>
 		<UDivider />
 		<div
-			v-if="!timedLessons.dayEnd || currentDay"
+			v-if="!timedLessons.dayEnd && currentDay"
 			class="flex gap-8 items-center"
 		>
 			<div v-if="timedLessons.currentLesson" class="flex gap-1 flex-col">
@@ -130,12 +132,17 @@ const route = useRoute();
 					ч. {{ timedLessons.timeUntilCurrentLessonEnds % 60 }} мин.
 				</p>
 				<UMeter
-					:value="timedLessons.timeUntilCurrentLessonEnds * -1"
-					:max="0"
-					indicator
+					:value="timedLessons.timeUntilCurrentLessonEnds"
+					:max="90"
 				/>
 			</div>
-			<div v-if="timedLessons.nextLesson" class="flex gap-1 flex-col">
+			<div
+				v-if="
+					timedLessons.nextLesson !== null &&
+					Object.keys(timedLessons.nextLesson).length !== 0
+				"
+				class="flex gap-1 flex-col"
+			>
 				<p class="font-bold text-sm opacity-70">
 					{{
 						timedLessons.nextLesson.subject.shortName ??
