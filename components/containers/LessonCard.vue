@@ -71,9 +71,9 @@ const props = defineProps({
 				v-if="lesson.subject.distantLink !== undefined"
 				class="underline"
 				target="_blank"
-				:to="lesson.subject.distantLink"
+				:to="lesson.subject.distantLink.link"
 			>
-				Курс
+				{{ lesson.subject.distantLink.type }}
 			</ULink>
 		</div>
 	</UCard>

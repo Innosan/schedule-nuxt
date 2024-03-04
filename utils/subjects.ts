@@ -1,4 +1,4 @@
-import type { Subject } from "~/types/Subject";
+import type { DistantLink, Subject } from "~/types/Subject";
 
 export const subjects: Subject[] = [
 	{
@@ -19,7 +19,10 @@ export const subjects: Subject[] = [
 		id: 3,
 		title: "Безопасность жизнедеятельности",
 		shortName: "БЖД",
-		distantLink: "https://dist.technolog.edu.ru/course/view.php?id=224",
+		distantLink: <DistantLink>{
+			type: "Курс",
+			link: "https://dist.technolog.edu.ru/course/view.php?id=224",
+		},
 	},
 	{
 		id: 4,
@@ -39,11 +42,19 @@ export const subjects: Subject[] = [
 	{
 		id: 7,
 		title: "История России",
+		distantLink: <DistantLink>{
+			type: "Оценки",
+			link: "https://cloud.mail.ru/public/4ws7/6DwwzDDTk",
+		},
 	},
 	{
 		id: 8,
 		title: "Программирование на языке Python",
 		shortName: "Python",
+		distantLink: <DistantLink>{
+			type: "База?",
+			link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+		},
 	},
 	{
 		id: 9,
