@@ -4,7 +4,7 @@ export const getNumberOfDay = () => {
 	let currentDay = date.getDay();
 	if (currentDay === 0) {
 		// if it's Sunday
-		currentDay = 7; // make it 7
+		currentDay = 6; // make it 7
 	} else {
 		currentDay = currentDay - 1; // shift other days by 1
 	}
@@ -21,6 +21,14 @@ const getNumberOfWeek = () => {
 
 export const isCurrentWeekEven = () => {
 	return getNumberOfWeek() % 2 === 0;
+};
+
+export const setTime = (hours: number, minutes: number) => {
+	const newTime = new Date();
+	newTime.setHours(hours);
+	newTime.setMinutes(minutes);
+
+	return newTime;
 };
 
 export const dayMapper = {
@@ -50,7 +58,7 @@ export const dayMapper = {
 		title: "Четверг",
 		id: "thursday",
 		shortName: "Чт",
-		icon: "i-fluent-emoji-high-contrast-beer-mug",
+		icon: "i-fa6-solid-bong",
 	},
 	5: {
 		number: 5,

@@ -1,25 +1,16 @@
 <script setup lang="ts">
+import { useThemeStore } from "~/stores/themeStore";
+
+const themeStore = useThemeStore();
 const changeTheme = (color: string) => {
-	useAppConfig().ui.primary = color;
+	themeStore.setColor(color);
+};
+
+const changeGrayTheme = (color: string) => {
+	themeStore.setGray(color);
 };
 
 const colors = [
-	[
-		{
-			label: "blue",
-			click: () => {
-				changeTheme("blue");
-			},
-		},
-	],
-	[
-		{
-			label: "red",
-			click: () => {
-				changeTheme("red");
-			},
-		},
-	],
 	[
 		{
 			label: "green",
@@ -27,12 +18,48 @@ const colors = [
 				changeTheme("green");
 			},
 		},
-	],
-	[
 		{
 			label: "violet",
 			click: () => {
 				changeTheme("violet");
+			},
+		},
+		{
+			label: "pink",
+			click: () => {
+				changeTheme("pink");
+			},
+		},
+		{
+			label: "woodrush",
+			click: () => {
+				changeTheme("woodrush");
+			},
+		},
+		{
+			label: "russett",
+			click: () => {
+				changeTheme("russett");
+			},
+		},
+	],
+	[
+		{
+			label: "old-lavender",
+			click: () => {
+				changeGrayTheme("old-lavender");
+			},
+		},
+		{
+			label: "neutral",
+			click: () => {
+				changeGrayTheme("neutral");
+			},
+		},
+		{
+			label: "stone",
+			click: () => {
+				changeGrayTheme("stone");
 			},
 		},
 	],
