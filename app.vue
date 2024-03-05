@@ -9,7 +9,7 @@ useAppConfig().ui.gray = useThemeStore().gray;
 </script>
 
 <template>
-	<div class="bg-gray-900">
+	<div class="dark:bg-gray-900">
 		<Header />
 		<div class="page-container" v-auto-animate>
 			<NuxtPage :key="route" />

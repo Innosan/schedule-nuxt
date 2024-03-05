@@ -1,7 +1,7 @@
 ul {
   display: flex;
   list-style: none;
-  gap: 2em;
+  gap: 1em;
 }
 
 a {
@@ -15,7 +15,6 @@ a:hover {
 
 .router-link-exact-active {
   opacity: 1 !important;
-  text-decoration: underline;
 }
 
 /*# sourceMappingURL=navigation.css.map */
