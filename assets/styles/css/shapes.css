@@ -3,11 +3,6 @@
 	height: 20px;
 	display: block;
 	border-radius: 50%;
-	opacity: .8;
 	cursor: pointer;
 	transition: .3s;
-}
-
-.circle:hover {
-	opacity: 1;
 }

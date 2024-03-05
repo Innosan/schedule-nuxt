@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useThemeStore } from "~/stores/themeStore";
+import ColorCard from "~/components/theming/ColorCard.vue";
 
 const themeStore = useThemeStore();
 const changeTheme = (color: string) => {
@@ -25,15 +26,15 @@ const colors = [
 			},
 		},
 		{
-			label: "pink",
+			label: "rose",
 			click: () => {
-				changeTheme("pink");
+				changeTheme("rose");
 			},
 		},
 		{
-			label: "woodrush",
+			label: "old-lavender",
 			click: () => {
-				changeTheme("woodrush");
+				changeTheme("old-lavender");
 			},
 		},
 		{
@@ -44,12 +45,6 @@ const colors = [
 		},
 	],
 	[
-		{
-			label: "old-lavender",
-			click: () => {
-				changeGrayTheme("old-lavender");
-			},
-		},
 		{
 			label: "neutral",
 			click: () => {
@@ -62,26 +57,39 @@ const colors = [
 				changeGrayTheme("stone");
 			},
 		},
+		{
+			label: "zinc",
+			click: () => {
+				changeGrayTheme("zinc");
+			},
+		},
 	],
 ];
 </script>
 
 <template>
 	<ClientOnly>
-		<UDropdown :items="colors">
-			<UButton icon="i-heroicons-paint-brush-solid" />
-
-			<template #item="{ item }">
-				<span
-					class="circle"
-					:class="'bg-' + item.label + '-500'"
-				></span>
-				<p>
-					{{
-						item.label.charAt(0).toUpperCase() + item.label.slice(1)
-					}}
-				</p>
-			</template>
-		</UDropdown>
+		<div class="flex flex-col gap-3">
+			<div class="flex flex-col gap-3">
+				<p class="font-bold opacity-80">Основной</p>
+				<div class="flex gap-2 flex-wrap">
+					<ColorCard
+						v-for="primary in colors[0]"
+						:color="primary"
+						:current-color="themeStore.color"
+					/>
+				</div>
+			</div>
+			<div class="flex-col gap-3 hidden dark:flex">
+				<p class="font-bold opacity-80">Дополнительный</p>
+				<div class="flex gap-2 flex-wrap">
+					<ColorCard
+						v-for="gray in colors[1]"
+						:color="gray"
+						:current-color="themeStore.gray"
+					/>
+				</div>
+			</div>
+		</div>
 	</ClientOnly>
 </template>
