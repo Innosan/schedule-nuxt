@@ -51,29 +51,31 @@ const blockToShow = ref("day");
 		</UButtonGroup>
 		<div v-auto-animate>
 			<div v-if="blockToShow === 'day'" key="day">
-				<DayCard
-					v-if="currentDay"
-					:day="currentDay"
-					:key="currentNumberOfDay"
-					:index="currentNumberOfDay"
-					:show-day="false"
-				/>
-				<UCard
-					v-else
-					:ui="{
-						body: { padding: 'px-3 py-3 sm:p-3' },
-						header: { padding: 'px-3 py-3 sm:p-3' },
-						footer: { padding: 'px-3 py-3 sm:p-3' },
-					}"
-				>
-					<div class="flex gap-2 items-center">
-						<UIcon
-							name="i-heroicons-bell-snooze-solid"
-							class="w-7 h-7"
-						/>
-						<p class="font-black">Пар нет</p>
-					</div>
-				</UCard>
+				<ClientOnly>
+					<DayCard
+						v-if="currentDay"
+						:day="currentDay"
+						:key="currentNumberOfDay"
+						:index="currentNumberOfDay"
+						:show-day="false"
+					/>
+					<UCard
+						v-else
+						:ui="{
+							body: { padding: 'px-3 py-3 sm:p-3' },
+							header: { padding: 'px-3 py-3 sm:p-3' },
+							footer: { padding: 'px-3 py-3 sm:p-3' },
+						}"
+					>
+						<div class="flex gap-2 items-center">
+							<UIcon
+								name="i-heroicons-bell-snooze-solid"
+								class="w-7 h-7"
+							/>
+							<p class="font-black">Пар нет</p>
+						</div>
+					</UCard>
+				</ClientOnly>
 			</div>
 			<div
 				v-else-if="blockToShow === 'even-week'"
