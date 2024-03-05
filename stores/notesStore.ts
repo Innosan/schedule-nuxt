@@ -1,5 +1,4 @@
 import type { Note } from "~/types/Note";
-import { storage } from "nitropack/runtime/virtual/storage";
 
 export const useNotesStore = defineStore(
 	"notes-store",

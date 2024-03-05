@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Note } from "~/types/Note";
-import UpdateNote from "~/components/forms/UpdateNote.vue";
+import type { PropType } from "vue";
 
 const props = defineProps({
 	note: {
@@ -9,7 +9,6 @@ const props = defineProps({
 	},
 });
 
-const notesStore = useNotesStore();
 const isUpdateOpen = ref(false);
 const isDeleteOpen = ref(false);
 </script>
