@@ -5,9 +5,11 @@ import { evenSchedule } from "~/utils/evenSchedule";
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
 
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
+
+const currentNumberOfDay = getNumberOfDay();
 const currentDay =
-	getNumberOfDay() >= 0 || getNumberOfDay() <= 4
-		? currentSchedule.days[getNumberOfDay()]
+	currentNumberOfDay >= 0 || currentNumberOfDay <= 4
+		? currentSchedule.days[currentNumberOfDay]
 		: null;
 
 const blockToShow = ref("day");
@@ -52,8 +54,8 @@ const blockToShow = ref("day");
 				<DayCard
 					v-if="currentDay"
 					:day="currentDay"
-					:key="getNumberOfDay()"
-					:index="getNumberOfDay()"
+					:key="currentNumberOfDay"
+					:index="currentNumberOfDay"
 					:show-day="false"
 				/>
 				<UCard
