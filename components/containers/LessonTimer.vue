@@ -4,7 +4,7 @@ import type { PropType } from "vue";
 import type { Schedule } from "~/types/Schedule";
 
 import { timeMapper } from "~/utils/dateFunctions";
-import type { Day } from "~/types/Day";
+import { type Day, getNumberOfLessons } from "~/types/Day";
 
 const props = defineProps({
 	currentSchedule: {
@@ -168,13 +168,13 @@ const timedLessons = computed(() => {
 			<p class="font-bold text-md">Пары нет</p>
 		</div>
 	</div>
-	<div v-else class="flex gap-2 items-center opacity-70">
+	<div v-else class="flex gap-2 items-center opacity-60">
 		<UIcon
 			name="i-material-symbols-alarm-off-outline-rounded"
 			class="w-5 h-5"
 			dynamic
 		/>
-		<p class="font-bold text-md">Пары нет</p>
+		<p class="font-bold text-md">Увы, пары закончились</p>
 	</div>
 </template>
 

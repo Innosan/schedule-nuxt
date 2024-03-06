@@ -23,7 +23,7 @@ const settingsStore = useSettingsStore();
 					icon="i-heroicons-table-cells-solid"
 				>
 					<template #item>
-						<UButtonGroup>
+						<UButtonGroup size="xs">
 							<UButton
 								v-for="(value, key) in scheduleDisplayMapper"
 								:key="key"

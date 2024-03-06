@@ -3,7 +3,7 @@ import type { PropType } from "vue";
 import type { Schedule } from "~/types/Schedule";
 
 import { dayMapper } from "~/utils/dateFunctions";
-import { getNumberOfLessons } from "../../types/Day";
+import { getNumberOfLessons } from "../../../types/Day";
 
 const props = defineProps({
 	schedule: {

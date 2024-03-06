@@ -3,7 +3,7 @@ import { oddSchedule } from "~/utils/oddSchedule";
 import { evenSchedule } from "~/utils/evenSchedule";
 
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
-import ScheduleList from "~/components/containers/ScheduleList.vue";
+import ScheduleList from "~/components/containers/schedule/ScheduleList.vue";
 
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 
