@@ -3,6 +3,7 @@ import { oddSchedule } from "~/utils/oddSchedule";
 import { evenSchedule } from "~/utils/evenSchedule";
 
 import { getNumberOfDay, isCurrentWeekEven } from "~/utils/dateFunctions";
+import ScheduleList from "~/components/containers/schedule/ScheduleList.vue";
 
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 
@@ -13,6 +14,9 @@ const currentDay =
 		: null;
 
 const blockToShow = ref("day");
+const settingsStore = useSettingsStore();
+
+const route = useRoute();
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const blockToShow = ref("day");
 
 		<UDivider />
 
-		<UButtonGroup size="xs">
+		<UButtonGroup size="xs" @click="route.hash ? navigateTo('/') : null">
 			<UButton
 				leading-icon="i-heroicons-sun-solid"
 				:color="blockToShow === 'day' ? 'primary' : 'gray'"
@@ -82,14 +86,36 @@ const blockToShow = ref("day");
 				key="even-week"
 				class="flex flex-col gap-8"
 			>
-				<ScheduleAccordeon :schedule="evenSchedule" />
+				<ScheduleAccordeon
+					v-if="settingsStore.scheduleDisplay === 'accordion'"
+					:schedule="evenSchedule"
+				/>
+				<ScheduleList
+					v-else-if="settingsStore.scheduleDisplay === 'list'"
+					:schedule="evenSchedule"
+				/>
+				<ScheduleTable
+					v-else-if="settingsStore.scheduleDisplay === 'table'"
+					:schedule="evenSchedule"
+				/>
 			</div>
 			<div
 				v-else-if="blockToShow === 'odd-week'"
 				key="odd-week"
 				class="flex flex-col gap-8"
 			>
-				<ScheduleAccordeon :schedule="oddSchedule" />
+				<ScheduleAccordeon
+					v-if="settingsStore.scheduleDisplay === 'accordion'"
+					:schedule="oddSchedule"
+				/>
+				<ScheduleList
+					v-else-if="settingsStore.scheduleDisplay === 'list'"
+					:schedule="oddSchedule"
+				/>
+				<ScheduleTable
+					v-else-if="settingsStore.scheduleDisplay === 'table'"
+					:schedule="oddSchedule"
+				/>
 			</div>
 		</div>
 	</div>

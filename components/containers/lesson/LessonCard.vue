@@ -3,7 +3,7 @@ import type { PropType } from "vue";
 import type { Lesson } from "~/types/Lesson";
 import { getFullName, getShortName } from "~/types/Teacher";
 import { timeMapper } from "~/utils/dateFunctions";
-import LessonInfoField from "~/components/containers/LessonInfoField.vue";
+import LessonInfoField from "~/components/containers/lesson/LessonInfoField.vue";
 
 const props = defineProps({
 	lesson: {
