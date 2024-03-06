@@ -3,6 +3,7 @@ import type { PropType } from "vue";
 import type { Schedule } from "~/types/Schedule";
 
 import { dayMapper } from "~/utils/dateFunctions";
+import { getNumberOfLessons } from "../../types/Day";
 
 const props = defineProps({
 	schedule: {
@@ -68,7 +69,10 @@ const scheduleAccordion = [
 					</div>
 				</template>
 
-				<span class="truncate font-black mx-2">{{ item.label }}</span>
+				<span class="truncate font-black mx-2"
+					>{{ item.label }} •
+					{{ getNumberOfLessons(schedule.days[item.id - 1]) }} пары
+				</span>
 
 				<template #trailing>
 					<UIcon
