@@ -57,7 +57,8 @@ export default defineNuxtConfig({
 		manifest: {
 			name: "Techno Schedule",
 			short_name: "Schedule",
-			theme_color: "#ffffff",
+			theme_color: "#27272a",
+			background_color: "#27272a",
 			icons: [
 				{
 					src: "pwa-192x192.png",
