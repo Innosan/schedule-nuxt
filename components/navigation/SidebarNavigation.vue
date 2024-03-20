@@ -41,6 +41,8 @@ const navigation = computed(() => {
 		],
 	];
 });
+
+const { $pwa } = useNuxtApp();
 </script>
 
 <template>
@@ -110,6 +112,14 @@ const navigation = computed(() => {
 						icon="i-heroicons-sparkles-solid"
 						class="opacity-70"
 					/>
+				</div>
+
+				<div v-show="$pwa.needRefresh">
+					<span>
+						New content available, click on reload button to update.
+					</span>
+
+					<button @click="$pwa.updateServiceWorker()">Reload</button>
 				</div>
 			</UCard>
 		</USlideover>

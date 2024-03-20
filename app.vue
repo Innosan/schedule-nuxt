@@ -6,6 +6,14 @@ import { useThemeStore } from "~/stores/themeStore";
 // Set the color as soon as the application starts
 useAppConfig().ui.primary = useThemeStore().color;
 useAppConfig().ui.gray = useThemeStore().gray;
+
+const toast = useToast();
+const { $pwa } = useNuxtApp();
+
+onMounted(() => {
+	if ($pwa.offlineReady)
+		toast.add({ title: "Приложение готово к установке!" });
+});
 </script>
 
 <template>
@@ -15,4 +23,6 @@ useAppConfig().ui.gray = useThemeStore().gray;
 			<NuxtPage :key="route" />
 		</div>
 	</div>
+	<UNotifications />
+	<NuxtPwaManifest />
 </template>
