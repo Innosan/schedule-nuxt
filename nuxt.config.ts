@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+const sw = process.env.SW === "true";
+
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 
@@ -7,6 +10,7 @@ export default defineNuxtConfig({
 		"@formkit/auto-animate/nuxt",
 		"@pinia/nuxt",
 		"@pinia-plugin-persistedstate/nuxt",
+		"@vite-pwa/nuxt",
 	],
 
 	components: [
@@ -23,32 +27,53 @@ export default defineNuxtConfig({
 	app: {
 		head: {
 			title: "Schedule",
-			link: [
+		},
+	},
+
+	pwa: {
+		/* your pwa options */
+		registerWebManifestInRouteRules: true,
+		appManifest: true,
+
+		strategies: sw ? "injectManifest" : "generateSW",
+		srcDir: sw ? "service-worker" : undefined,
+		filename: sw ? "sw.ts" : undefined,
+		registerType: "autoUpdate",
+
+		workbox: {
+			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+		},
+		injectManifest: {
+			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+		},
+
+		workbox: {
+			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+		},
+		injectManifest: {
+			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+		},
+
+		manifest: {
+			name: "Techno Schedule",
+			short_name: "Schedule",
+			theme_color: "#ffffff",
+			icons: [
 				{
-					rel: "apple-touch-icon",
-					sizes: "180x180",
-					href: "/apple-touch-icon.png",
-				},
-				{
-					rel: "icon",
+					src: "pwa-192x192.png",
+					sizes: "192x192",
 					type: "image/png",
-					href: "/favicon.ico",
 				},
 				{
-					rel: "icon",
+					src: "pwa-512x512.png",
+					sizes: "512x512",
 					type: "image/png",
-					sizes: "32x32",
-					href: "/favicon-32x32.png",
 				},
 				{
-					rel: "icon",
+					src: "pwa-512x512.png",
+					sizes: "512x512",
 					type: "image/png",
-					sizes: "16x16",
-					href: "/favicon-16x16.png",
-				},
-				{
-					rel: "manifest",
-					href: "/site.webmanifest",
+					purpose: "any maskable",
 				},
 			],
 		},
