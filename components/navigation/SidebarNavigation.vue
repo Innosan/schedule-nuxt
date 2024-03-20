@@ -121,6 +121,9 @@ const { $pwa } = useNuxtApp();
 
 					<button @click="$pwa.updateServiceWorker()">Reload</button>
 				</div>
+				<div v-show="!$pwa.isPWAInstalled">
+					<p>Установите приложение</p>
+				</div>
 			</UCard>
 		</USlideover>
 	</div>
