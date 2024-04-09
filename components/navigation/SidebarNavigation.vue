@@ -30,6 +30,12 @@ const navigation = computed(() => {
 				icon: "i-heroicons-pencil-square-solid",
 				badge: notesStore.notes.length,
 			},
+			// {
+			// 	id: 4,
+			// 	to: "/chat",
+			// 	label: "Чатик",
+			// 	icon: "i-heroicons-chat-bubble-left-ellipsis",
+			// },
 		],
 		[
 			{

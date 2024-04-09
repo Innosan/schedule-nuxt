@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Schedule } from "~/types/Schedule";
+import type { Schedule } from "~/types/schedule/Schedule";
 import type { PropType } from "vue";
-import { getShortName } from "~/types/Teacher";
-import { getNumberOfLessons } from "../../../types/Day";
+import { getShortName } from "~/types/schedule/Teacher";
+import { getNumberOfLessons } from "~/types/schedule/Day";
 
 const props = defineProps({
 	schedule: {

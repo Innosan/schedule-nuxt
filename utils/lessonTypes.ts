@@ -1,4 +1,4 @@
-import type { LessonType } from "~/types/LessonType";
+import type { LessonType } from "~/types/schedule/LessonType";
 
 export const lessonTypes = {
 	practice: <LessonType>{

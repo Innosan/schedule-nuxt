@@ -1,4 +1,4 @@
-import type { Schedule } from "~/types/Schedule";
+import type { Schedule } from "~/types/schedule/Schedule";
 import { subjects } from "~/utils/subjects";
 import { lessonTypes } from "~/utils/lessonTypes";
 import { teachers } from "~/utils/teachers";

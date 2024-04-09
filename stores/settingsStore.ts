@@ -3,15 +3,23 @@ export const useSettingsStore = defineStore(
 	() => {
 		const scheduleDisplay = ref("accordion");
 
+		const lessonCardState = ref("default");
+
 		const setScheduleDisplay = (
 			newDisplay: string = "accordion" || "nav-list" || "table",
 		) => {
 			scheduleDisplay.value = newDisplay;
 		};
 
+		const setLessonCardState = (newState: string) => {
+			lessonCardState.value = newState;
+		};
+
 		return {
 			scheduleDisplay,
+			lessonCardState,
 			setScheduleDisplay,
+			setLessonCardState,
 		};
 	},
 	{

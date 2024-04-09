@@ -15,7 +15,7 @@ const settingsStore = useSettingsStore();
 
 		<UCard>
 			<template #header>
-				<p class="text-xl opacity-70 font-black">Utility</p>
+				<p class="text-xl opacity-70 font-black">Отображение</p>
 			</template>
 			<div class="grid md:flex gap-8">
 				<SettingsItem
@@ -39,13 +39,35 @@ const settingsStore = useSettingsStore();
 						</UButtonGroup>
 					</template>
 				</SettingsItem>
+
+				<SettingsItem
+					title="Карточка пары"
+					icon="i-heroicons-bars-2-solid"
+				>
+					<template #item>
+						<UButtonGroup size="xs">
+							<UButton
+								v-for="(value, key) in lessonCardStates"
+								:key="key"
+								:leading-icon="value.icon"
+								:label="value.label"
+								:color="
+									settingsStore.lessonCardState === key
+										? 'primary'
+										: 'gray'
+								"
+								@click="settingsStore.setLessonCardState(key)"
+							/>
+						</UButtonGroup>
+					</template>
+				</SettingsItem>
 			</div>
 		</UCard>
 
 		<ClientOnly>
 			<UCard>
 				<template #header>
-					<p class="text-xl opacity-70 font-black">Look & Feel</p>
+					<p class="text-xl opacity-70 font-black">Визуал</p>
 				</template>
 				<div class="flex flex-col-reverse md:flex-row gap-8">
 					<ColorSwitch />

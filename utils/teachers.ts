@@ -1,4 +1,4 @@
-import type { Teacher } from "~/types/Teacher";
+import type { Teacher } from "~/types/schedule/Teacher";
 import { subjects } from "~/utils/subjects";
 import { grades } from "~/utils/grades";
 
@@ -46,7 +46,7 @@ export const teachers: Teacher[] = [
 		lastName: "Гуськова",
 		middleName: "Владимировна",
 		grade: grades.highTeacher,
-		image: "",
+		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs_2JKfpUM4VZDmdpBs0ajKnd6MgyqPzXUCzt4Ll1DVQ&s",
 		subjects: [subjects[3]],
 	},
 	{
@@ -56,7 +56,7 @@ export const teachers: Teacher[] = [
 		middleName: "Григорьевич",
 		email: "LabsandEverything@gmail.com",
 		grade: grades.assistantProfessor,
-		image: "",
+		image: "https://i.ibb.co/C6RWWb8/images.jpg",
 		subjects: [subjects[5]],
 	},
 	{

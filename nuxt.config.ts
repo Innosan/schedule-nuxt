@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-const sw = process.env.SW === "true";
+const sw = false;
 
 export default defineNuxtConfig({
 	devtools: { enabled: true },
@@ -39,13 +39,6 @@ export default defineNuxtConfig({
 		srcDir: sw ? "service-worker" : undefined,
 		filename: sw ? "sw.ts" : undefined,
 		registerType: "autoUpdate",
-
-		workbox: {
-			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-		},
-		injectManifest: {
-			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
-		},
 
 		workbox: {
 			globPatterns: ["**/*.{js,css,html,png,svg,ico}"],

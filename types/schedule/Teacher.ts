@@ -1,5 +1,5 @@
-import type { Subject } from "~/types/Subject";
-import type { Grade } from "~/types/Grade";
+import type { Subject } from "~/types/schedule/Subject";
+import type { Grade } from "~/types/schedule/Grade";
 
 export type Teacher = {
 	id: number;

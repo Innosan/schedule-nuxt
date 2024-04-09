@@ -1,4 +1,4 @@
-import type { Grade } from "~/types/Grade";
+import type { Grade } from "~/types/schedule/Grade";
 
 export const grades = {
 	highTeacher: <Grade>{

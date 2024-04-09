@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { NavigationLink } from "~/types/NavigationLink";
+import type { NavigationLink } from "~/types/utility/NavigationLink";
 
 const props = defineProps({
 	link: {
