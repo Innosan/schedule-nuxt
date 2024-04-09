@@ -1,4 +1,4 @@
-import type { DistantLink, Subject } from "~/types/Subject";
+import type { DistantLink, Subject } from "~/types/schedule/Subject";
 
 export const subjects: Subject[] = [
 	{

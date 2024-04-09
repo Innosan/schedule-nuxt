@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { Schedule } from "~/types/Schedule";
+import type { Schedule } from "~/types/schedule/Schedule";
 
 import { dayMapper } from "~/utils/dateFunctions";
-import { getNumberOfLessons } from "../../../types/Day";
+import { getNumberOfLessons } from "~/types/schedule/Day";
 
 const props = defineProps({
 	schedule: {

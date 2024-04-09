@@ -1,4 +1,4 @@
-import type { NavigationLink } from "~/types/NavigationLink";
+import type { NavigationLink } from "~/types/utility/NavigationLink";
 
 export const officialLinks: NavigationLink[] = [
 	{

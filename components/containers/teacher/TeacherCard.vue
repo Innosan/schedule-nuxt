@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import { getFullName, getShortName, type Teacher } from "~/types/Teacher";
+import {
+	getFullName,
+	getShortName,
+	type Teacher,
+} from "~/types/schedule/Teacher";
 
 const props = defineProps({
 	teacher: {

@@ -23,6 +23,37 @@ export const isCurrentWeekEven = () => {
 	return getNumberOfWeek() % 2 === 0;
 };
 
+function getCurrentSemester() {
+	const month = new Date().getMonth() + 1;
+
+	if (month >= 9 || month <= 2) {
+		return "Winter";
+	} else if (month >= 3 && month <= 6) {
+		return "Summer";
+	} else {
+		return "Not in semester";
+	}
+}
+
+export function getDaysUntilExamSession() {
+	const today = new Date();
+	let examDate;
+
+	if (getCurrentSemester() === "Winter") {
+		examDate = new Date(today.getFullYear(), 0, 15); // January 15
+	} else {
+		examDate = new Date(today.getFullYear(), 5, 15); // June 15
+	}
+
+	// if the exam date has already passed this year, set it for next year
+	if (today > examDate) {
+		examDate.setFullYear(examDate.getFullYear() + 1);
+	}
+
+	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+	return Math.round(Math.abs((today - examDate) / oneDay));
+}
+
 export const setTime = (hours: number, minutes: number) => {
 	const newTime = new Date();
 	newTime.setHours(hours);

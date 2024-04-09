@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { Subject } from "~/types/Subject";
+import type { Subject } from "~/types/schedule/Subject";
 
 const props = defineProps({
 	subject: {

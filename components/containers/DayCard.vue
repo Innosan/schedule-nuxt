@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type { Lesson } from "~/types/Lesson";
+import type { Lesson } from "~/types/schedule/Lesson";
 import { dayMapper } from "~/utils/dateFunctions";
 
 const props = defineProps({
@@ -24,7 +24,7 @@ const props = defineProps({
 		<h2 v-if="showDay" class="font-black text-xl">
 			{{ dayMapper[index + 1].title }}
 		</h2>
-		<div class="flex gap-2 flex-col">
+		<div class="flex 2xl:grid 2xl:grid-cols-4 gap-2 flex-col">
 			<LessonCard
 				v-for="(lesson, lessonIndex) in day"
 				:lesson="lesson"

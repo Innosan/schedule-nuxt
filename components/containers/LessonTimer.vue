@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { getNumberOfDay, setTime } from "~/utils/dateFunctions";
+import { getNumberOfDay } from "~/utils/dateFunctions";
 import type { PropType } from "vue";
-import type { Schedule } from "~/types/Schedule";
+import type { Schedule } from "~/types/schedule/Schedule";
 
 import { timeMapper } from "~/utils/dateFunctions";
-import { type Day, getNumberOfLessons } from "~/types/Day";
+import { type Day } from "~/types/schedule/Day";
 
 const props = defineProps({
 	currentSchedule: {
@@ -17,7 +17,7 @@ const props = defineProps({
 });
 
 const currentTime = ref(new Date());
-// currentTime.value = setTime(3, 40);
+//currentTime.value = setTime(3, 40);
 let interval;
 
 function getCurrentAndNextLesson(currentTime: Date) {
@@ -99,7 +99,7 @@ function getCurrentAndNextLesson(currentTime: Date) {
 onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
-		// currentTime.value = setTime(3, 40);
+		//currentTime.value = setTime(3, 40);
 	}, 60000);
 });
 
