@@ -125,11 +125,12 @@ const route = useRoute();
 		</div>
 		<div class="grid grid-cols-2 gap-4">
 			<div
-				v-if="currentDay"
 				class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700"
 			>
-				<p class="opacity-70 text-sm">завтра</p>
-				<p class="text-xl font-black">
+				<p v-if="getNumberOfDay() + 1 > 4" class="text-xl font-black">
+					Нет пар
+				</p>
+				<p v-else>
 					{{
 						getNumberOfLessons(
 							currentSchedule.days[getNumberOfDay() + 1],
