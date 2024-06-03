@@ -56,8 +56,8 @@ const { $pwa } = useNuxtApp();
 		<UButton
 			@click="isOpen = true"
 			icon="i-heroicons-bars-3"
-			:class="isOpen ? 'rotate-90' : ''"
-			class="transition-all"
+			:class="isOpen ? 'rotate-90 opacity-80 transition-all' : ''"
+			class="hover:rotate-90 hover:opacity-80 transition-all"
 		/>
 
 		<USlideover v-model="isOpen" side="left">
@@ -75,6 +75,7 @@ const { $pwa } = useNuxtApp();
 							</p>
 						</div>
 						<UButton
+							class="hover:rotate-90 hover:scale-95 hover:opacity-80 transition-all"
 							color="gray"
 							variant="ghost"
 							icon="i-heroicons-x-mark-20-solid"

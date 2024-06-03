@@ -8,7 +8,6 @@ import {
 	isCurrentWeekEven,
 } from "~/utils/dateFunctions";
 import ScheduleList from "~/components/containers/schedule/ScheduleList.vue";
-import { getNumberOfLessons } from "~/types/schedule/Day";
 
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 
@@ -17,6 +16,8 @@ const currentDay =
 	currentNumberOfDay >= 0 || currentNumberOfDay <= 4
 		? currentSchedule.days[currentNumberOfDay]
 		: null;
+
+const nextNumberOfDay = currentNumberOfDay + 1;
 
 const blockToShow = ref("day");
 const settingsStore = useSettingsStore();
@@ -59,7 +60,11 @@ const route = useRoute();
 			</UButton>
 		</UButtonGroup>
 		<div v-auto-animate>
-			<div v-if="blockToShow === 'day'" key="day">
+			<div
+				v-if="blockToShow === 'day'"
+				key="day"
+				class="flex flex-col gap-6"
+			>
 				<ClientOnly>
 					<DayCard
 						v-if="currentDay"
@@ -83,6 +88,25 @@ const route = useRoute();
 							/>
 							<p class="font-black">Пар нет</p>
 						</div>
+					</UCard>
+					<UCard
+						:ui="{
+							body: { padding: 'px-3 py-3 sm:p-3' },
+							header: { padding: 'px-3 py-3 sm:p-3' },
+							footer: { padding: 'px-3 py-3 sm:p-3' },
+						}"
+					>
+						<template #header>
+							<p class="opacity-70 font-bold">На завтра</p>
+						</template>
+						<DayCard
+							v-if="currentNumberOfDay < 4"
+							:day="currentSchedule.days[nextNumberOfDay]"
+							:key="nextNumberOfDay"
+							:index="nextNumberOfDay"
+							:show-day="false"
+						/>
+						<p v-else class="font-black">Пар нет</p>
 					</UCard>
 				</ClientOnly>
 			</div>
@@ -123,31 +147,12 @@ const route = useRoute();
 				/>
 			</div>
 		</div>
-		<div class="grid grid-cols-2 gap-4">
-			<div
-				class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700"
-			>
-				<p v-if="getNumberOfDay() + 1 > 4" class="text-xl font-black">
-					Нет пар
-				</p>
-				<p v-else>
-					{{
-						getNumberOfLessons(
-							currentSchedule.days[getNumberOfDay() + 1],
-						)
-					}}
-					пары
-				</p>
-			</div>
-			<div
-				class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700"
-			>
-				<p class="opacity-70">до сессии</p>
-				<p class="text-2xl font-black">
-					{{ getDaysUntilExamSession() }}
-					дней
-				</p>
-			</div>
+		<div class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700">
+			<p class="opacity-70">до сессии</p>
+			<p class="text-2xl font-black">
+				{{ getDaysUntilExamSession() }}
+				дней
+			</p>
 		</div>
 	</div>
 </template>
