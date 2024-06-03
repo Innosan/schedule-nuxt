@@ -12,7 +12,7 @@ const props = defineProps({
 });
 
 const columns = [
-	{ key: "subject", label: "Subject" },
+	{ key: "subject", label: "Предмет" },
 	{ key: "type", label: "Тип" },
 	{ key: "teachers", label: "Преподаватели" },
 	{ key: "room", label: "Кабинет" },
@@ -29,10 +29,10 @@ const columns = [
 		</h2>
 		<UTable :rows="day" :columns="columns">
 			<template #subject-data="{ row }">
-				<span>{{
+				<span :class="row.subject ? '' : 'font-bold underline'">{{
 					row.subject
 						? row.subject.shortName ?? row.subject.title
-						: " "
+						: "Пары нет"
 				}}</span>
 			</template>
 			<template #type-data="{ row }">

@@ -36,12 +36,18 @@ export const unofficialLinks: NavigationLink[] = [
 	},
 	{
 		id: 2,
+		to: "https://disk.yandex.ru/d/gXpHrPbEbn2p4w",
+		label: "ХИМТЯН",
+		icon: "i-gravity-ui-logo-yandex",
+	},
+	{
+		id: 3,
 		to: "https://vk.com/kreimer_games",
 		label: "Kreimer Games",
 		icon: "i-basil-vk-solid",
 	},
 	{
-		id: 3,
+		id: 4,
 		to: "https://github.com/Innosan/schedule-nuxt",
 		label: "GitHub",
 		icon: "i-ri-github-fill",
