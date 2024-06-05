@@ -37,7 +37,7 @@ export const teachers: Teacher[] = [
 		middleName: "Константинович",
 		email: "LabsandEverything@gmail.com",
 		grade: grades.highTeacher,
-		image: "https://technolog.edu.ru/public/upload/person/1/354_thumb.jpg",
+		image: "",
 		subjects: [subjects[5]],
 	},
 	{
@@ -46,7 +46,7 @@ export const teachers: Teacher[] = [
 		lastName: "Гуськова",
 		middleName: "Владимировна",
 		grade: grades.highTeacher,
-		image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs_2JKfpUM4VZDmdpBs0ajKnd6MgyqPzXUCzt4Ll1DVQ&s",
+		image: "",
 		subjects: [subjects[3]],
 	},
 	{
@@ -56,7 +56,7 @@ export const teachers: Teacher[] = [
 		middleName: "Григорьевич",
 		email: "LabsandEverything@gmail.com",
 		grade: grades.assistantProfessor,
-		image: "https://i.ibb.co/C6RWWb8/images.jpg",
+		image: "",
 		subjects: [subjects[5]],
 	},
 	{
@@ -65,7 +65,7 @@ export const teachers: Teacher[] = [
 		lastName: "Gayков",
 		middleName: "Владимирович",
 		grade: grades.assistantProfessor,
-		image: "https://vuzopedia.ru/storage/app/uploads/public/64d/4b0/60c/64d4b060c563a301751412.jpg",
+		image: "",
 		subjects: [subjects[8]],
 	},
 	{

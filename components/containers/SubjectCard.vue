@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Subject } from "~/types/schedule/Subject";
+import TitledItem from "~/components/containers/TitledItem.vue";
 
 const props = defineProps({
 	subject: {
@@ -33,32 +34,29 @@ const oddLessons = computed(() => {
 </script>
 
 <template>
-	<UCard>
+	<UCard :ui="cardSizes.medium" class="overflow-y-clip h-min">
 		<template #header>
-			<div class="flex gap-2 items-center">
-				<p class="font-black md:text-xl">{{ subject.title }}</p>
-				<p class="opacity-70 text-sm">{{ subject.shortName }}</p>
-			</div>
+			<p class="font-black truncate md:text-xl">
+				{{ subject.title }}
+			</p>
 		</template>
 		<div class="flex gap-12">
-			<div class="flex flex-col">
-				<p class="opacity-70">Всего</p>
-				<p class="font-bold text-2xl">
-					{{ (evenLessons + oddLessons) * 2 }} ч.
-				</p>
-			</div>
-			<div class="flex flex-col">
-				<p class="opacity-70">Пары</p>
-				<div class="flex gap-2 items-center text-xl">
-					<p class="font-bold">{{ evenLessons }}</p>
-					<UDivider orientation="vertical" label="&" />
-					<p class="font-bold">{{ oddLessons }}</p>
-				</div>
-			</div>
+			<TitledItem
+				title="Всего"
+				:content="((evenLessons + oddLessons) * 2).toString() + ' ч.'"
+			/>
+			<TitledItem
+				title="Пары"
+				:content="
+					evenLessons === 0 && oddLessons === 0
+						? 'Пар нет'
+						: `${evenLessons} + ${oddLessons}`
+				"
+			/>
 		</div>
 		<template #footer>
 			<div
-				class="flex gap-4 overflow-x-auto pb-3 scroll-auto overscroll-y-auto"
+				class="flex gap-4 overflow-x-auto scroll-auto overscroll-y-auto"
 			>
 				<TeacherCard
 					v-for="teacher in teachers.filter(

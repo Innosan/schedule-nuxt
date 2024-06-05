@@ -19,9 +19,9 @@ const navigation = computed(() => {
 			},
 			{
 				id: 2,
-				to: "/subjects",
-				label: "Предметы",
-				icon: "i-heroicons-rectangle-stack",
+				to: "/database",
+				label: "База данных",
+				icon: "i-heroicons-circle-stack-16-solid",
 			},
 			{
 				id: 3,
@@ -30,12 +30,6 @@ const navigation = computed(() => {
 				icon: "i-heroicons-pencil-square-solid",
 				badge: notesStore.notes.length,
 			},
-			// {
-			// 	id: 4,
-			// 	to: "/chat",
-			// 	label: "Чатик",
-			// 	icon: "i-heroicons-chat-bubble-left-ellipsis",
-			// },
 		],
 		[
 			{
@@ -85,6 +79,13 @@ const { $pwa } = useNuxtApp();
 				</template>
 				<div class="flex gap-4 flex-col">
 					<UVerticalNavigation :links="navigation">
+						<template #icon="{ link }" @click="isOpen = false">
+							<UIcon
+								@click="isOpen = false"
+								:name="link.icon"
+								class="w-5 h-5"
+							/>
+						</template>
 						<template #default="{ link }" @click="isOpen = false">
 							<span
 								@click="isOpen = false"
