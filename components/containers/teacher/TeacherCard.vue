@@ -17,7 +17,12 @@ const isOpen = ref(false);
 </script>
 
 <template>
-	<UButton @click="isOpen = true" :label="getShortName(teacher)">
+	<UButton
+		variant="ghost"
+		class="overflow-y-clip h-min"
+		:label="getShortName(teacher)"
+		@click="isOpen = true"
+	>
 		<template #leading v-if="teacher.image">
 			<UAvatar :src="teacher.image" size="xs" />
 		</template>
