@@ -39,10 +39,15 @@ export function getDaysUntilExamSession() {
 	const today = new Date();
 	let examDate;
 
-	if (getCurrentSemester() === "Winter") {
-		examDate = new Date(today.getFullYear(), 0, 15); // January 15
-	} else {
-		examDate = new Date(today.getFullYear(), 5, 15); // June 15
+	switch (getCurrentSemester()) {
+		case "Not in semester":
+			return 0;
+		case "Summer":
+			examDate = new Date(today.getFullYear(), 5, 15); // June 15
+			break;
+		case "Winter":
+			examDate = new Date(today.getFullYear(), 0, 15); // January 15
+			break;
 	}
 
 	// if the exam date has already passed this year, set it for next year

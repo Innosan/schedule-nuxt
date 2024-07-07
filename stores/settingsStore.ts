@@ -5,6 +5,8 @@ export const useSettingsStore = defineStore(
 
 		const lessonCardState = ref("default");
 
+		const showSchedule = ref(getDaysUntilExamSession() !== 0);
+
 		const setScheduleDisplay = (
 			newDisplay: string = "accordion" || "nav-list" || "table",
 		) => {
@@ -15,11 +17,17 @@ export const useSettingsStore = defineStore(
 			lessonCardState.value = newState;
 		};
 
+		const toggleScheduleState = () => {
+			showSchedule.value = !showSchedule.value;
+		};
+
 		return {
 			scheduleDisplay,
 			lessonCardState,
+			showSchedule,
 			setScheduleDisplay,
 			setLessonCardState,
+			toggleScheduleState,
 		};
 	},
 	{

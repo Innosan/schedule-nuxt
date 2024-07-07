@@ -7,8 +7,6 @@ import {
 	getNumberOfDay,
 	isCurrentWeekEven,
 } from "~/utils/dateFunctions";
-import ScheduleList from "~/components/containers/schedule/ScheduleList.vue";
-
 const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
 
 const currentNumberOfDay = getNumberOfDay();
@@ -26,12 +24,17 @@ const route = useRoute();
 </script>
 
 <template>
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3" v-if="settingsStore.showSchedule">
 		<UDivider />
 
 		<LessonTimer
 			:current-schedule="currentSchedule"
 			:current-day="currentDay"
+		/>
+
+		<ClosestLessons
+			:is-even-week="isCurrentWeekEven()"
+			:current-day-index="currentNumberOfDay"
 		/>
 
 		<UDivider />
@@ -154,5 +157,21 @@ const route = useRoute();
 				дней
 			</p>
 		</div>
+	</div>
+	<div v-else>
+		<UAlert
+			class="overflow-y-hidden"
+			description="Начались каникулы (или вы просто так решили) и на этот период расписание скрывается. Если хотите показывать его всегда, есть кнопочка в настройках!"
+			title="Расписание скрыто!"
+			icon="i-heroicons-exclamation-circle-20-solid"
+			:actions="[
+				{
+					variant: 'outline',
+					color: 'primary',
+					label: 'Открыть настройки',
+					click: () => navigateTo('/settings'),
+				},
+			]"
+		/>
 	</div>
 </template>
