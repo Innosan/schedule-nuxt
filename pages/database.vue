@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { getFullName } from "~/types/schedule/Teacher";
-import AnimatedGrid from "~/components/containers/AnimatedGrid.vue";
 
 const blockToShow = ref("subjects");
 
@@ -10,8 +9,12 @@ const filteredSubjects = computed(() => {
 		if (searchTerm.value === "") return true;
 		else {
 			return (
-				subject.title.toLowerCase().includes(searchTerm.value) ||
-				subject.shortName?.toLowerCase().includes(searchTerm.value)
+				subject.title
+					.toLowerCase()
+					.includes(searchTerm.value.toLowerCase()) ||
+				subject.shortName
+					?.toLowerCase()
+					.includes(searchTerm.value.toLowerCase())
 			);
 		}
 	});
@@ -23,7 +26,7 @@ const filteredTeachers = computed(() => {
 		else {
 			return getFullName(teacher)
 				.toLowerCase()
-				.includes(searchTerm.value);
+				.includes(searchTerm.value.toLowerCase());
 		}
 	});
 });
@@ -98,5 +101,3 @@ const route = useRoute();
 		</div>
 	</div>
 </template>
-
-<style scoped></style>

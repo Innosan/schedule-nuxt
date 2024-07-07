@@ -77,6 +77,19 @@ const settingsStore = useSettingsStore();
 							<ThemeSwitch />
 						</template>
 					</SettingsItem>
+
+					<SettingsItem
+						title="Показывать расписание"
+						icon="i-heroicons-eye-20-solid"
+					>
+						<template #item>
+							<UToggle
+								v-model="settingsStore.showSchedule"
+								@click="settingsStore.toggleScheduleState"
+								size="xl"
+							/>
+						</template>
+					</SettingsItem>
 				</div>
 			</UCard>
 		</ClientOnly>
