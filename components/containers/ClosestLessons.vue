@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { Group } from "~/types/Group";
+import type { PropType } from "vue";
+
 const props = defineProps({
 	isEvenWeek: {
 		type: Boolean,
@@ -6,6 +9,10 @@ const props = defineProps({
 	},
 	currentDayIndex: {
 		type: Number,
+		required: true,
+	},
+	currentGroup: {
+		type: Object as PropType<Group>,
 		required: true,
 	},
 });
@@ -29,8 +36,8 @@ function calculateDaysUntilNextLesson(subjectId: number): number {
 	for (let weekOffset = 0; weekOffset < 2; weekOffset++) {
 		const schedule =
 			weekOffset % 2 === (props.isEvenWeek ? 0 : 1)
-				? evenSchedule
-				: oddSchedule;
+				? props.currentGroup.evenSchedule
+				: props.currentGroup.oddSchedule;
 		for (let dayIndex = 0; dayIndex < schedule.days.length; dayIndex++) {
 			const day =
 				schedule.days[

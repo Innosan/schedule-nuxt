@@ -20,7 +20,7 @@ const props = defineProps({
 			</p>
 		</div>
 
-		<slot name="item" />
+		<slot />
 	</div>
 </template>
 

@@ -2,14 +2,15 @@ import type { Schedule } from "~/types/schedule/Schedule";
 import { subjects } from "~/utils/subjects";
 import { lessonTypes } from "~/utils/lessonTypes";
 import { teachers } from "~/utils/teachers";
+import { emptyLesson } from "~/types/schedule/Lesson";
 
-export const evenSchedule: Schedule = {
+export const evenScheduleFreaks: Schedule = {
 	type: "even",
 	days: [
 		// monday
 		[
 			{
-				subject: subjects[0],
+				subject: subjects[5],
 				type: lessonTypes.practice,
 				teachers: [teachers[15]],
 				room: "Аудитория физики №2 (за БФА)",
@@ -28,7 +29,7 @@ export const evenSchedule: Schedule = {
 				room: "301",
 				additionalGroups: "3 факультет",
 			},
-			{},
+			emptyLesson,
 		],
 
 		// tuesday
@@ -81,7 +82,7 @@ export const evenSchedule: Schedule = {
 				teachers: [teachers[3]],
 				room: "САПРиУ",
 			},
-			{},
+			emptyLesson,
 		],
 
 		// thursday
@@ -128,7 +129,7 @@ export const evenSchedule: Schedule = {
 				teachers: [teachers[6]],
 				room: "СА",
 			},
-			{},
+			emptyLesson,
 			{
 				subject: subjects[4],
 				type: lessonTypes.practice,

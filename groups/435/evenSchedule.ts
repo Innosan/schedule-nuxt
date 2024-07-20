@@ -2,17 +2,18 @@ import type { Schedule } from "~/types/schedule/Schedule";
 import { subjects } from "~/utils/subjects";
 import { lessonTypes } from "~/utils/lessonTypes";
 import { teachers } from "~/utils/teachers";
+import { emptyLesson } from "~/types/schedule/Lesson";
 
-export const oddSchedule: Schedule = {
-	type: "odd",
+export const evenScheduleChemical: Schedule = {
+	type: "even",
 	days: [
 		// monday
 		[
 			{
 				subject: subjects[0],
-				type: lessonTypes.labWork,
-				teachers: [teachers[14], teachers[15]],
-				room: "Аудитория кафедры (Менделеев)",
+				type: lessonTypes.practice,
+				teachers: [teachers[15]],
+				room: "Аудитория физики №2 (за БФА)",
 			},
 			{
 				subject: subjects[1],
@@ -28,22 +29,16 @@ export const oddSchedule: Schedule = {
 				room: "301",
 				additionalGroups: "3 факультет",
 			},
-			{
-				subject: subjects[3],
-				type: lessonTypes.practice,
-				teachers: [teachers[4]],
-				room: "210",
-			},
+			emptyLesson,
 		],
 
 		// tuesday
 		[
 			{
-				subject: subjects[5],
-				type: lessonTypes.lecture,
-				teachers: [teachers[5], teachers[3]],
-				room: "САПРиУ",
-				additionalGroups: "4306",
+				subject: subjects[4],
+				type: lessonTypes.practice,
+				teachers: [teachers[8]],
+				room: "Кафедра физического воспитания",
 			},
 			{
 				subject: subjects[3],
@@ -58,7 +53,12 @@ export const oddSchedule: Schedule = {
 				teachers: [teachers[7]],
 				room: "7-120",
 			},
-			{},
+			{
+				subject: subjects[6],
+				type: lessonTypes.practice,
+				teachers: [teachers[9]],
+				room: "7-321",
+			},
 		],
 
 		// wednesday
@@ -82,13 +82,7 @@ export const oddSchedule: Schedule = {
 				teachers: [teachers[3]],
 				room: "САПРиУ",
 			},
-			{
-				subject: subjects[6],
-				type: lessonTypes.lecture,
-				teachers: [teachers[9]],
-				room: "7-408",
-				additionalGroups: "4304, 4305, 4306",
-			},
+			emptyLesson,
 		],
 
 		// thursday
@@ -115,7 +109,7 @@ export const oddSchedule: Schedule = {
 			{
 				subject: subjects[9],
 				type: lessonTypes.practice,
-				teachers: [teachers[12], teachers[13]],
+				teachers: [teachers[13], teachers[12]],
 				room: "7",
 			},
 		],
@@ -135,12 +129,7 @@ export const oddSchedule: Schedule = {
 				teachers: [teachers[6]],
 				room: "СА",
 			},
-			{
-				subject: subjects[5],
-				type: lessonTypes.courseWork,
-				teachers: [teachers[3]],
-				room: "САПРиУ",
-			},
+			emptyLesson,
 			{
 				subject: subjects[4],
 				type: lessonTypes.practice,

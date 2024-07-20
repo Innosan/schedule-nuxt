@@ -2,6 +2,11 @@
 import type { PropType } from "vue";
 import type { Subject } from "~/types/schedule/Subject";
 import TitledItem from "~/components/containers/TitledItem.vue";
+import { groups } from "~/types/Group";
+
+const settingsStore = useSettingsStore();
+const currentGroup =
+	groups.find((group) => group.id === settingsStore.groupNumber) || groups[0];
 
 const props = defineProps({
 	subject: {
@@ -12,7 +17,7 @@ const props = defineProps({
 
 const evenLessons = computed(() => {
 	let counter = 0;
-	evenSchedule.days.forEach((day) => {
+	currentGroup.evenSchedule.days.forEach((day) => {
 		day.forEach((lesson) => {
 			if (lesson.subject?.id === props.subject.id) counter++;
 		});
@@ -23,7 +28,7 @@ const evenLessons = computed(() => {
 
 const oddLessons = computed(() => {
 	let counter = 0;
-	oddSchedule.days.forEach((day) => {
+	currentGroup.oddSchedule.days.forEach((day) => {
 		day.forEach((lesson) => {
 			if (lesson.subject?.id === props.subject?.id) counter++;
 		});
