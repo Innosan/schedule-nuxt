@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { scheduleDisplayMapper } from "~/utils/scheduleDisplayMapper";
+import SettingsCard from "~/components/containers/SettingsCard.vue";
+import { groups } from "~/types/Group";
 
 const settingsStore = useSettingsStore();
 </script>
@@ -13,85 +15,85 @@ const settingsStore = useSettingsStore();
 			icon="i-heroicons-cog-solid"
 		/>
 
-		<UCard>
-			<template #header>
-				<p class="text-xl opacity-70 font-black">Отображение</p>
-			</template>
-			<div class="grid md:flex gap-8">
+		<SettingsCard title="Разное">
+			<SettingsItem title="Номер группы" icon="i-heroicons-hashtag-solid">
+				<UButtonGroup size="xs">
+					<UButton
+						v-for="value in groups"
+						:key="value.id"
+						:label="value.title"
+						:color="
+							settingsStore.groupNumber === value.id
+								? 'primary'
+								: 'gray'
+						"
+						@click="settingsStore.setGroupNumber(value.id)"
+					/>
+				</UButtonGroup>
+			</SettingsItem>
+		</SettingsCard>
+
+		<ClientOnly>
+			<SettingsCard title="Отображение">
 				<SettingsItem
 					title="Недельное расписание"
 					icon="i-heroicons-table-cells-solid"
 				>
-					<template #item>
-						<UButtonGroup size="xs">
-							<UButton
-								v-for="(value, key) in scheduleDisplayMapper"
-								:key="key"
-								:leading-icon="value.icon"
-								:label="value.label"
-								:color="
-									settingsStore.scheduleDisplay === key
-										? 'primary'
-										: 'gray'
-								"
-								@click="settingsStore.setScheduleDisplay(key)"
-							/>
-						</UButtonGroup>
-					</template>
+					<UButtonGroup size="xs">
+						<UButton
+							v-for="(value, key) in scheduleDisplayMapper"
+							:key="key"
+							:leading-icon="value.icon"
+							:label="value.label"
+							:color="
+								settingsStore.scheduleDisplay === key
+									? 'primary'
+									: 'gray'
+							"
+							@click="settingsStore.setScheduleDisplay(key)"
+						/>
+					</UButtonGroup>
 				</SettingsItem>
 
 				<SettingsItem
 					title="Карточка пары"
 					icon="i-heroicons-bars-2-solid"
 				>
-					<template #item>
-						<UButtonGroup size="xs">
-							<UButton
-								v-for="(value, key) in lessonCardStates"
-								:key="key"
-								:leading-icon="value.icon"
-								:label="value.label"
-								:color="
-									settingsStore.lessonCardState === key
-										? 'primary'
-										: 'gray'
-								"
-								@click="settingsStore.setLessonCardState(key)"
-							/>
-						</UButtonGroup>
-					</template>
+					<UButtonGroup size="xs">
+						<UButton
+							v-for="(value, key) in lessonCardStates"
+							:key="key"
+							:leading-icon="value.icon"
+							:label="value.label"
+							:color="
+								settingsStore.lessonCardState === key
+									? 'primary'
+									: 'gray'
+							"
+							@click="settingsStore.setLessonCardState(key)"
+						/>
+					</UButtonGroup>
 				</SettingsItem>
-			</div>
-		</UCard>
+			</SettingsCard>
 
-		<ClientOnly>
-			<UCard>
-				<template #header>
-					<p class="text-xl opacity-70 font-black">Визуал</p>
-				</template>
-				<div class="flex flex-col-reverse md:flex-row gap-8">
-					<ColorSwitch />
+			<SettingsCard title="Визуал">
+				<ColorSwitch />
 
-					<SettingsItem title="Тема" icon="i-heroicons-moon-solid">
-						<template #item>
-							<ThemeSwitch />
-						</template>
-					</SettingsItem>
+				<SettingsItem title="Тема" icon="i-heroicons-moon-solid">
+					<ThemeSwitch />
+				</SettingsItem>
 
-					<SettingsItem
-						title="Показывать расписание"
-						icon="i-heroicons-eye-20-solid"
-					>
-						<template #item>
-							<UToggle
-								v-model="settingsStore.showSchedule"
-								@click="settingsStore.toggleScheduleState"
-								size="xl"
-							/>
-						</template>
-					</SettingsItem>
-				</div>
-			</UCard>
+				<SettingsItem
+					title="Показывать расписание"
+					icon="i-heroicons-eye-20-solid"
+				>
+					<UToggle
+						v-model="settingsStore.showSchedule"
+						@click="settingsStore.toggleScheduleState"
+						size="xl"
+					/>
+				</SettingsItem>
+			</SettingsCard>
 		</ClientOnly>
 	</div>
 </template>

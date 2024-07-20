@@ -71,7 +71,14 @@ const scheduleAccordion = [
 
 				<span class="truncate font-black mx-2"
 					>{{ item.label }} •
-					{{ getNumberOfLessons(schedule.days[item.id - 1]) }} пары
+					{{
+						getNumberOfLessons(
+							schedule.days[item.id - 1].filter(
+								(lesson) => lesson.subject.id !== -1,
+							),
+						)
+					}}
+					пары
 				</span>
 
 				<template #trailing>

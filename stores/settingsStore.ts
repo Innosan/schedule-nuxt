@@ -1,3 +1,5 @@
+import { groups } from "~/types/Group";
+
 export const useSettingsStore = defineStore(
 	"settings-store",
 	() => {
@@ -5,7 +7,9 @@ export const useSettingsStore = defineStore(
 
 		const lessonCardState = ref("default");
 
-		const showSchedule = ref(getDaysUntilExamSession() !== 0);
+		const showSchedule = ref(true);
+
+		const groupNumber = ref(groups[0].id);
 
 		const setScheduleDisplay = (
 			newDisplay: string = "accordion" || "nav-list" || "table",
@@ -21,12 +25,18 @@ export const useSettingsStore = defineStore(
 			showSchedule.value = !showSchedule.value;
 		};
 
+		const setGroupNumber = (number: number) => {
+			groupNumber.value = number;
+		};
+
 		return {
 			scheduleDisplay,
 			lessonCardState,
 			showSchedule,
+			groupNumber,
 			setScheduleDisplay,
 			setLessonCardState,
+			setGroupNumber,
 			toggleScheduleState,
 		};
 	},

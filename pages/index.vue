@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { oddSchedule } from "~/utils/oddSchedule";
-import { evenSchedule } from "~/utils/evenSchedule";
-
 import {
 	getDaysUntilExamSession,
 	getNumberOfDay,
 	isCurrentWeekEven,
 } from "~/utils/dateFunctions";
-const currentSchedule = isCurrentWeekEven() ? evenSchedule : oddSchedule;
+import { groups } from "~/types/Group";
+const settingsStore = useSettingsStore();
+const currentGroup =
+	groups.find((group) => group.id === settingsStore.groupNumber) || groups[0];
+
+const currentSchedule = isCurrentWeekEven()
+	? currentGroup.evenSchedule
+	: currentGroup.oddSchedule;
 
 const currentNumberOfDay = getNumberOfDay();
 const currentDay =
@@ -18,7 +22,6 @@ const currentDay =
 const nextNumberOfDay = currentNumberOfDay + 1;
 
 const blockToShow = ref("day");
-const settingsStore = useSettingsStore();
 
 const route = useRoute();
 </script>
@@ -35,6 +38,7 @@ const route = useRoute();
 		<ClosestLessons
 			:is-even-week="isCurrentWeekEven()"
 			:current-day-index="currentNumberOfDay"
+			:current-group="currentGroup"
 		/>
 
 		<UDivider />
@@ -120,15 +124,15 @@ const route = useRoute();
 			>
 				<ScheduleAccordeon
 					v-if="settingsStore.scheduleDisplay === 'accordion'"
-					:schedule="evenSchedule"
+					:schedule="currentGroup.evenSchedule"
 				/>
 				<ScheduleList
 					v-else-if="settingsStore.scheduleDisplay === 'list'"
-					:schedule="evenSchedule"
+					:schedule="currentGroup.evenSchedule"
 				/>
 				<ScheduleTable
 					v-else-if="settingsStore.scheduleDisplay === 'table'"
-					:schedule="evenSchedule"
+					:schedule="currentGroup.evenSchedule"
 				/>
 			</div>
 			<div
@@ -138,15 +142,15 @@ const route = useRoute();
 			>
 				<ScheduleAccordeon
 					v-if="settingsStore.scheduleDisplay === 'accordion'"
-					:schedule="oddSchedule"
+					:schedule="currentGroup.oddSchedule"
 				/>
 				<ScheduleList
 					v-else-if="settingsStore.scheduleDisplay === 'list'"
-					:schedule="oddSchedule"
+					:schedule="currentGroup.oddSchedule"
 				/>
 				<ScheduleTable
 					v-else-if="settingsStore.scheduleDisplay === 'table'"
-					:schedule="oddSchedule"
+					:schedule="currentGroup.oddSchedule"
 				/>
 			</div>
 		</div>
