@@ -17,4 +17,8 @@ export const grades = {
 		id: 4,
 		title: "Доцент",
 	},
+	unknown: <Grade>{
+		id: 5,
+		title: "Неизвестно",
+	},
 };

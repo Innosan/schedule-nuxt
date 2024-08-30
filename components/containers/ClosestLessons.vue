@@ -19,13 +19,17 @@ const props = defineProps({
 const showClosestLessons = ref(false);
 
 const subjectsWithNextLesson = computed(() => {
-	return subjects.map((subject) => {
-		const daysUntilNextLesson = calculateDaysUntilNextLesson(subject.id);
-		return {
-			...subject,
-			daysUntilNextLesson,
-		};
-	});
+	return subjects
+		.map((subject) => {
+			const daysUntilNextLesson = calculateDaysUntilNextLesson(
+				subject.id,
+			);
+			return {
+				...subject,
+				daysUntilNextLesson,
+			};
+		})
+		.filter((subject) => subject.daysUntilNextLesson !== -1);
 });
 
 function calculateDaysUntilNextLesson(subjectId: number): number {
@@ -88,6 +92,12 @@ function calculateDaysUntilNextLesson(subjectId: number): number {
 				</div>
 			</template>
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-2">
+				<UAlert
+					class="overflow-y-hidden col-span-2 md:col-span-4"
+					description="Работает не стабильно, считает с выходными, потом починю (возможно)."
+					title="Увага!"
+					icon="i-heroicons-bolt-solid"
+				/>
 				<div
 					v-for="subject in subjectsWithNextLesson.sort(
 						(a, b) => a.daysUntilNextLesson - b.daysUntilNextLesson,
