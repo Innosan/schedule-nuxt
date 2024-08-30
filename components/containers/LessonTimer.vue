@@ -17,7 +17,7 @@ const props = defineProps({
 });
 
 const currentTime = ref(new Date());
-//currentTime.value = setTime(3, 40);
+//currentTime.value = setTime(17, 40);
 let interval;
 
 function getCurrentAndNextLesson(currentTime: Date) {
@@ -27,6 +27,8 @@ function getCurrentAndNextLesson(currentTime: Date) {
 
 	const lessons = props.currentSchedule.days[currentDay];
 
+	if (!lessons) return {};
+
 	let currentLesson = null;
 	let nextLesson = null;
 
@@ -34,8 +36,8 @@ function getCurrentAndNextLesson(currentTime: Date) {
 	let timeUntilNextLesson = null;
 
 	for (let i = 0; i < Object.keys(timeMapper).length; i++) {
-		// Skip if the lesson is a gap
-		if (Object.keys(lessons[i]).length === 0) continue;
+		// Skip if the lesson is a gap or if the lesson does not exist
+		if (!lessons[i] || Object.keys(lessons[i]).length === 0) continue;
 
 		const lessonStart = new Date(currentTime);
 		lessonStart.setHours(parseInt(timeMapper[i].start.split(":")[0]));
@@ -99,7 +101,7 @@ function getCurrentAndNextLesson(currentTime: Date) {
 onBeforeMount(() => {
 	interval = setInterval(() => {
 		currentTime.value = new Date();
-		//currentTime.value = setTime(3, 40);
+		//currentTime.value = setTime(17, 40);
 	}, 60000);
 });
 
