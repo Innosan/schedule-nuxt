@@ -7,7 +7,7 @@ export type Subject = {
 
 export const emptySubject: Subject = {
 	id: -1,
-	title: "Пары нет",
+	title: "Окно",
 };
 
 export type DistantLink = {

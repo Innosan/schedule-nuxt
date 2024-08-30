@@ -85,7 +85,7 @@ const props = defineProps({
 	>
 		<div class="flex gap-2 items-center">
 			<UIcon name="i-heroicons-bell-snooze-solid" class="w-7 h-7" />
-			<p class="font-black">Пары нет</p>
+			<p class="font-black">Окно</p>
 		</div>
 	</UCard>
 </template>
