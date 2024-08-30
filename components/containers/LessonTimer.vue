@@ -84,8 +84,8 @@ function getCurrentAndNextLesson(currentTime: Date) {
 	}
 
 	const dayEnd =
-		currentTime.getHours() > 17 ||
-		(currentTime.getHours() === 17 && currentTime.getMinutes() >= 30);
+		currentTime.getHours() > 19 ||
+		(currentTime.getHours() === 19 && currentTime.getMinutes() >= 30);
 
 	return {
 		dayEnd,

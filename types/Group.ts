@@ -1,8 +1,8 @@
 import type { Schedule } from "~/types/schedule/Schedule";
-import { oddScheduleFreaks } from "~/groups/438/oddSchedule";
-import { oddScheduleChemical } from "~/groups/435/oddSchedule";
-import { evenScheduleChemical } from "~/groups/435/evenSchedule";
-import { evenScheduleFreaks } from "~/groups/438/evenSchedule";
+import { oddScheduleChemical } from "public/data/groups/435/oddSchedule";
+import { evenScheduleChemical } from "public/data/groups/435/evenSchedule";
+import { oddScheduleFreaks } from "public/data/groups/438/oddSchedule";
+import { evenScheduleFreaks } from "public/data/groups/438/evenSchedule";
 
 export type Group = {
 	id: number;

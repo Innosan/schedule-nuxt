@@ -16,7 +16,7 @@ const props = defineProps({
 
 <template>
 	<UCard
-		v-if="lesson.subject"
+		v-if="lesson.subject.id !== -1"
 		:ui="{
 			body: { padding: 'px-3 py-3 sm:p-3' },
 			header: { padding: 'px-3 py-3 sm:p-3' },

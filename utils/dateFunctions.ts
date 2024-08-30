@@ -124,4 +124,5 @@ export const timeMapper = {
 	1: { start: "11:30", end: "13:00" },
 	2: { start: "14:00", end: "15:30" },
 	3: { start: "16:00", end: "17:30" },
+	4: { start: "18:00", end: "19:30" },
 };
