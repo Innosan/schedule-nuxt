@@ -18,6 +18,7 @@ const props = defineProps({
 <template>
 	<UCard
 		v-if="lesson.subject.id !== -1"
+		class="select-none"
 		:ui="{
 			body: { padding: 'px-3 py-3 sm:p-3' },
 			header: { padding: 'px-3 py-3 sm:p-3' },
@@ -34,8 +35,8 @@ const props = defineProps({
 					{{ lesson.subject.shortName ?? lesson.subject.title }}
 				</p>
 			</div>
-			<div class="flex opacity-70 gap-1">
-				<p :title="lesson.room" class="truncate max-w-36">
+			<div class="flex opacity-70 flex-wrap gap-1">
+				<p class="truncate max-w-36 sm:max-w-full hover:max-w-full">
 					{{ lesson.room }}
 				</p>
 
