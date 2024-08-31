@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Lesson } from "~/types/schedule/Lesson";
+import { getShortName } from "../../../types/schedule/Teacher";
 
 const props = defineProps({
 	lesson: {
@@ -33,7 +34,17 @@ const props = defineProps({
 					{{ lesson.subject.shortName ?? lesson.subject.title }}
 				</p>
 			</div>
-			<p class="opacity-70">{{ lesson.room }}</p>
+			<div class="flex opacity-70 gap-1">
+				<p :title="lesson.room" class="truncate max-w-36">
+					{{ lesson.room }}
+				</p>
+
+				•
+
+				<p class="truncate" v-for="teacher in lesson.teachers">
+					{{ getShortName(teacher) }}
+				</p>
+			</div>
 		</div>
 		<template #footer v-if="lesson.subject.distantLink !== undefined">
 			<ULink
