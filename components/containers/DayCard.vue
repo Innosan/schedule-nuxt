@@ -2,6 +2,7 @@
 import type { PropType } from "vue";
 import type { Lesson } from "~/types/schedule/Lesson";
 import { dayMapper } from "~/utils/dateFunctions";
+import { dropChanceMapper, emptySweat, type Sweat } from "~/types/Sweat";
 
 const props = defineProps({
 	index: {
@@ -16,6 +17,26 @@ const props = defineProps({
 		type: Boolean,
 		default: true,
 	},
+});
+
+const sweatyStore = useSweatyStore();
+const settingsStore = useSettingsStore();
+
+const dayDropChance = computed(() => {
+	const sweatyDay: Sweat[] = props.day?.map((lesson) => {
+		if (lesson.subject.id !== -1)
+			return sweatyStore.userSweatness[lesson.subject.id];
+		else return emptySweat;
+	});
+
+	let sweatRating = 0;
+
+	sweatyDay.forEach((sw) => {
+		if (sw.sweatRating !== 0)
+			sweatRating += dropChanceMapper[sw.sweatRating];
+	});
+
+	return sweatRating;
 });
 </script>
 
@@ -32,6 +53,12 @@ const props = defineProps({
 				:key="lessonIndex"
 			/>
 		</div>
+		<UProgress
+			v-if="settingsStore.showDropChance"
+			:value="dayDropChance"
+			:max="100"
+			indicator
+		/>
 	</div>
 </template>
 

@@ -15,24 +15,6 @@ const settingsStore = useSettingsStore();
 			icon="i-heroicons-cog-solid"
 		/>
 
-		<SettingsCard title="Разное">
-			<SettingsItem title="Номер группы" icon="i-heroicons-hashtag-solid">
-				<UButtonGroup size="xs">
-					<UButton
-						v-for="value in groups"
-						:key="value.id"
-						:label="value.title"
-						:color="
-							settingsStore.groupNumber === value.id
-								? 'primary'
-								: 'gray'
-						"
-						@click="settingsStore.setGroupNumber(value.id)"
-					/>
-				</UButtonGroup>
-			</SettingsItem>
-		</SettingsCard>
-
 		<ClientOnly>
 			<SettingsCard title="Отображение">
 				<SettingsItem
@@ -90,6 +72,16 @@ const settingsStore = useSettingsStore();
 					<UToggle
 						v-model="settingsStore.showSchedule"
 						@click="settingsStore.toggleScheduleState"
+						size="xl"
+					/>
+				</SettingsItem>
+				<SettingsItem
+					title="Показывать шанс дропа дня"
+					icon="i-heroicons-eye-20-solid"
+				>
+					<UToggle
+						v-model="settingsStore.showDropChance"
+						@click="settingsStore.toggleDropChanceState"
 						size="xl"
 					/>
 				</SettingsItem>

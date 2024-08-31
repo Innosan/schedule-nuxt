@@ -6,7 +6,7 @@ const props = defineProps({
 	},
 	content: {
 		type: String,
-		required: true,
+		default: "",
 	},
 });
 </script>
@@ -15,6 +15,7 @@ const props = defineProps({
 	<div class="flex flex-col">
 		<p class="opacity-70 text-sm">{{ title }}</p>
 		<p class="font-bold text-xl">{{ content }}</p>
+		<slot />
 	</div>
 </template>
 

@@ -60,14 +60,14 @@ const route = useRoute();
 				:color="blockToShow === 'even-week' ? 'primary' : 'gray'"
 				@click="blockToShow = 'even-week'"
 			>
-				Четная неделя
+				Чётная
 			</UButton>
 			<UButton
 				leading-icon="i-heroicons-hand-thumb-down-solid"
 				:color="blockToShow === 'odd-week' ? 'primary' : 'gray'"
 				@click="blockToShow = 'odd-week'"
 			>
-				Нечетная неделя
+				Нечётная
 			</UButton>
 		</UButtonGroup>
 		<div v-auto-animate>
