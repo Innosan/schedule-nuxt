@@ -6,12 +6,16 @@ import {
 } from "~/utils/dateFunctions";
 import { groups } from "~/types/Group";
 const settingsStore = useSettingsStore();
-const currentGroup =
-	groups.find((group) => group.id === settingsStore.groupNumber) || groups[0];
+const currentGroup = computed(() => {
+	return (
+		groups.find((group) => group.id === settingsStore.groupNumber) ||
+		groups[0]
+	);
+});
 
 const currentSchedule = isCurrentWeekEven()
-	? currentGroup.evenSchedule
-	: currentGroup.oddSchedule;
+	? currentGroup.value.evenSchedule
+	: currentGroup.value.oddSchedule;
 
 const currentNumberOfDay = getNumberOfDay();
 const currentDay =
@@ -28,12 +32,12 @@ const route = useRoute();
 
 <template>
 	<div class="flex flex-col gap-3" v-if="settingsStore.showSchedule">
-		<UDivider />
-
-		<LessonTimer
-			:current-schedule="currentSchedule"
-			:current-day="currentDay"
-		/>
+		<ClientOnly>
+			<LessonTimer
+				:current-schedule="currentSchedule"
+				:current-day="currentDay"
+			/>
+		</ClientOnly>
 
 		<ClosestLessons
 			:is-even-week="isCurrentWeekEven()"
