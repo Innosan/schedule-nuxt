@@ -19,5 +19,3 @@ const props = defineProps({
 	/>
 	<WeekNavigation />
 </template>
-
-<style scoped></style>

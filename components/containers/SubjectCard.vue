@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Subject } from "~/types/schedule/Subject";
-import TitledItem from "~/components/containers/TitledItem.vue";
 import { groups } from "~/types/Group";
 
 const settingsStore = useSettingsStore();

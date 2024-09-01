@@ -26,5 +26,3 @@ const route = useRoute();
 		<span class="font-bold">{{ day.shortName }}</span>
 	</NuxtLink>
 </template>
-
-<style scoped></style>

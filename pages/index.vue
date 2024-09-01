@@ -43,11 +43,18 @@ const route = useRoute();
 			/>
 		</ClientOnly>
 
-		<ClosestLessons
-			:is-even-week="isCurrentWeekEven()"
-			:current-day-index="currentNumberOfDay"
-			:current-group="currentGroup"
+		<UAlert
+			class="overflow-y-hidden"
+			description="Временно учимся по нечетной неделе, если что - ориентируйтесь на расписание в списках!"
+			title="Увага!"
+			icon="i-heroicons-exclamation-circle-solid"
 		/>
+
+		<!--		<ClosestLessons-->
+		<!--			:is-even-week="isCurrentWeekEven()"-->
+		<!--			:current-day-index="currentNumberOfDay"-->
+		<!--			:current-group="currentGroup"-->
+		<!--		/>-->
 
 		<UDivider />
 

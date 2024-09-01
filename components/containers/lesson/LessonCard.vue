@@ -1,13 +1,5 @@
-<template>
-	<component
-		:is="currentLessonCardComponent"
-		:lesson="lesson"
-		:index="index"
-	/>
-</template>
-
 <script setup lang="ts">
-import { computed, type PropType } from "vue";
+import { type PropType } from "vue";
 import CompactLessonCard from "./CompactLessonCard.vue";
 import DefaultLessonCard from "./DefaultLessonCard.vue";
 import type { Lesson } from "~/types/schedule/Lesson";
@@ -34,3 +26,11 @@ const currentLessonCardComponent = computed(() => {
 	}
 });
 </script>
+
+<template>
+	<component
+		:is="currentLessonCardComponent"
+		:lesson="lesson"
+		:index="index"
+	/>
+</template>

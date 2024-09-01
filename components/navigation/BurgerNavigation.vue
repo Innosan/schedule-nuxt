@@ -28,5 +28,3 @@ const props = defineProps({
 		</nav>
 	</ClientOnly>
 </template>
-
-<style scoped></style>

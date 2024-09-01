@@ -22,5 +22,3 @@ const props = defineProps({
 		<a v-else :href="'tel:' + value">{{ value }}</a>
 	</div>
 </template>
-
-<style scoped></style>

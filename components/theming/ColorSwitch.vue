@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useThemeStore } from "~/stores/themeStore";
-import ColorCard from "~/components/theming/ColorCard.vue";
 import {
 	type Color,
 	grayColorNames,
@@ -38,7 +37,10 @@ const grayColors = grayColorNames.map(
 		},
 );
 
-const colors = [primaryColors, grayColors] as Color[][];
+const colors = {
+	primary: primaryColors,
+	gray: grayColors,
+};
 </script>
 
 <template>
@@ -48,7 +50,7 @@ const colors = [primaryColors, grayColors] as Color[][];
 				<p class="font-bold opacity-80">Основной</p>
 				<div class="flex gap-2 flex-wrap">
 					<ColorCard
-						v-for="color in colors[0]"
+						v-for="color in colors.primary"
 						:color="color"
 						:current-color="themeStore.color"
 					/>
@@ -58,7 +60,7 @@ const colors = [primaryColors, grayColors] as Color[][];
 				<p class="font-bold opacity-80">Дополнительный</p>
 				<div class="flex gap-2 flex-wrap">
 					<ColorCard
-						v-for="color in colors[1]"
+						v-for="color in colors.gray"
 						:color="color"
 						:current-color="themeStore.gray"
 					/>
