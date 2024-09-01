@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
+import type { Color } from "~/types/utility/Color";
 
 const props = defineProps({
 	color: {
-		type: Object as PropType<{ label: string; click: () => void }>,
+		type: Object as PropType<Color>,
 		required: true,
 	},
 	currentColor: {
@@ -23,7 +24,7 @@ const props = defineProps({
 		"
 		class="cursor-pointer border-opacity-10 border-gray-600 flex gap-2 items-center hover:border-opacity-30 hover:opacity-70 transition-all border-2 dark:border-opacity-10 dark:border-white p-1.5 rounded-xl"
 	>
-		<span class="circle" :class="`bg-${color.label}-500`"></span>
+		<span class="circle" :class="color.className"></span>
 		<p>
 			{{ color.label.charAt(0).toUpperCase() + color.label.slice(1) }}
 		</p>

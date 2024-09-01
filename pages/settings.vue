@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { scheduleDisplayMapper } from "~/utils/scheduleDisplayMapper";
-import SettingsCard from "~/components/containers/SettingsCard.vue";
-import { groups } from "~/types/Group";
 
 const settingsStore = useSettingsStore();
 </script>
@@ -75,19 +73,7 @@ const settingsStore = useSettingsStore();
 						size="xl"
 					/>
 				</SettingsItem>
-				<SettingsItem
-					title="Показывать шанс дропа дня"
-					icon="i-heroicons-eye-20-solid"
-				>
-					<UToggle
-						v-model="settingsStore.showDropChance"
-						@click="settingsStore.toggleDropChanceState"
-						size="xl"
-					/>
-				</SettingsItem>
 			</SettingsCard>
 		</ClientOnly>
 	</div>
 </template>
-
-<style scoped></style>
