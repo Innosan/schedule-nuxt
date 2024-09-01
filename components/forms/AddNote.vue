@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useNotesStore } from "~/stores/notesStore";
-
 const emit = defineEmits(["update:modelValue"]);
 
 const notesStore = useNotesStore();

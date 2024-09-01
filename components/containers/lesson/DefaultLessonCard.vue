@@ -89,5 +89,3 @@ const props = defineProps({
 		</div>
 	</UCard>
 </template>
-
-<style scoped></style>

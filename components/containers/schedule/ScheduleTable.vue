@@ -62,5 +62,3 @@ const columns = [
 		</UCard>
 	</div>
 </template>
-
-<style scoped></style>

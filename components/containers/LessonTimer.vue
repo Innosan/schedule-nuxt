@@ -179,5 +179,3 @@ const timedLessons = computed(() => {
 		<p class="font-bold text-md">Увы, пары закончились</p>
 	</div>
 </template>
-
-<style scoped></style>

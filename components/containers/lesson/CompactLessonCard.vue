@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Lesson } from "~/types/schedule/Lesson";
-import { getShortName } from "../../../types/schedule/Teacher";
+import { getShortName } from "~/types/schedule/Teacher";
 
 const props = defineProps({
 	lesson: {
@@ -59,6 +59,7 @@ const props = defineProps({
 	</UCard>
 	<UCard
 		v-else
+		class="select-none"
 		:ui="{
 			body: { padding: 'px-3 py-3 sm:p-3' },
 			header: { padding: 'px-3 py-3 sm:p-3' },
@@ -71,5 +72,3 @@ const props = defineProps({
 		</div>
 	</UCard>
 </template>
-
-<style scoped></style>

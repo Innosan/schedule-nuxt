@@ -13,15 +13,19 @@ const currentGroup = computed(() => {
 	);
 });
 
-const currentSchedule = isCurrentWeekEven()
-	? currentGroup.value.evenSchedule
-	: currentGroup.value.oddSchedule;
+// Remove ! after schedule stabilisation
+const currentSchedule = computed(() => {
+	return !isCurrentWeekEven()
+		? currentGroup.value.evenSchedule
+		: currentGroup.value.oddSchedule;
+});
 
 const currentNumberOfDay = getNumberOfDay();
-const currentDay =
-	currentNumberOfDay >= 0 || currentNumberOfDay <= 4
-		? currentSchedule.days[currentNumberOfDay]
+const currentDay = computed(() => {
+	return currentNumberOfDay >= 0 || currentNumberOfDay <= 4
+		? currentSchedule.value.days[currentNumberOfDay]
 		: null;
+});
 
 const nextNumberOfDay = currentNumberOfDay + 1;
 
@@ -39,11 +43,18 @@ const route = useRoute();
 			/>
 		</ClientOnly>
 
-		<ClosestLessons
-			:is-even-week="isCurrentWeekEven()"
-			:current-day-index="currentNumberOfDay"
-			:current-group="currentGroup"
+		<UAlert
+			class="overflow-y-hidden"
+			description="Временно учимся по нечетной неделе, если что - ориентируйтесь на расписание в списках!"
+			title="Увага!"
+			icon="i-heroicons-exclamation-circle-solid"
 		/>
+
+		<!--		<ClosestLessons-->
+		<!--			:is-even-week="isCurrentWeekEven()"-->
+		<!--			:current-day-index="currentNumberOfDay"-->
+		<!--			:current-group="currentGroup"-->
+		<!--		/>-->
 
 		<UDivider />
 
@@ -118,6 +129,13 @@ const route = useRoute();
 							:show-day="false"
 						/>
 						<p v-else class="font-black">Пар нет</p>
+						<DayCard
+							v-if="currentNumberOfDay === 6"
+							:day="currentSchedule.days[0]"
+							:key="0"
+							:index="0"
+							:show-day="false"
+						/>
 					</UCard>
 				</ClientOnly>
 			</div>

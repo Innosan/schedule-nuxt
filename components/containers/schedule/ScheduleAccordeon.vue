@@ -100,5 +100,3 @@ const scheduleAccordion = [
 		</template>
 	</UAccordion>
 </template>
-
-<style scoped></style>

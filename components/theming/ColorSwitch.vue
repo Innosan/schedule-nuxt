@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useThemeStore } from "~/stores/themeStore";
-import ColorCard from "~/components/theming/ColorCard.vue";
+import {
+	type Color,
+	grayColorNames,
+	primaryColorNames,
+} from "~/types/utility/Color";
 
 const themeStore = useThemeStore();
 const changeTheme = (color: string) => {
@@ -11,60 +15,32 @@ const changeGrayTheme = (color: string) => {
 	themeStore.setGray(color);
 };
 
-const colors = [
-	[
-		{
-			label: "green",
+const primaryColors = primaryColorNames.map(
+	(c) =>
+		<Color>{
+			label: c,
+			className: `bg-${c}-500`,
 			click: () => {
-				changeTheme("green");
+				changeTheme(c);
 			},
 		},
-		{
-			label: "violet",
+);
+
+const grayColors = grayColorNames.map(
+	(c) =>
+		<Color>{
+			label: c,
+			className: `bg-${c}-500`,
 			click: () => {
-				changeTheme("violet");
+				changeGrayTheme(c);
 			},
 		},
-		{
-			label: "rose",
-			click: () => {
-				changeTheme("rose");
-			},
-		},
-		{
-			label: "old-lavender",
-			click: () => {
-				changeTheme("old-lavender");
-			},
-		},
-		{
-			label: "russett",
-			click: () => {
-				changeTheme("russett");
-			},
-		},
-	],
-	[
-		{
-			label: "neutral",
-			click: () => {
-				changeGrayTheme("neutral");
-			},
-		},
-		{
-			label: "stone",
-			click: () => {
-				changeGrayTheme("stone");
-			},
-		},
-		{
-			label: "zinc",
-			click: () => {
-				changeGrayTheme("zinc");
-			},
-		},
-	],
-];
+);
+
+const colors = {
+	primary: primaryColors,
+	gray: grayColors,
+};
 </script>
 
 <template>
@@ -74,8 +50,8 @@ const colors = [
 				<p class="font-bold opacity-80">Основной</p>
 				<div class="flex gap-2 flex-wrap">
 					<ColorCard
-						v-for="primary in colors[0]"
-						:color="primary"
+						v-for="color in colors.primary"
+						:color="color"
 						:current-color="themeStore.color"
 					/>
 				</div>
@@ -84,8 +60,8 @@ const colors = [
 				<p class="font-bold opacity-80">Дополнительный</p>
 				<div class="flex gap-2 flex-wrap">
 					<ColorCard
-						v-for="gray in colors[1]"
-						:color="gray"
+						v-for="color in colors.gray"
+						:color="color"
 						:current-color="themeStore.gray"
 					/>
 				</div>

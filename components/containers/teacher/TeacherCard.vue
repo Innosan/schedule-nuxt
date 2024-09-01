@@ -94,5 +94,3 @@ const isOpen = ref(false);
 		</UCard>
 	</UModal>
 </template>
-
-<style scoped></style>

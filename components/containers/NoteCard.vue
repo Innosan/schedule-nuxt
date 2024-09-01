@@ -48,5 +48,3 @@ const isDeleteOpen = ref(false);
 	<UpdateNote :note-to-update="note" v-model="isUpdateOpen" />
 	<DeleteNote :note-to-delete="note" v-model="isDeleteOpen" />
 </template>
-
-<style scoped></style>

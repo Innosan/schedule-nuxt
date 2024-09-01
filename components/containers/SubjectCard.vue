@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import type { PropType } from "vue";
 import type { Subject } from "~/types/schedule/Subject";
-import TitledItem from "~/components/containers/TitledItem.vue";
 import { groups } from "~/types/Group";
 
 const settingsStore = useSettingsStore();
-const sweatyStore = useSweatyStore();
 
 const currentGroup =
 	groups.find((group) => group.id === settingsStore.groupNumber) || groups[0];
@@ -38,10 +36,6 @@ const oddLessons = computed(() => {
 
 	return counter;
 });
-
-const sweatyRating = computed(() => {
-	return sweatyStore.userSweatness[props.subject.id];
-});
 </script>
 
 <template>
@@ -64,24 +58,6 @@ const sweatyRating = computed(() => {
 						: `${evenLessons} + ${oddLessons}`
 				"
 			/>
-			<TitledItem
-				title="Шанс дропа"
-				v-if="evenLessons !== 0 && oddLessons !== 0"
-			>
-				<div class="flex gap-1">
-					<UButton
-						v-for="rate in 5"
-						@click="sweatyStore.changeSweatness(subject.id, rate)"
-						variant="link"
-						color="primary"
-						:icon="
-							rate <= sweatyRating.sweatRating
-								? 'i-heroicons-star-solid'
-								: 'i-heroicons-star'
-						"
-					/>
-				</div>
-			</TitledItem>
 		</div>
 		<template #footer>
 			<div
@@ -97,5 +73,3 @@ const sweatyRating = computed(() => {
 		</template>
 	</UCard>
 </template>
-
-<style scoped></style>

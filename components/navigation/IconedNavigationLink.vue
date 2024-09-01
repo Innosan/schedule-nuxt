@@ -20,5 +20,3 @@ const props = defineProps({
 		{{ link.label }}
 	</ULink>
 </template>
-
-<style scoped></style>

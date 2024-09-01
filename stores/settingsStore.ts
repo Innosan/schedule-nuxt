@@ -8,7 +8,6 @@ export const useSettingsStore = defineStore(
 		const lessonCardState = ref("default");
 
 		const showSchedule = ref(true);
-		const showDropChance = ref(true);
 
 		const groupNumber = ref(groups[0].id);
 
@@ -26,10 +25,6 @@ export const useSettingsStore = defineStore(
 			showSchedule.value = !showSchedule.value;
 		};
 
-		const toggleDropChanceState = () => {
-			showDropChance.value = !showDropChance.value;
-		};
-
 		const setGroupNumber = (number: number) => {
 			groupNumber.value = number;
 		};
@@ -39,12 +34,10 @@ export const useSettingsStore = defineStore(
 			lessonCardState,
 			showSchedule,
 			groupNumber,
-			showDropChance,
 			setScheduleDisplay,
 			setLessonCardState,
 			setGroupNumber,
 			toggleScheduleState,
-			toggleDropChanceState,
 		};
 	},
 	{

@@ -23,5 +23,3 @@ const isOpen = ref(false);
 	<NoteCard v-for="note in notesStore.notes" :note="note" />
 	<AddNote v-model="isOpen" />
 </template>
-
-<style scoped></style>

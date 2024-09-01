@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { scheduleDisplayMapper } from "~/utils/scheduleDisplayMapper";
-
 const props = defineProps({
 	title: {
 		type: String,
@@ -19,5 +17,3 @@ const props = defineProps({
 		</div>
 	</UCard>
 </template>
-
-<style scoped></style>

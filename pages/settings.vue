@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { scheduleDisplayMapper } from "~/utils/scheduleDisplayMapper";
-import SettingsCard from "~/components/containers/SettingsCard.vue";
-import { groups } from "~/types/Group";
 
 const settingsStore = useSettingsStore();
 </script>
@@ -15,49 +13,46 @@ const settingsStore = useSettingsStore();
 			icon="i-heroicons-cog-solid"
 		/>
 
+		<SettingsCard title="Отображение">
+			<SettingsItem
+				title="Недельное расписание"
+				icon="i-heroicons-table-cells-solid"
+			>
+				<UButtonGroup size="xs">
+					<UButton
+						v-for="(value, key) in scheduleDisplayMapper"
+						:key="key"
+						:leading-icon="value.icon"
+						:label="value.label"
+						:color="
+							settingsStore.scheduleDisplay === key
+								? 'primary'
+								: 'gray'
+						"
+						@click="settingsStore.setScheduleDisplay(key)"
+					/>
+				</UButtonGroup>
+			</SettingsItem>
+
+			<SettingsItem title="Карточка пары" icon="i-heroicons-bars-2-solid">
+				<UButtonGroup size="xs">
+					<UButton
+						v-for="(value, key) in lessonCardStates"
+						:key="key"
+						:leading-icon="value.icon"
+						:label="value.label"
+						:color="
+							settingsStore.lessonCardState === key
+								? 'primary'
+								: 'gray'
+						"
+						@click="settingsStore.setLessonCardState(key)"
+					/>
+				</UButtonGroup>
+			</SettingsItem>
+		</SettingsCard>
+
 		<ClientOnly>
-			<SettingsCard title="Отображение">
-				<SettingsItem
-					title="Недельное расписание"
-					icon="i-heroicons-table-cells-solid"
-				>
-					<UButtonGroup size="xs">
-						<UButton
-							v-for="(value, key) in scheduleDisplayMapper"
-							:key="key"
-							:leading-icon="value.icon"
-							:label="value.label"
-							:color="
-								settingsStore.scheduleDisplay === key
-									? 'primary'
-									: 'gray'
-							"
-							@click="settingsStore.setScheduleDisplay(key)"
-						/>
-					</UButtonGroup>
-				</SettingsItem>
-
-				<SettingsItem
-					title="Карточка пары"
-					icon="i-heroicons-bars-2-solid"
-				>
-					<UButtonGroup size="xs">
-						<UButton
-							v-for="(value, key) in lessonCardStates"
-							:key="key"
-							:leading-icon="value.icon"
-							:label="value.label"
-							:color="
-								settingsStore.lessonCardState === key
-									? 'primary'
-									: 'gray'
-							"
-							@click="settingsStore.setLessonCardState(key)"
-						/>
-					</UButtonGroup>
-				</SettingsItem>
-			</SettingsCard>
-
 			<SettingsCard title="Визуал">
 				<ColorSwitch />
 
@@ -75,19 +70,7 @@ const settingsStore = useSettingsStore();
 						size="xl"
 					/>
 				</SettingsItem>
-				<SettingsItem
-					title="Показывать шанс дропа дня"
-					icon="i-heroicons-eye-20-solid"
-				>
-					<UToggle
-						v-model="settingsStore.showDropChance"
-						@click="settingsStore.toggleDropChanceState"
-						size="xl"
-					/>
-				</SettingsItem>
 			</SettingsCard>
 		</ClientOnly>
 	</div>
 </template>
-
-<style scoped></style>
