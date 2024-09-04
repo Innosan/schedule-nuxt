@@ -36,7 +36,7 @@ export const unofficialLinks: NavigationLink[] = [
 	},
 	{
 		id: 2,
-		to: "https://disk.yandex.ru/d/gXpHrPbEbn2p4w",
+		to: "https://disk.yandex.ru/d/WfHlJY0_5Anpdw",
 		label: "ХИМТЯН",
 		icon: "i-gravity-ui-logo-yandex",
 	},

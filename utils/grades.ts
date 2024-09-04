@@ -21,4 +21,8 @@ export const grades = {
 		id: 5,
 		title: "Неизвестно",
 	},
+	labAssistant: <Grade>{
+		id: 6,
+		title: "Ассистент",
+	},
 };

@@ -20,7 +20,7 @@ export const oddScheduleChemical: Schedule = {
 			{
 				subject: subjects[0],
 				type: lessonTypes.labWork,
-				teachers: [teachers[0]],
+				teachers: [teachers[30]],
 				room: "Аудитория кафедры",
 			},
 		],
@@ -31,7 +31,7 @@ export const oddScheduleChemical: Schedule = {
 			{
 				subject: subjects[1],
 				type: lessonTypes.practice,
-				teachers: [teachers[1]],
+				teachers: [teachers[31]],
 				room: "7-133",
 			},
 			{
@@ -60,13 +60,13 @@ export const oddScheduleChemical: Schedule = {
 			{
 				subject: subjects[0],
 				type: lessonTypes.practice,
-				teachers: [teachers[0]],
+				teachers: [teachers[32]],
 				room: "Аудитория физики №1",
 			},
 			{
 				subject: subjects[1],
 				type: lessonTypes.practice,
-				teachers: [teachers[1]],
+				teachers: [teachers[31]],
 				room: "7-118",
 			},
 			{

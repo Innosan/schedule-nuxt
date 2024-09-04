@@ -97,7 +97,7 @@ const { $pwa } = useNuxtApp();
 
 					<UDivider />
 
-					<div class="flex gap-4 flex-wrap">
+					<div class="flex gap-1 flex-wrap">
 						<IconedNavigationLink
 							v-for="link in officialLinks"
 							:link="link"
@@ -109,7 +109,7 @@ const { $pwa } = useNuxtApp();
 						class="opacity-70"
 					/>
 
-					<div class="flex gap-4 flex-wrap">
+					<div class="flex gap-1 flex-wrap">
 						<IconedNavigationLink
 							v-for="link in unofficialLinks"
 							:link="link"
