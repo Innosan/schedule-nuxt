@@ -35,7 +35,7 @@ const props = defineProps({
 					{{ lesson.subject.shortName ?? lesson.subject.title }}
 				</p>
 			</div>
-			<div class="flex opacity-70 flex-wrap gap-1">
+			<div class="flex opacity-70 flex-wrap gap-1 text-xs">
 				<p class="truncate max-w-36 sm:max-w-full hover:max-w-full">
 					{{ lesson.room }}
 				</p>
@@ -45,6 +45,17 @@ const props = defineProps({
 				<p class="truncate" v-for="teacher in lesson.teachers">
 					{{ getShortName(teacher) }}
 				</p>
+
+				<div
+					class="flex gap-1 items-center"
+					v-if="lesson.additionalGroups"
+				>
+					•
+
+					<p class="truncate">
+						{{ lesson.additionalGroups }}
+					</p>
+				</div>
 			</div>
 		</div>
 		<template #footer v-if="lesson.subject.distantLink !== undefined">

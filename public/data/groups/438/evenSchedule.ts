@@ -26,7 +26,7 @@ export const evenScheduleFreaks: Schedule = {
 				subject: subjects[1],
 				type: lessonTypes.lecture,
 				teachers: [teachers[19]],
-				room: "4-405",
+				room: "7-405",
 				additionalGroups: "436, 437",
 			},
 			{

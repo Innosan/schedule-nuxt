@@ -79,9 +79,9 @@ export const teachers: Teacher[] = [
 	},
 	{
 		id: 8,
-		firstName: "Кафедры",
+		firstName: "кафедры",
 		lastName: "Преподаватели",
-		middleName: "Физкультуры",
+		middleName: "физкультуры",
 		grade: grades.highTeacher,
 		image: "",
 		subjects: [subjects[4]],
@@ -239,11 +239,12 @@ export const teachers: Teacher[] = [
 	},
 	{
 		id: 27,
-		lastName: "Дамрин", // TODO: Add full name
-		firstName: " ",
-		middleName: " ",
-		grade: grades.unknown,
+		lastName: "Дамрин",
+		firstName: "Антон",
+		middleName: "Телеговский",
+		grade: grades.highTeacher,
 		subjects: [subjects[18]],
+		email: "@damrin_toni",
 	},
 	{
 		id: 28,
@@ -260,5 +261,29 @@ export const teachers: Teacher[] = [
 		middleName: "Алексеевич",
 		grade: grades.highTeacher,
 		subjects: [subjects[18]],
+	},
+	{
+		id: 30,
+		lastName: "Шашкина",
+		firstName: "Антонина",
+		middleName: "Сергеевна",
+		grade: grades.labAssistant,
+		subjects: [subjects[0]],
+	},
+	{
+		id: 31,
+		lastName: "Свечников",
+		firstName: "Андрей",
+		middleName: "Анатольевич",
+		grade: grades.assistantProfessor,
+		subjects: [subjects[1]],
+	},
+	{
+		id: 32,
+		lastName: "Шиманская",
+		firstName: "Галина",
+		middleName: "Станиславовна",
+		grade: grades.labAssistant,
+		subjects: [subjects[0]],
 	},
 ];
