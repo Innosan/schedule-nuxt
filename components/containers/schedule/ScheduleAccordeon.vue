@@ -62,7 +62,6 @@ const scheduleAccordion = [
 						class="w-6 h-6 rounded-md bg-primary-500 dark:bg-primary-400 flex items-center justify-center -my-1"
 					>
 						<UIcon
-							dynamic
 							:name="item.icon"
 							class="w-4 h-4 text-white dark:text-gray-900"
 						/>

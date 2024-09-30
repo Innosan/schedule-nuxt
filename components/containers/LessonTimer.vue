@@ -165,7 +165,6 @@ const timedLessons = computed(() => {
 			<UIcon
 				name="i-material-symbols-alarm-off-outline-rounded"
 				class="w-5 h-5"
-				dynamic
 			/>
 			<p class="font-bold text-md">Пары нет</p>
 		</div>
@@ -174,7 +173,6 @@ const timedLessons = computed(() => {
 		<UIcon
 			name="i-material-symbols-alarm-off-outline-rounded"
 			class="w-5 h-5"
-			dynamic
 		/>
 		<p class="font-bold text-md">Увы, пары закончились</p>
 	</div>
