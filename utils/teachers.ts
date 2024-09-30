@@ -1,5 +1,4 @@
 import type { Teacher } from "~/types/schedule/Teacher";
-import { subjects } from "~/utils/subjects";
 import { grades } from "~/utils/grades";
 
 export const teachers: Teacher[] = [
@@ -10,7 +9,6 @@ export const teachers: Teacher[] = [
 		middleName: "Александрович",
 		grade: grades.professor,
 		image: "",
-		subjects: [subjects[0]],
 	},
 	{
 		id: 1,
@@ -19,7 +17,6 @@ export const teachers: Teacher[] = [
 		middleName: "Васильевна",
 		grade: grades.boss,
 		image: "",
-		subjects: [subjects[1]],
 	},
 	{
 		id: 2,
@@ -28,7 +25,6 @@ export const teachers: Teacher[] = [
 		middleName: "Яковлевич",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[2]],
 	},
 	{
 		id: 3,
@@ -38,7 +34,6 @@ export const teachers: Teacher[] = [
 		email: "LabsandEverything@gmail.com",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[5], subjects[16]],
 	},
 	{
 		id: 4,
@@ -47,7 +42,6 @@ export const teachers: Teacher[] = [
 		middleName: "Владимировна",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[3]],
 	},
 	{
 		id: 5,
@@ -57,7 +51,6 @@ export const teachers: Teacher[] = [
 		email: "LabsandEverything@gmail.com",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[5]],
 	},
 	{
 		id: 6,
@@ -66,7 +59,6 @@ export const teachers: Teacher[] = [
 		middleName: "Владимирович",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[8]],
 	},
 	{
 		id: 7,
@@ -75,7 +67,6 @@ export const teachers: Teacher[] = [
 		middleName: "Викторовна",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[1]],
 	},
 	{
 		id: 8,
@@ -84,7 +75,6 @@ export const teachers: Teacher[] = [
 		middleName: "физкультуры",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[4]],
 	},
 	{
 		id: 9,
@@ -93,7 +83,6 @@ export const teachers: Teacher[] = [
 		middleName: "Александровна",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[6]],
 	},
 	{
 		id: 10,
@@ -102,7 +91,6 @@ export const teachers: Teacher[] = [
 		middleName: "Павловна",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[7]],
 	},
 	{
 		id: 11,
@@ -111,7 +99,6 @@ export const teachers: Teacher[] = [
 		middleName: "Анатольевич",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[7]],
 	},
 	{
 		id: 12,
@@ -120,7 +107,6 @@ export const teachers: Teacher[] = [
 		middleName: "Владимировна",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[9]],
 	},
 	{
 		id: 13,
@@ -129,7 +115,6 @@ export const teachers: Teacher[] = [
 		middleName: "Борисовна",
 		grade: grades.highTeacher,
 		image: "",
-		subjects: [subjects[9]],
 	},
 	{
 		id: 14,
@@ -138,7 +123,6 @@ export const teachers: Teacher[] = [
 		middleName: "Владимировна",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[0]],
 	},
 	{
 		id: 15,
@@ -147,7 +131,6 @@ export const teachers: Teacher[] = [
 		middleName: "Андреевич",
 		grade: grades.assistantProfessor,
 		image: "",
-		subjects: [subjects[0]],
 	},
 	{
 		id: 16,
@@ -155,7 +138,6 @@ export const teachers: Teacher[] = [
 		firstName: "Игорь",
 		middleName: "Викторович",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[10], subjects[14]],
 	},
 	{
 		id: 17,
@@ -163,7 +145,6 @@ export const teachers: Teacher[] = [
 		firstName: "Александр",
 		middleName: "Сергеевич",
 		grade: grades.highTeacher,
-		subjects: [subjects[11]],
 	},
 	{
 		id: 18,
@@ -171,7 +152,6 @@ export const teachers: Teacher[] = [
 		firstName: "Виктория",
 		middleName: "Ивановна",
 		grade: grades.professor,
-		subjects: [subjects[12]],
 	},
 	{
 		id: 19,
@@ -179,7 +159,6 @@ export const teachers: Teacher[] = [
 		firstName: "Алексей",
 		middleName: "Андреевич",
 		grade: grades.professor,
-		subjects: [subjects[1]],
 	},
 	{
 		id: 20,
@@ -187,7 +166,6 @@ export const teachers: Teacher[] = [
 		firstName: "Ольга",
 		middleName: "Васильевна",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[14]],
 	},
 	{
 		id: 21,
@@ -195,7 +173,6 @@ export const teachers: Teacher[] = [
 		firstName: "Олег",
 		middleName: "Владимирович",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[12]],
 	},
 	{
 		id: 22,
@@ -203,7 +180,6 @@ export const teachers: Teacher[] = [
 		firstName: "Игорь",
 		middleName: "Григорьевич",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[15]],
 	},
 	{
 		id: 23,
@@ -211,7 +187,6 @@ export const teachers: Teacher[] = [
 		firstName: "Андрей",
 		middleName: "Михайлович",
 		grade: grades.highTeacher,
-		subjects: [subjects[15]],
 	},
 	{
 		id: 24,
@@ -219,7 +194,6 @@ export const teachers: Teacher[] = [
 		firstName: "Роман",
 		middleName: "Валерьевич",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[16]],
 	},
 	{
 		id: 25,
@@ -227,7 +201,6 @@ export const teachers: Teacher[] = [
 		firstName: "Александр",
 		middleName: "Александрович",
 		grade: grades.highTeacher,
-		subjects: [subjects[17]],
 	},
 	{
 		id: 26,
@@ -235,7 +208,6 @@ export const teachers: Teacher[] = [
 		firstName: "Галина",
 		middleName: "Викторовна",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[17]],
 	},
 	{
 		id: 27,
@@ -243,7 +215,6 @@ export const teachers: Teacher[] = [
 		firstName: "Антон",
 		middleName: "Телеговский",
 		grade: grades.highTeacher,
-		subjects: [subjects[18]],
 		email: "@damrin_toni",
 	},
 	{
@@ -252,7 +223,6 @@ export const teachers: Teacher[] = [
 		firstName: "Алексей",
 		middleName: "Юрьевич",
 		grade: grades.highTeacher,
-		subjects: [subjects[15]],
 	},
 	{
 		id: 29,
@@ -260,7 +230,6 @@ export const teachers: Teacher[] = [
 		firstName: "Владислав",
 		middleName: "Алексеевич",
 		grade: grades.highTeacher,
-		subjects: [subjects[18]],
 	},
 	{
 		id: 30,
@@ -268,7 +237,6 @@ export const teachers: Teacher[] = [
 		firstName: "Антонина",
 		middleName: "Сергеевна",
 		grade: grades.labAssistant,
-		subjects: [subjects[0]],
 	},
 	{
 		id: 31,
@@ -276,7 +244,6 @@ export const teachers: Teacher[] = [
 		firstName: "Андрей",
 		middleName: "Анатольевич",
 		grade: grades.assistantProfessor,
-		subjects: [subjects[1]],
 	},
 	{
 		id: 32,
@@ -284,6 +251,19 @@ export const teachers: Teacher[] = [
 		firstName: "Галина",
 		middleName: "Станиславовна",
 		grade: grades.labAssistant,
-		subjects: [subjects[0]],
+	},
+	{
+		id: 33,
+		lastName: "Коряжкина",
+		firstName: "Оксана",
+		middleName: "Витальевна",
+		grade: grades.highTeacher,
+	},
+	{
+		id: 34,
+		lastName: "Дьяченко",
+		firstName: "Semen",
+		middleName: "Андреевич",
+		grade: grades.labAssistant,
 	},
 ];

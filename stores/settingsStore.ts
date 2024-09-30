@@ -12,7 +12,7 @@ export const useSettingsStore = defineStore(
 		const groupNumber = ref(groups[0].id);
 
 		const setScheduleDisplay = (
-			newDisplay: string = "accordion" || "nav-list" || "table",
+			newDisplay: string = "accordion" || "list" || "table",
 		) => {
 			scheduleDisplay.value = newDisplay;
 		};
