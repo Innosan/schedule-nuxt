@@ -18,3 +18,37 @@ export const emptyLesson: Lesson = {
 	room: "",
 	additionalGroups: "",
 };
+
+export const createLesson = (
+	subjectName:
+		| "physics"
+		| "math"
+		| "physicalEducation"
+		| "english"
+		| "architecture"
+		| "sociology"
+		| "discreteMath"
+		| "metrology"
+		| "operatingSystems"
+		| "militaryTraining"
+		| "computingSystems"
+		| "databases"
+		| "softwareDevelopment",
+	type: LessonType,
+	additionalGroups: string = "",
+): Lesson => {
+	// @ts-ignore
+	const subject = subjects[subjectName] as Subject;
+	// @ts-ignore
+	const teachers = subject.teachers[type.value];
+	// @ts-ignore
+	const room = subject.rooms[type.value];
+
+	return {
+		subject,
+		type,
+		teachers,
+		room,
+		additionalGroups: additionalGroups,
+	};
+};

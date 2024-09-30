@@ -59,17 +59,5 @@ const oddLessons = computed(() => {
 				"
 			/>
 		</div>
-		<template #footer>
-			<div
-				class="flex gap-4 overflow-x-auto scroll-auto overscroll-y-auto"
-			>
-				<TeacherCard
-					v-for="teacher in teachers.filter(
-						(teach) => teach.subjects[0].id === subject.id,
-					)"
-					:teacher="teacher"
-				/>
-			</div>
-		</template>
 	</UCard>
 </template>

@@ -32,7 +32,7 @@ const props = defineProps({
 			>
 				<UIcon :name="lesson.type.icon" />
 				<p class="font-extrabold">
-					{{ lesson.subject.shortName ?? lesson.subject.title }}
+					{{ lesson.subject.shortTitle ?? lesson.subject.title }}
 				</p>
 			</div>
 			<div class="flex opacity-70 flex-wrap gap-1 text-xs">

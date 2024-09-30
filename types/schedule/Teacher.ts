@@ -13,7 +13,7 @@ export type Teacher = {
 	grade: Grade;
 
 	image?: string;
-	subjects: Subject[];
+	subjects?: Subject[];
 };
 
 export const getFullName = (teacher: Teacher) => {

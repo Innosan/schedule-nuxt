@@ -16,7 +16,7 @@ const props = defineProps({
 		:to="link.to"
 		target="_blank"
 	>
-		<UIcon :name="link.icon" dynamic />
+		<UIcon :name="link.icon" />
 		{{ link.label }}
 	</ULink>
 </template>

@@ -32,7 +32,7 @@ const props = defineProps({
 				>
 					<UIcon :name="lesson.type.icon" />
 					<p class="font-extrabold">
-						{{ lesson.subject.shortName ?? lesson.subject.title }}
+						{{ lesson.subject.shortTitle ?? lesson.subject.title }}
 					</p>
 				</div>
 				<div class="flex gap-3 flex-col">
@@ -65,6 +65,7 @@ const props = defineProps({
 				v-for="teacher in lesson.teachers"
 				:teacher="teacher"
 			/>
+
 			<ULink
 				v-if="lesson.subject.distantLink !== undefined"
 				class="underline"

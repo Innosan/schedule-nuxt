@@ -59,11 +59,7 @@ const { $pwa } = useNuxtApp();
 				<template #header>
 					<div class="flex justify-between items-center">
 						<div class="flex gap-3 items-center text-primary-400">
-							<UIcon
-								:name="currentDay.icon"
-								class="w-6 h-6"
-								dynamic
-							/>
+							<UIcon :name="currentDay.icon" class="w-6 h-6" />
 							<p class="font-black text-xl">
 								{{ currentDay.title }}
 							</p>

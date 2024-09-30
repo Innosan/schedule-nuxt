@@ -22,7 +22,7 @@ const route = useRoute();
 			route.hash.slice(1) === day.id ? 'text-primary-400 opacity-100' : ''
 		"
 	>
-		<UIcon :name="day.icon" dynamic class="w-5 h-5" />
+		<UIcon :name="day.icon" class="w-5 h-5" />
 		<span class="font-bold">{{ day.shortName }}</span>
 	</NuxtLink>
 </template>

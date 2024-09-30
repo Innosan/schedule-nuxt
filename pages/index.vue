@@ -5,6 +5,7 @@ import {
 	isCurrentWeekEven,
 } from "~/utils/dateFunctions";
 import { groups } from "~/types/Group";
+import ScheduleCard from "~/components/containers/schedule/ScheduleCard.vue";
 const settingsStore = useSettingsStore();
 const currentGroup = computed(() => {
 	return (
@@ -42,19 +43,6 @@ const route = useRoute();
 				:current-day="currentDay"
 			/>
 		</ClientOnly>
-
-		<UAlert
-			class="overflow-y-hidden"
-			description="Временно учимся по нечетной неделе, если что - ориентируйтесь на расписание в списках!"
-			title="Увага!"
-			icon="i-heroicons-exclamation-circle-solid"
-		/>
-
-		<!--		<ClosestLessons-->
-		<!--			:is-even-week="isCurrentWeekEven()"-->
-		<!--			:current-day-index="currentNumberOfDay"-->
-		<!--			:current-group="currentGroup"-->
-		<!--		/>-->
 
 		<UDivider />
 
@@ -144,36 +132,14 @@ const route = useRoute();
 				key="even-week"
 				class="flex flex-col gap-8"
 			>
-				<ScheduleAccordeon
-					v-if="settingsStore.scheduleDisplay === 'accordion'"
-					:schedule="currentGroup.evenSchedule"
-				/>
-				<ScheduleList
-					v-else-if="settingsStore.scheduleDisplay === 'list'"
-					:schedule="currentGroup.evenSchedule"
-				/>
-				<ScheduleTable
-					v-else-if="settingsStore.scheduleDisplay === 'table'"
-					:schedule="currentGroup.evenSchedule"
-				/>
+				<ScheduleCard :schedule="currentGroup.evenSchedule" />
 			</div>
 			<div
 				v-else-if="blockToShow === 'odd-week'"
 				key="odd-week"
 				class="flex flex-col gap-8"
 			>
-				<ScheduleAccordeon
-					v-if="settingsStore.scheduleDisplay === 'accordion'"
-					:schedule="currentGroup.oddSchedule"
-				/>
-				<ScheduleList
-					v-else-if="settingsStore.scheduleDisplay === 'list'"
-					:schedule="currentGroup.oddSchedule"
-				/>
-				<ScheduleTable
-					v-else-if="settingsStore.scheduleDisplay === 'table'"
-					:schedule="currentGroup.oddSchedule"
-				/>
+				<ScheduleCard :schedule="currentGroup.oddSchedule" />
 			</div>
 		</div>
 		<div class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700">

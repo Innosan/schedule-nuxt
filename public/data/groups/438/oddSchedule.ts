@@ -1,134 +1,51 @@
 import type { Schedule } from "~/types/schedule/Schedule";
-import { subjects } from "~/utils/subjects";
 import { lessonTypes } from "~/utils/lessonTypes";
-import { teachers } from "~/utils/teachers";
-import { emptyLesson } from "~/types/schedule/Lesson";
+import { createLesson, emptyLesson } from "~/types/schedule/Lesson";
 
 export const oddScheduleFreaks: Schedule = {
 	type: "odd",
 	days: [
 		// monday
 		[
-			{
-				subject: subjects[10],
-				type: lessonTypes.practice,
-				teachers: [teachers[16]],
-				room: "САИТ",
-			},
-			{
-				subject: subjects[12],
-				type: lessonTypes.lecture,
-				teachers: [teachers[18]],
-				room: "САИТ",
-				additionalGroups: "437",
-			},
-			{
-				subject: subjects[1],
-				type: lessonTypes.lecture,
-				teachers: [teachers[19]],
-				room: "7-405",
-				additionalGroups: "436, 437",
-			},
-			{
-				subject: subjects[0],
-				type: lessonTypes.practice,
-				teachers: [teachers[0]], // TODO: add teacher
-				room: "Аудитория физики №2",
-			},
+			createLesson("architecture", lessonTypes.practice),
+			createLesson("discreteMath", lessonTypes.lecture, "437"),
+			createLesson("math", lessonTypes.lecture, "436, 437"),
+			createLesson("physics", lessonTypes.practice),
 		],
 
 		// tuesday
 		[
 			emptyLesson,
-			{
-				subject: subjects[12],
-				type: lessonTypes.practice,
-				teachers: [teachers[21]],
-				room: "САИТ",
-			},
+			createLesson("discreteMath", lessonTypes.practice),
 			emptyLesson,
 			emptyLesson,
 		],
 
 		// wednesday
 		[
-			{
-				subject: subjects[0],
-				type: lessonTypes.lecture,
-				teachers: [teachers[0]],
-				room: "БФА",
-				additionalGroups: "436, 437",
-			},
-			{
-				subject: subjects[4],
-				type: lessonTypes.practice,
-				teachers: [teachers[8]],
-				room: "Кафедра физического воспитания",
-			},
-			{
-				subject: subjects[14],
-				type: lessonTypes.lecture,
-				teachers: [teachers[16]],
-				room: "САИТ",
-				additionalGroups: "437",
-			},
-			{
-				subject: subjects[11],
-				type: lessonTypes.practice,
-				teachers: [teachers[17]],
-				room: "395",
-			},
+			createLesson("physics", lessonTypes.lecture, "436, 437"),
+			createLesson("physicalEducation", lessonTypes.practice),
+			createLesson("operatingSystems", lessonTypes.lecture, "437"),
+			createLesson("sociology", lessonTypes.practice),
 		],
 
 		// thursday
 		[
-			{
-				subject: subjects[10],
-				type: lessonTypes.lecture,
-				teachers: [teachers[16]],
-				room: "САИТ",
-			},
-			{
-				subject: subjects[4],
-				type: lessonTypes.practice,
-				teachers: [teachers[8]],
-				room: "Кафедра физического воспитания",
-			},
-			{
-				subject: subjects[1],
-				type: lessonTypes.practice,
-				teachers: [teachers[1]], // TODO: add teacher
-				room: "7-319",
-			},
-			{
-				subject: subjects[9],
-				type: lessonTypes.practice,
-				teachers: [teachers[13], teachers[12]],
-				room: "Кафедра ин. языка",
-			},
+			createLesson("architecture", lessonTypes.lecture, "437"),
+			createLesson("physicalEducation", lessonTypes.practice),
+			createLesson("math", lessonTypes.practice),
+			createLesson("english", lessonTypes.practice),
 		],
 
 		// friday
 		[
-			{
-				subject: subjects[15],
-				type: lessonTypes.lecture,
-				teachers: [teachers[22]],
-				room: "362",
-				additionalGroups: "5 факультет",
-			},
-			{
-				subject: subjects[15],
-				type: lessonTypes.practice,
-				teachers: [teachers[23]],
-				room: "350",
-			},
-			{
-				subject: subjects[14],
-				type: lessonTypes.practice,
-				teachers: [teachers[16]],
-				room: "САИТ",
-			},
+			createLesson(
+				"militaryTraining",
+				lessonTypes.lecture,
+				"5 факультет",
+			),
+			createLesson("militaryTraining", lessonTypes.practice),
+			createLesson("operatingSystems", lessonTypes.practice),
 			emptyLesson,
 		],
 	],

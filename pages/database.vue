@@ -1,18 +1,20 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 import { getFullName } from "~/types/schedule/Teacher";
 
 const blockToShow = ref("subjects");
 
 const searchTerm = ref("");
 const filteredSubjects = computed(() => {
-	return subjects.filter((subject) => {
+	return Object.values(subjects).filter((subject) => {
 		if (searchTerm.value === "") return true;
 		else {
 			return (
 				subject.title
 					.toLowerCase()
 					.includes(searchTerm.value.toLowerCase()) ||
-				subject.shortName
+				subject.shortTitle
 					?.toLowerCase()
 					.includes(searchTerm.value.toLowerCase())
 			);
