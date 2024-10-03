@@ -1,53 +1,17 @@
 export const cardSizes = {
-	small: {
-		body: {
-			base: "",
-			background: "",
-			padding: "px-1 py-1 sm:p-1",
-		},
-		header: {
-			base: "",
-			background: "",
-			padding: "px-1 py-1 sm:px-1",
-		},
-		footer: {
-			base: "",
-			background: "",
-			padding: "px-1 py-1 sm:px-1",
-		},
+	sm: {
+		header: "p-3 sm:px-3",
+		body: "p-3 sm:p-3",
+		footer: "p-3 sm:px-3",
 	},
-	medium: {
-		body: {
-			base: "",
-			background: "",
-			padding: "px-3 py-3 sm:p-3",
-		},
-		header: {
-			base: "",
-			background: "",
-			padding: "px-4 py-4 sm:px-4",
-		},
-		footer: {
-			base: "",
-			background: "",
-			padding: "px-3 py-3 sm:px-3",
-		},
+	md: {
+		header: "px-4 py-4 sm:px-4",
+		body: "px-3 py-3 sm:p-3",
+		footer: "px-3 py-3 sm:px-3",
 	},
-	large: {
-		body: {
-			base: "",
-			background: "",
-			padding: "px-4 py-5 sm:p-6",
-		},
-		header: {
-			base: "",
-			background: "",
-			padding: "px-4 py-5 sm:px-6",
-		},
-		footer: {
-			base: "",
-			background: "",
-			padding: "px-4 py-4 sm:px-6",
-		},
+	lg: {
+		header: "px-4 py-5 sm:px-6",
+		body: "px-4 py-5 sm:p-6",
+		footer: "px-4 py-4 sm:px-6",
 	},
 };

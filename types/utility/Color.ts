@@ -8,8 +8,10 @@ export const primaryColorNames = [
 	"green",
 	"violet",
 	"rose",
-	"old-lavender",
-	"russett",
+	"pink",
+	"orange",
+	"lime",
+	"emerald",
 ];
 
 export const grayColorNames = ["neutral", "stone", "zinc"];

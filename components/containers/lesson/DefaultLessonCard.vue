@@ -16,14 +16,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<UCard
-		v-if="lesson.subject.id !== -1"
-		:ui="{
-			body: { padding: 'px-3 py-3 sm:p-3' },
-			header: { padding: 'px-3 py-3 sm:p-3' },
-			footer: { padding: 'px-3 py-3 sm:p-3' },
-		}"
-	>
+	<UCard v-if="lesson.subject.id !== -1">
 		<template #header>
 			<div class="grid gap-1 md:gap-3">
 				<div
@@ -76,14 +69,7 @@ const props = defineProps({
 			</ULink>
 		</div>
 	</UCard>
-	<UCard
-		v-else
-		:ui="{
-			body: { padding: 'px-3 py-3 sm:p-3' },
-			header: { padding: 'px-3 py-3 sm:p-3' },
-			footer: { padding: 'px-3 py-3 sm:p-3' },
-		}"
-	>
+	<UCard v-else>
 		<div class="flex gap-2 items-center">
 			<UIcon name="i-heroicons-bell-snooze-solid" class="w-7 h-7" />
 			<p class="font-black">Окно</p>

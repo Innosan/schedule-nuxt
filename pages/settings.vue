@@ -29,6 +29,11 @@ const settingsStore = useSettingsStore();
 								? 'primary'
 								: 'gray'
 						"
+						:variant="
+							settingsStore.scheduleDisplay === key
+								? 'solid'
+								: 'subtle'
+						"
 						@click="settingsStore.setScheduleDisplay(key)"
 					/>
 				</UButtonGroup>
@@ -45,6 +50,11 @@ const settingsStore = useSettingsStore();
 							settingsStore.lessonCardState === key
 								? 'primary'
 								: 'gray'
+						"
+						:variant="
+							settingsStore.lessonCardState === key
+								? 'solid'
+								: 'subtle'
 						"
 						@click="settingsStore.setLessonCardState(key)"
 					/>
@@ -64,11 +74,7 @@ const settingsStore = useSettingsStore();
 					title="Показывать расписание"
 					icon="i-heroicons-eye-20-solid"
 				>
-					<UToggle
-						v-model="settingsStore.showSchedule"
-						@click="settingsStore.toggleScheduleState"
-						size="xl"
-					/>
+					<USwitch v-model="settingsStore.showSchedule" size="xl" />
 				</SettingsItem>
 			</SettingsCard>
 		</ClientOnly>

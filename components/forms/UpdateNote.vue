@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { useNotesStore } from "~/stores/notesStore";
 import type { Note } from "~/types/Note";
-
-const emit = defineEmits(["update:modelValue"]);
 
 const notesStore = useNotesStore();
 
 const props = defineProps({
-	modelValue: {
-		type: Boolean,
-		default: false,
-	},
 	noteToUpdate: {
 		type: Object as PropType<Note>,
 		required: true,
@@ -20,16 +13,6 @@ const props = defineProps({
 const noteTitle = ref(props.noteToUpdate.title);
 const noteContent = ref(props.noteToUpdate.content);
 
-const localIsOpen = ref(props.modelValue);
-
-watchEffect(() => {
-	localIsOpen.value = props.modelValue;
-});
-
-watchEffect(() => {
-	emit("update:modelValue", localIsOpen.value);
-});
-
 const getCreatedAt = () => {
 	const date = new Date();
 	return `${date.getHours()}:${date.getMinutes()}, ${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
@@ -37,59 +20,60 @@ const getCreatedAt = () => {
 </script>
 
 <template>
-	<UModal v-model="localIsOpen">
-		<UCard>
-			<template #header>
-				<div class="flex justify-between items-center">
-					<p class="font-black text-xl">
-						Обновить заметку "{{ noteToUpdate.title }}"
-					</p>
-				</div>
-			</template>
+	<UModal>
+		<UButton label="Обновить" />
+
+		<template #header>
+			<div class="flex justify-between items-center">
+				<p class="font-black text-xl">
+					Обновить заметку "{{ noteToUpdate.title }}"
+				</p>
+			</div>
+		</template>
+
+		<template #body>
 			<div class="flex flex-col gap-4">
-				<UFormGroup label="Заголовок">
+				<UFormField label="Заголовок">
 					<UInput
 						v-model="noteTitle"
 						:placeholder="noteToUpdate.title"
 					/>
-				</UFormGroup>
-				<UFormGroup label="Содержание">
+				</UFormField>
+				<UFormField label="Содержание">
 					<UTextarea
 						v-model="noteContent"
 						:placeholder="noteToUpdate.content"
 						textarea
 					/>
-				</UFormGroup>
+				</UFormField>
 			</div>
-			<template #footer>
-				<div class="flex gap-4 items-center">
-					<UButton
-						icon="i-heroicons-pencil-solid"
-						label="Обновить"
-						@click="
-							() => {
-								notesStore.updateNote({
-									id: noteToUpdate.id,
-									title: noteTitle,
-									content: noteContent,
-									createdAt: noteToUpdate.createdAt,
-									updatedAt: getCreatedAt(),
-								});
+		</template>
 
-								localIsOpen = false;
-							}
-						"
-					/>
-					<UButton
-						color="gray"
-						label="Отменить"
-						variant="ghost"
-						icon="i-heroicons-x-mark-20-solid"
-						class="-my-1"
-						@click="localIsOpen = false"
-					/>
-				</div>
-			</template>
-		</UCard>
+		<template #footer>
+			<div class="flex gap-4 items-center">
+				<UButton
+					icon="i-heroicons-pencil-solid"
+					label="Обновить"
+					@click="
+						() => {
+							notesStore.updateNote({
+								id: noteToUpdate.id,
+								title: noteTitle,
+								content: noteContent,
+								createdAt: noteToUpdate.createdAt,
+								updatedAt: getCreatedAt(),
+							});
+						}
+					"
+				/>
+				<UButton
+					color="gray"
+					label="Отменить"
+					variant="ghost"
+					icon="i-heroicons-x-mark-20-solid"
+					class="-my-1"
+				/>
+			</div>
+		</template>
 	</UModal>
 </template>

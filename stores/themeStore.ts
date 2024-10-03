@@ -6,12 +6,12 @@ export const useThemeStore = defineStore(
 
 		const setPrimaryColor = (newColor: string) => {
 			primaryColor.value = newColor;
-			useAppConfig().ui.primary = newColor;
+			useAppConfig().ui.colors.primary = newColor;
 		};
 
 		const setGrayColor = (newColor: string) => {
 			grayColor.value = newColor;
-			useAppConfig().ui.gray = newColor;
+			useAppConfig().ui.colors.gray = newColor;
 		};
 
 		return {

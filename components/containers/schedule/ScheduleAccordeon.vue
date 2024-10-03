@@ -42,55 +42,46 @@ const scheduleAccordion = [
 </script>
 
 <template>
-	<UAccordion :items="scheduleAccordion" multiple>
-		<template #default="{ item, index, open }">
-			<UButton
-				color="gray"
-				variant="ghost"
-				class="my-1 border-2 border-opacity-0 dark:border-opacity-0 border-black dark:border-white transition-all"
-				:class="
-					open
-						? 'border-opacity-10 dark:border-opacity-10'
-						: 'border-opacity-0'
-				"
-				:ui="{
-					padding: { sm: 'p-3' },
-				}"
+	<UAccordion :items="scheduleAccordion" type="multiple">
+		<template #leading="{ item, open }">
+			<div
+				class="w-6 h-6 rounded-md bg-primary-500 dark:bg-primary-400 flex items-center justify-center -my-1"
 			>
-				<template #leading>
-					<div
-						class="w-6 h-6 rounded-md bg-primary-500 dark:bg-primary-400 flex items-center justify-center -my-1"
-					>
-						<UIcon
-							:name="item.icon"
-							class="w-4 h-4 text-white dark:text-gray-900"
-						/>
-					</div>
-				</template>
-
-				<span class="truncate font-black mx-2"
-					>{{ item.label }} •
-					{{
-						getNumberOfLessons(
-							schedule.days[item.id - 1].filter(
-								(lesson) => lesson.subject.id !== -1,
-							),
-						)
-					}}
-					пары
-				</span>
-
-				<template #trailing>
-					<UIcon
-						name="i-heroicons-chevron-right-20-solid"
-						class="w-5 h-5 ms-auto transform transition-transform duration-200"
-						:class="[open && 'rotate-90']"
-					/>
-				</template>
-			</UButton>
+				<UIcon
+					:name="item.icon"
+					class="w-4 h-4 text-white dark:text-gray-900"
+				/>
+			</div>
 		</template>
-		<template #item="{ item }">
+
+		<template #default="{ item, open }">
+			<p
+				class="hover:opacity-90 hover:bg-gray-800 rounded-lg font-bold p-2"
+				:class="[open && 'bg-gray-800']"
+			>
+				{{ item.label }} •
+				{{
+					getNumberOfLessons(
+						schedule.days[item.id - 1].filter(
+							(lesson) => lesson.subject.id !== -1,
+						),
+					)
+				}}
+				пары
+			</p>
+		</template>
+
+		<template #trailing="{ open }">
+			<UIcon
+				name="i-heroicons-chevron-right-20-solid"
+				class="w-5 h-5 ms-auto transform transition-transform duration-200"
+				:class="[open && 'rotate-90']"
+			/>
+		</template>
+
+		<template #content="{ item }">
 			<DayCard
+				class="p-1"
 				:day="schedule.days[item.id - 1]"
 				:show-day="false"
 				:key="item.id"

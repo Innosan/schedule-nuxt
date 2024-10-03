@@ -17,49 +17,36 @@ const isOpen = ref(false);
 </script>
 
 <template>
-	<UButton
-		variant="ghost"
-		class="overflow-y-clip h-min"
-		:label="getShortName(teacher)"
-		@click="isOpen = true"
-	>
-		<template #leading v-if="teacher.image">
-			<UAvatar :src="teacher.image" size="xs" />
-		</template>
-	</UButton>
+	<UModal v-model:open="isOpen" description=" ">
+		<UButton
+			variant="subtle"
+			class="overflow-y-clip h-min"
+			:label="getShortName(teacher)"
+		/>
 
-	<UModal v-model="isOpen">
-		<UCard>
-			<template #header>
-				<div></div>
-				<div class="flex justify-between items-start gap-2">
-					<div class="flex gap-4">
-						<img
-							v-if="teacher.image"
-							:src="teacher.image"
-							alt=""
-							class="h-28 w-28 object-cover rounded-xl"
-						/>
-						<div class="flex flex-col gap-3">
-							<h3 class="font-bold">
-								{{ getFullName(teacher) }}
-							</h3>
-							<LessonInfoField
-								:value="teacher.grade.title"
-								icon="i-heroicons-academic-cap-solid"
-							/>
-						</div>
-					</div>
-
-					<UButton
-						color="gray"
-						variant="ghost"
-						icon="i-heroicons-x-mark-20-solid"
-						class="-my-1"
-						@click="isOpen = false"
+		<template #title>
+			<div class="flex justify-between items-start gap-2">
+				<div class="flex gap-4">
+					<img
+						v-if="teacher.image"
+						:src="teacher.image"
+						alt=""
+						class="h-28 w-28 object-cover rounded-xl"
 					/>
+					<div class="flex flex-col gap-3">
+						<h3 class="font-bold">
+							{{ getFullName(teacher) }}
+						</h3>
+						<LessonInfoField
+							:value="teacher.grade.title"
+							icon="i-heroicons-academic-cap-solid"
+						/>
+					</div>
 				</div>
-			</template>
+			</div>
+		</template>
+
+		<template #body>
 			<div class="grid gap-4">
 				<div class="flex gap-2">
 					<LessonInfoField
@@ -68,7 +55,7 @@ const isOpen = ref(false);
 					/>
 				</div>
 
-				<UDivider icon="i-heroicons-chat-bubble-left-right" />
+				<USeparator icon="i-heroicons-chat-bubble-left-right" />
 				<div class="flex gap-2 flex-col">
 					<SocialCard
 						v-if="teacher.email"
@@ -91,6 +78,6 @@ const isOpen = ref(false);
 					</p>
 				</div>
 			</div>
-		</UCard>
+		</template>
 	</UModal>
 </template>

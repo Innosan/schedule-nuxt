@@ -137,8 +137,8 @@ const timedLessons = computed(() => {
 				{{ Math.floor(timedLessons.timeUntilCurrentLessonEnds / 60) }}
 				ч. {{ timedLessons.timeUntilCurrentLessonEnds % 60 }} мин.
 			</p>
-			<UMeter
-				:value="timedLessons.timeUntilCurrentLessonEnds"
+			<UProgress
+				v-model="timedLessons.timeUntilCurrentLessonEnds"
 				:max="90"
 			/>
 		</div>
@@ -151,7 +151,7 @@ const timedLessons = computed(() => {
 		>
 			<p class="font-bold text-sm opacity-70">
 				{{
-					timedLessons.nextLesson.subject.shortName ??
+					timedLessons.nextLesson.subject.shortTitle ??
 					timedLessons.nextLesson.subject.title
 				}}
 				через

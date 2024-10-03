@@ -1,8 +1,6 @@
-<script lang="ts" setup></script>
-
 <template>
 	<header
-		class="sticky top-0 bg-gray-900 bg-opacity-80 backdrop-blur-sm z-10"
+		class="sticky top-0 dark:bg-gray-900 bg-primary-50 bg-opacity-80 backdrop-blur-sm z-10"
 	>
 		<div class="header-container flex gap-2 items-center">
 			<SidebarNavigation />
