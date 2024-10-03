@@ -56,8 +56,8 @@ const scheduleAccordion = [
 
 		<template #default="{ item, open }">
 			<p
-				class="hover:opacity-90 hover:bg-gray-800 rounded-lg font-bold p-2"
-				:class="[open && 'bg-gray-800']"
+				class="hover:opacity-90 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-lg font-bold p-2"
+				:class="[open && 'dark:bg-gray-800 bg-gray-200']"
 			>
 				{{ item.label }} •
 				{{

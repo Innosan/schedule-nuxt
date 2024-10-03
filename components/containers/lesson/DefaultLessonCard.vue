@@ -13,16 +13,17 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const className = computed(() => {
+	return `text-${props.lesson?.type.color}-400 dark:text-${props.lesson?.type.color}-400`;
+});
 </script>
 
 <template>
 	<UCard v-if="lesson.subject.id !== -1">
 		<template #header>
 			<div class="grid gap-1 md:gap-3">
-				<div
-					:class="'text-' + lesson.type.color + '-400'"
-					class="flex items-center gap-2"
-				>
+				<div :class="className" class="flex items-center gap-2">
 					<UIcon :name="lesson.type.icon" />
 					<p class="font-extrabold">
 						{{ lesson.subject.shortTitle ?? lesson.subject.title }}

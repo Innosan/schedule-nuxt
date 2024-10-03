@@ -43,10 +43,11 @@ const route = useRoute();
 
 <template>
 	<div class="flex flex-col gap-4">
-		<UButtonGroup size="xs" @click="route.hash ? navigateTo('/') : null">
+		<UButtonGroup size="sm" @click="route.hash ? navigateTo('/') : null">
 			<UButton
 				leading-icon="i-heroicons-briefcase-solid"
 				:color="blockToShow === 'subjects' ? 'primary' : 'gray'"
+				:variant="blockToShow === 'subjects' ? 'solid' : 'subtle'"
 				@click="changeBlock('subjects')"
 			>
 				Предметы
@@ -54,6 +55,7 @@ const route = useRoute();
 			<UButton
 				leading-icon="i-heroicons-academic-cap-solid"
 				:color="blockToShow === 'teachers' ? 'primary' : 'gray'"
+				:variant="blockToShow === 'teachers' ? 'solid' : 'subtle'"
 				@click="changeBlock('teachers')"
 			>
 				Преподаватели

@@ -20,7 +20,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="flex gap-3 flex-col" :id="dayMapper[index + 1].id">
+	<div class="flex gap-3 flex-col pb-4" :id="dayMapper[index + 1].id">
 		<h2 v-if="showDay" class="font-black text-xl">
 			{{ dayMapper[index + 1].title }}
 		</h2>

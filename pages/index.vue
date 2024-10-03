@@ -92,6 +92,38 @@ const route = useRoute();
 							<p class="font-black">Пар нет</p>
 						</div>
 					</UCard>
+				</ClientOnly>
+			</div>
+			<div
+				v-else-if="blockToShow === 'even-week'"
+				key="even-week"
+				class="flex flex-col gap-8"
+			>
+				<ScheduleCard :schedule="currentGroup.evenSchedule" />
+			</div>
+			<div
+				v-else-if="blockToShow === 'odd-week'"
+				key="odd-week"
+				class="flex flex-col gap-8"
+			>
+				<ScheduleCard :schedule="currentGroup.oddSchedule" />
+			</div>
+		</div>
+		<UDrawer
+			title="Дополнительно"
+			description="Расписание на завтра и другие рофланы"
+		>
+			<UButton
+				label="Дополнительно"
+				color="primary"
+				variant="subtle"
+				block
+				size="xl"
+				trailing-icon="i-heroicons-chevron-up-20-solid"
+			/>
+
+			<template #body>
+				<div class="flex flex-col gap-4">
 					<UCard :ui="cardSizes.sm">
 						<template #header>
 							<p class="opacity-70 font-bold">На завтра</p>
@@ -112,28 +144,15 @@ const route = useRoute();
 							:show-day="false"
 						/>
 					</UCard>
-				</ClientOnly>
-			</div>
-			<div
-				v-else-if="blockToShow === 'even-week'"
-				key="even-week"
-				class="flex flex-col gap-8"
-			>
-				<ScheduleCard :schedule="currentGroup.evenSchedule" />
-			</div>
-			<div
-				v-else-if="blockToShow === 'odd-week'"
-				key="odd-week"
-				class="flex flex-col gap-8"
-			>
-				<ScheduleCard :schedule="currentGroup.oddSchedule" />
-			</div>
-		</div>
-		<UAlert
-			variant="soft"
-			description="осталось до сессии"
-			:title="getDaysUntilExamSession() + ' дней'"
-		/>
+
+					<UAlert
+						variant="soft"
+						description="осталось до сессии"
+						:title="getDaysUntilExamSession() + ' дней'"
+					/>
+				</div>
+			</template>
+		</UDrawer>
 	</div>
 	<div v-else>
 		<UAlert
