@@ -13,10 +13,13 @@ const props = defineProps({
 <template>
 	<ClientOnly>
 		<nav>
-			<UDropdown :items="links" :popper="{ placement: 'bottom-start' }">
+			<UDropdownMenu
+				:items="links"
+				:popper="{ placement: 'bottom-start' }"
+			>
 				<UButton icon="i-heroicons-bars-3" />
 
-				<template #item="{ item }">
+				<template #item-label="{ item }">
 					<span class="truncate">{{ item.label }}</span>
 
 					<UIcon
@@ -24,7 +27,7 @@ const props = defineProps({
 						class="flex-shrink-0 h-4 w-4 text-gray-400 dark:text-gray-500 ms-auto"
 					/>
 				</template>
-			</UDropdown>
+			</UDropdownMenu>
 		</nav>
 	</ClientOnly>
 </template>

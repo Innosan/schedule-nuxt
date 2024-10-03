@@ -39,7 +39,7 @@ const oddLessons = computed(() => {
 </script>
 
 <template>
-	<UCard :ui="cardSizes.medium" class="overflow-y-clip h-min">
+	<UCard>
 		<template #header>
 			<p class="font-black truncate md:text-xl">
 				{{ subject.title }}

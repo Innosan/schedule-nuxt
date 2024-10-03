@@ -1,12 +1,17 @@
-* {
-	margin: 0;
-	padding: 0;
-
-	scroll-margin-top: 10px;
-}
+@import "tailwindcss";
+@import "@nuxt/ui";
 
 html.dark {
-	background-color: rgb(var(--color-gray-900));
+	color: white;
+}
+
+#__nuxt, body, div.dark\:bg-gray-900:has(> header) {
+	background-color: rgb(var(--color-gray-800)) !important;
+}
+
+html.light {
+	background-color: white;
+	color: #000;
 }
 
 html {
@@ -15,8 +20,4 @@ html {
 	overflow-y: overlay;
 	overflow-x: hidden;
 	scroll-behavior: smooth;
-}
-
-ul {
-	flex-direction: column !important;
 }

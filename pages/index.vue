@@ -44,30 +44,30 @@ const route = useRoute();
 			/>
 		</ClientOnly>
 
-		<UDivider />
+		<USeparator />
 
-		<UButtonGroup size="xs" @click="route.hash ? navigateTo('/') : null">
+		<UButtonGroup size="sm" @click="route.hash ? navigateTo('/') : null">
 			<UButton
+				@click="blockToShow = 'day'"
+				label="День"
 				leading-icon="i-heroicons-sun-solid"
 				:color="blockToShow === 'day' ? 'primary' : 'gray'"
-				@click="blockToShow = 'day'"
-			>
-				День
-			</UButton>
+				:variant="blockToShow === 'day' ? 'solid' : 'subtle'"
+			/>
 			<UButton
+				@click="blockToShow = 'even-week'"
+				label="Чётная"
 				leading-icon="i-heroicons-hand-thumb-up-solid"
 				:color="blockToShow === 'even-week' ? 'primary' : 'gray'"
-				@click="blockToShow = 'even-week'"
-			>
-				Чётная
-			</UButton>
+				:variant="blockToShow === 'even-week' ? 'solid' : 'subtle'"
+			/>
 			<UButton
+				@click="blockToShow = 'odd-week'"
+				label="Нечётная"
 				leading-icon="i-heroicons-hand-thumb-down-solid"
 				:color="blockToShow === 'odd-week' ? 'primary' : 'gray'"
-				@click="blockToShow = 'odd-week'"
-			>
-				Нечётная
-			</UButton>
+				:variant="blockToShow === 'odd-week' ? 'solid' : 'subtle'"
+			/>
 		</UButtonGroup>
 		<div v-auto-animate>
 			<div
@@ -83,14 +83,7 @@ const route = useRoute();
 						:index="currentNumberOfDay"
 						:show-day="false"
 					/>
-					<UCard
-						v-else
-						:ui="{
-							body: { padding: 'px-3 py-3 sm:p-3' },
-							header: { padding: 'px-3 py-3 sm:p-3' },
-							footer: { padding: 'px-3 py-3 sm:p-3' },
-						}"
-					>
+					<UCard v-else :ui="cardSizes.sm">
 						<div class="flex gap-2 items-center">
 							<UIcon
 								name="i-heroicons-bell-snooze-solid"
@@ -99,13 +92,39 @@ const route = useRoute();
 							<p class="font-black">Пар нет</p>
 						</div>
 					</UCard>
-					<UCard
-						:ui="{
-							body: { padding: 'px-3 py-3 sm:p-3' },
-							header: { padding: 'px-3 py-3 sm:p-3' },
-							footer: { padding: 'px-3 py-3 sm:p-3' },
-						}"
-					>
+				</ClientOnly>
+			</div>
+			<div
+				v-else-if="blockToShow === 'even-week'"
+				key="even-week"
+				class="flex flex-col gap-8"
+			>
+				<ScheduleCard :schedule="currentGroup.evenSchedule" />
+			</div>
+			<div
+				v-else-if="blockToShow === 'odd-week'"
+				key="odd-week"
+				class="flex flex-col gap-8"
+			>
+				<ScheduleCard :schedule="currentGroup.oddSchedule" />
+			</div>
+		</div>
+		<UDrawer
+			title="Дополнительно"
+			description="Расписание на завтра и другие рофланы"
+		>
+			<UButton
+				label="Дополнительно"
+				color="primary"
+				variant="subtle"
+				block
+				size="xl"
+				trailing-icon="i-heroicons-chevron-up-20-solid"
+			/>
+
+			<template #body>
+				<div class="flex flex-col gap-4">
+					<UCard :ui="cardSizes.sm">
 						<template #header>
 							<p class="opacity-70 font-bold">На завтра</p>
 						</template>
@@ -125,45 +144,21 @@ const route = useRoute();
 							:show-day="false"
 						/>
 					</UCard>
-				</ClientOnly>
-			</div>
-			<div
-				v-else-if="blockToShow === 'even-week'"
-				key="even-week"
-				class="flex flex-col gap-8"
-			>
-				<ScheduleCard :schedule="currentGroup.evenSchedule" />
-			</div>
-			<div
-				v-else-if="blockToShow === 'odd-week'"
-				key="odd-week"
-				class="flex flex-col gap-8"
-			>
-				<ScheduleCard :schedule="currentGroup.oddSchedule" />
-			</div>
-		</div>
-		<div class="flex flex-col gap-1 rounded-lg p-3 ring-1 ring-gray-700">
-			<p class="opacity-70">до сессии</p>
-			<p class="text-2xl font-black">
-				{{ getDaysUntilExamSession() }}
-				дней
-			</p>
-		</div>
+
+					<UAlert
+						variant="soft"
+						description="осталось до сессии"
+						:title="getDaysUntilExamSession() + ' дней'"
+					/>
+				</div>
+			</template>
+		</UDrawer>
 	</div>
 	<div v-else>
 		<UAlert
-			class="overflow-y-hidden"
 			description="Начались каникулы (или вы просто так решили) и на этот период расписание скрывается. Если хотите показывать его всегда, есть кнопочка в настройках!"
 			title="Расписание скрыто!"
 			icon="i-heroicons-exclamation-circle-20-solid"
-			:actions="[
-				{
-					variant: 'outline',
-					color: 'primary',
-					label: 'Открыть настройки',
-					click: () => navigateTo('/settings'),
-				},
-			]"
 		/>
 	</div>
 </template>

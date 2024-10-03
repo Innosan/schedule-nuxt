@@ -13,23 +13,16 @@ const props = defineProps({
 		required: true,
 	},
 });
+
+const className = computed(() => {
+	return `text-${props.lesson?.type.color}-400 dark:text-${props.lesson?.type.color}-400`;
+});
 </script>
 
 <template>
-	<UCard
-		v-if="lesson.subject.id !== -1"
-		class="select-none"
-		:ui="{
-			body: { padding: 'px-3 py-3 sm:p-3' },
-			header: { padding: 'px-3 py-3 sm:p-3' },
-			footer: { padding: 'px-3 py-3 sm:p-3' },
-		}"
-	>
+	<UCard v-if="lesson.subject.id !== -1" :ui="cardSizes.sm">
 		<div class="grid gap-1">
-			<div
-				:class="'text-' + lesson.type.color + '-400'"
-				class="flex items-center gap-2"
-			>
+			<div class="flex items-center gap-2" :class="className">
 				<UIcon :name="lesson.type.icon" />
 				<p class="font-extrabold">
 					{{ lesson.subject.shortTitle ?? lesson.subject.title }}
@@ -68,15 +61,7 @@ const props = defineProps({
 			</ULink>
 		</template>
 	</UCard>
-	<UCard
-		v-else
-		class="select-none"
-		:ui="{
-			body: { padding: 'px-3 py-3 sm:p-3' },
-			header: { padding: 'px-3 py-3 sm:p-3' },
-			footer: { padding: 'px-3 py-3 sm:p-3' },
-		}"
-	>
+	<UCard v-else class="select-none" :ui="cardSizes.sm">
 		<div class="flex gap-2 items-center">
 			<UIcon name="i-heroicons-bell-snooze-solid" class="w-7 h-7" />
 			<p class="font-black">Окно</p>

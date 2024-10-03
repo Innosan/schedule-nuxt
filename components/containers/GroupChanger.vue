@@ -10,6 +10,9 @@ const settingsStore = useSettingsStore();
 			:key="value.id"
 			:label="value.title"
 			:color="settingsStore.groupNumber === value.id ? 'primary' : 'gray'"
+			:variant="
+				settingsStore.groupNumber === value.id ? 'solid' : 'subtle'
+			"
 			@click="settingsStore.setGroupNumber(value.id)"
 		/>
 	</UButtonGroup>

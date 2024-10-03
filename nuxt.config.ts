@@ -5,6 +5,12 @@ const sw = false;
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 
+	ui: {
+		theme: {
+			colors: ["blue", "green", "red", "pink"],
+		},
+	},
+
 	modules: [
 		"@nuxt/ui",
 		"@formkit/auto-animate/nuxt",
